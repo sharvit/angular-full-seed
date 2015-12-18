@@ -8,7 +8,6 @@ var plugins = require('gulp-load-plugins')();
 var del = require('del');
 var beep = require('beepbeep');
 var path = require('path');
-var stylish = require('jshint-stylish');
 var streamqueue = require('streamqueue');
 var runSequence = require('run-sequence');
 var browserify = require('browserify');
@@ -17,9 +16,22 @@ var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
-var KarmaServer = require('karma').Server;
-var childProcess = require('child_process');
-var gulpWebserver = require('gulp-webserver');
+
+
+var devDependencies;
+
+function getDevDependencies() {
+  if (typeof devDependencies === 'undefined') {
+    devDependencies = {
+      stylish: require('jshint-stylish'),
+      KarmaServer: require('karma').Server,
+      childProcess: require('child_process'),
+      gulpWebserver: require('gulp-webserver')
+    };
+  }
+
+  return devDependencies;
+}
 
 
 /**
@@ -153,7 +165,7 @@ gulp.task('lint', function() {
   return gulp
     .src('app/src/**/*.js')
     .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter(stylish))
+    .pipe(plugins.jshint.reporter(getDevDependencies().stylish))
     .on('error', errorHandler);
 }).help = {
   '': 'lint js sources based on .jshintrc ruleset.'
@@ -190,7 +202,7 @@ gulp.task('clean:release', function(done) {
     'build:clean-target',
     'build:iconfont',
     [
-      'lint',
+      release ? 'private:noop' : 'lint',
       'build:locales',
       'build:fonts',
       'build:templates',
@@ -211,7 +223,7 @@ gulp.task('clean:release', function(done) {
     'build:iconfont',
     [
       '[',
-      'lint',
+      'lint if release?',
       'build:locales',
       'build:fonts',
       'build:templates',
@@ -501,7 +513,7 @@ gulp.task('serve', function(done) {
 };
 gulp.task('serve:runserver', function() {
   gulp.src(targetDir)
-    .pipe(gulpWebserver({
+    .pipe(getDevDependencies().gulpWebserver({
       path: '/',
       port: port,
       livereload: true,
@@ -548,7 +560,7 @@ gulp.task('test:unit', function(done) {
   ].join('\n\t')
 };
 gulp.task('test:unit:run-karma-server', function (done) {
-  new KarmaServer({
+  new getDevDependencies().KarmaServer({
     configFile: __dirname + '/unit-tests/karma.conf.js',
     singleRun: true,
     basePath: targetDir,
@@ -574,12 +586,12 @@ gulp.task('test:e2e', function(done) {
 gulp.task('test:e2e:run-protractor-server', ['test:e2e:run-protractor-install'], function (done) {
   // run dev server
   var devServerStrean = gulp.src(targetDir)
-    .pipe(gulpWebserver({
+    .pipe(getDevDependencies().gulpWebserver({
       path: '/',
       port: port
     }));
   // run protractor server
-  childProcess.spawn(getProtractorBinary('protractor'), [
+  getDevDependencies().childProcess.spawn(getProtractorBinary('protractor'), [
     'e2e-tests/protractor.conf.js'
   ], {
     stdio: 'inherit'
@@ -597,7 +609,7 @@ gulp.task('test:e2e:run-protractor-server', ['test:e2e:run-protractor-install'],
   ].join('\n\t')
 };
 gulp.task('test:e2e:run-protractor-install', function(done) {
-  childProcess.spawn(getProtractorBinary('webdriver-manager'), ['update'], {
+  getDevDependencies().childProcess.spawn(getProtractorBinary('webdriver-manager'), ['update'], {
       stdio: 'inherit'
   }).once('close', done);
 }).help = {
