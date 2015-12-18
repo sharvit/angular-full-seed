@@ -24,7 +24,7 @@ function getDevDependencies() {
   if (typeof devDependencies === 'undefined') {
     devDependencies = {
       stylish: require('jshint-stylish'),
-      KarmaServer: require('karma').Server,
+      karmaServer: require('karma').Server,
       childProcess: require('child_process'),
       gulpWebserver: require('gulp-webserver')
     };
@@ -560,7 +560,8 @@ gulp.task('test:unit', function(done) {
   ].join('\n\t')
 };
 gulp.task('test:unit:run-karma-server', function (done) {
-  new getDevDependencies().KarmaServer({
+  var karmaServer = getDevDependencies().karmaServer;
+  new karmaServer({
     configFile: __dirname + '/unit-tests/karma.conf.js',
     singleRun: true,
     basePath: targetDir,
