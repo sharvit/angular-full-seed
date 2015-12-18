@@ -39,7 +39,7 @@ var args = require('yargs')
     .default('port', DEFAULT_PORT)
     .argv;
 
-var release, port, targetDir, devServerStrean;
+var release, port, targetDir;
 
 init();
 
@@ -500,7 +500,7 @@ gulp.task('serve', function(done) {
   ].join('\n\t')
 };
 gulp.task('serve:runserver', function() {
-  devServerStrean = gulp.src(targetDir)
+  gulp.src(targetDir)
     .pipe(gulpWebserver({
       path: '/',
       port: port,
@@ -511,11 +511,6 @@ gulp.task('serve:runserver', function() {
   '': 'run development server and open the browser',
   '[ --release ] [ -r ]': 'release mode',
   '[ --port=PORT ] [ -p=PORT ]': 'set the web server port. default to ' + DEFAULT_PORT
-};
-gulp.task('serve:kill', function() {
-  devServerStrean.emit('kill');
-}).help = {
-  '': 'kill the development server and open the browser'
 };
 
 /**
@@ -553,7 +548,6 @@ gulp.task('test:unit', function(done) {
   ].join('\n\t')
 };
 gulp.task('test:unit:runkarmaserver', function (done) {
-  // plugins.util.log(__dirname);
   new KarmaServer({
     configFile: __dirname + '/unit-tests/karma.conf.js',
     singleRun: true,
@@ -564,27 +558,36 @@ gulp.task('test:unit:runkarmaserver', function (done) {
 };
 gulp.task('test:e2e', function(done) {
   runSequence(
-    'serve',
+    'build',
     'test:e2e:run-protractor-server',
-    'serve:kill',
     done
   );
 }).help = {
-  '': 'build the app and run all unit tests',
+  '': 'build the app and run all e2e tests',
   '[ --release ] [ -r ]': 'release mode',
   'Run': [
     '',
-    'serve',
-    'test:e2e:run-protractor-server',
-    'serve:kill'
+    'build',
+    'test:e2e:run-protractor-server'
   ].join('\n\t')
 };
 gulp.task('test:e2e:run-protractor-server', ['test:e2e:run-protractor-install'], function (done) {
+  // run dev server
+  var devServerStrean = gulp.src(targetDir)
+    .pipe(gulpWebserver({
+      path: '/',
+      port: port
+    }));
+  // run protractor server
   childProcess.spawn(getProtractorBinary('protractor'), [
     'e2e-tests/protractor.conf.js'
   ], {
     stdio: 'inherit'
-  }).once('close', done);
+  }).once('close', function () {
+    // Kill dev server
+    devServerStrean.emit('kill');
+    done();
+  });
 }).help = {
   '': 'run protractor server and run all e2e tests',
   '[ --release ] [ -r ]': 'release mode',
