@@ -114,7 +114,7 @@ var helpTasks = [
   'test',
   '',
   'test:unit',
-  'test:unit:runkarmaserver',
+  'test:unit:run-karma-server',
   '',
   'test:e2e',
   'test:e2e:run-protractor-server',
@@ -535,7 +535,7 @@ gulp.task('test', function(done) {
 gulp.task('test:unit', function(done) {
   runSequence(
     'build',
-    'test:unit:runkarmaserver',
+    'test:unit:run-karma-server',
     done
   );
 }).help = {
@@ -544,10 +544,10 @@ gulp.task('test:unit', function(done) {
   'Run': [
     '',
     'build',
-    'test:unit:runkarmaserver'
+    'test:unit:run-karma-server'
   ].join('\n\t')
 };
-gulp.task('test:unit:runkarmaserver', function (done) {
+gulp.task('test:unit:run-karma-server', function (done) {
   new KarmaServer({
     configFile: __dirname + '/unit-tests/karma.conf.js',
     singleRun: true,
