@@ -1,7 +1,20 @@
-logs/*
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
 !.gitkeep
+
+logs/
 node_modules/
 bower_components/
+.tmp/
+build/
+
 tmp
 .DS_Store
 .idea
+.sass-cache
+*.DS_Store
+*.log
+
+app/scripts/bundle.js
+app/scripts/bundle.js.map
