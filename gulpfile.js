@@ -22,6 +22,8 @@ var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
 var KarmaServer = require('karma').Server;
+var childProcess = require('child_process');
+var gulpWebserver = require('gulp-webserver');
 
 
 /**
@@ -41,7 +43,7 @@ var args = require('yargs')
     .default('port', DEFAULT_PORT)
     .argv;
 
-var release, port, targetDir;
+var release, port, targetDir, devServerStrean;
 
 init();
 
@@ -53,6 +55,13 @@ function init () {
 
 function decideAboutTragetDir () {
   targetDir = path.resolve(release ? releaseTargetDir : debugTargetDir);
+}
+
+function getProtractorBinary(binaryName){
+    var winExt = /^win/.test(process.platform)? '.cmd' : '';
+    var pkgPath = require.resolve('protractor');
+    var protractorDir = path.resolve(path.join(path.dirname(pkgPath), '..', 'bin'));
+    return path.join(protractorDir, '/'+binaryName+winExt);
 }
 
 // global error handler
@@ -110,7 +119,10 @@ var helpTasks = [
   '',
   'test:unit',
   'test:unit:runkarmaserver',
+  '',
   'test:e2e',
+  'test:e2e:run-protractor-server',
+  'test:e2e:run-protractor-install',
   '',
   '',
   'clean',
@@ -491,19 +503,24 @@ gulp.task('serve', function(done) {
     'serve:runserver'
   ].join('\n\t')
 };
-// start local express server
 gulp.task('serve:runserver', function() {
-  express()
-    .use(connectLr())
-    .use(express.static(targetDir))
-    .listen(port);
-  open('http://localhost:' + port + '/');
+  devServerStrean = gulp.src(targetDir)
+    .pipe(gulpWebserver({
+      path: '/',
+      port: port,
+      livereload: true,
+      open: true
+    }));
 }).help = {
   '': 'run development server and open the browser',
   '[ --release ] [ -r ]': 'release mode',
   '[ --port=PORT ] [ -p=PORT ]': 'set the web server port. default to ' + DEFAULT_PORT
 };
-
+gulp.task('serve:kill', function() {
+  devServerStrean.emit('kill');
+}).help = {
+  '': 'kill the development server and open the browser'
+};
 
 /**
  * Tests Tasks
@@ -511,10 +528,13 @@ gulp.task('serve:runserver', function() {
 gulp.task('test', function(done) {
   runSequence(
     'test:unit',
+    'test:e2e',
     done
   );
 }).help = {
   '': 'build the app and run all tests (unit, e2e)',
+  '[ --release ] [ -r ]': 'release mode',
+  '[ --port=PORT ] [ -p=PORT ]': 'set the web server port. default to ' + DEFAULT_PORT,
   'Run': [
     '',
     'test:unit',
@@ -523,16 +543,15 @@ gulp.task('test', function(done) {
 };
 gulp.task('test:unit', function(done) {
   runSequence(
-    'force-debug',
     'build',
     'test:unit:runkarmaserver',
     done
   );
 }).help = {
   '': 'build the app and run all unit tests',
+  '[ --release ] [ -r ]': 'release mode',
   'Run': [
     '',
-    'private:force-debug',
     'build',
     'test:unit:runkarmaserver'
   ].join('\n\t')
@@ -540,17 +559,51 @@ gulp.task('test:unit', function(done) {
 gulp.task('test:unit:runkarmaserver', function (done) {
   // plugins.util.log(__dirname);
   new KarmaServer({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: true
+    configFile: __dirname + '/unit-tests/karma.conf.js',
+    singleRun: true,
+    basePath: targetDir,
   }, done).start();
 }).help = {
   '': 'run karma server and start run unit testing'
 };
-// start karam unit testing server
-gulp.task('test:e2e', ['private:noop']).help = {
-  '': 'do nothing for now'
+gulp.task('test:e2e', function(done) {
+  runSequence(
+    'serve',
+    'test:e2e:run-protractor-server',
+    'serve:kill',
+    done
+  );
+}).help = {
+  '': 'build the app and run all unit tests',
+  '[ --release ] [ -r ]': 'release mode',
+  'Run': [
+    '',
+    'serve',
+    'test:e2e:run-protractor-server',
+    'serve:kill'
+  ].join('\n\t')
 };
-
+gulp.task('test:e2e:run-protractor-server', ['test:e2e:run-protractor-install'], function (done) {
+  childProcess.spawn(getProtractorBinary('protractor'), [
+    'e2e-tests/protractor.conf.js'
+  ], {
+    stdio: 'inherit'
+  }).once('close', done);
+}).help = {
+  '': 'run protractor server and run all e2e tests',
+  '[ --release ] [ -r ]': 'release mode',
+  'Run': [
+    '',
+    'test:e2e:run-protractor-install'
+  ].join('\n\t')
+};
+gulp.task('test:e2e:run-protractor-install', function(done) {
+  childProcess.spawn(getProtractorBinary('webdriver-manager'), ['update'], {
+      stdio: 'inherit'
+  }).once('close', done);
+}).help = {
+  '': 'install latest protractor server'
+};
 
 
 
@@ -559,13 +612,10 @@ gulp.task('private:force-debug', function () {
   release = false;
   decideAboutTragetDir();
 });
-// force debug mode
+// force release mode
 gulp.task('private:force-release', function () {
-  release = false;
+  release = true;
   decideAboutTragetDir();
 });
 // no-op = no operation
-gulp.task('private:noop', function () {
-  release = false;
-  decideAboutTragetDir();
-});
+gulp.task('private:noop', function () { });

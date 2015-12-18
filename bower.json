@@ -1,8 +1,7 @@
 {
-  "name": "appevivo-restaurant-manager-client",
-  "description": "Appevivo restaraurant manager client app",
-  "version": "0.0.0",
-  "private": true,
+  "name": "angular-seed",
+  "description": "Angular Seed Project",
+  "version": "0.0.1",
   "dependencies": {
     "angular": "~1.4.0",
     "angular-route": "~1.4.0",

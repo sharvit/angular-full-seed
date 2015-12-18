@@ -3,15 +3,15 @@
 module.exports = function (config) {
   config.set({
 
-    basePath : './',
+    basePath : './build/debug',
 
     files : [
-      'build/debug/vendor.js',
-      'build/debug/scripts/bundle.js',
+      'vendor*.js',
+      'scripts/*.js',
 
-      'bower_components/angular-mocks/angular-mocks.js',
+      '../../bower_components/angular-mocks/angular-mocks.js',
 
-      'unit-tests/**/*.spec.js'
+      '../../unit-tests/**/*.spec.js'
     ],
 
     autoWatch : true,
