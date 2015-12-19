@@ -24,7 +24,7 @@
   if (process.env.TRAVIS) {
     cfg.capabilities = null;
 
-    cfg.multiCapabilities: [{
+    cfg.multiCapabilities = [{
       'browserName': 'firefox'
     }, {
       'browserName': 'chrome',
