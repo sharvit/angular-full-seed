@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (config) {
-  config.set({
+  var cfg = {
 
     basePath : './build/debug',
 
@@ -18,7 +18,7 @@ module.exports = function (config) {
 
     frameworks: ['jasmine'],
 
-    browsers : ['Chrome'],
+    browsers : ['Chrome', 'ChromeCanary'],
 
     plugins : [
       'karma-chrome-launcher',
@@ -38,5 +38,13 @@ module.exports = function (config) {
       outputFile: 'test_out/unit.xml',
       suite: 'unit'
     }
-  });
+
+  };
+
+  if (process.env.TRAVIS) {
+    cfg.browsers = ['Chrome_travis_ci'];
+  }
+
+  config.set(cfg);
+
 };
