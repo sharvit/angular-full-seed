@@ -1,45 +1,94 @@
 'use strict';
 
-var appName = 'app';
-
-var gulp = require('gulp');
-var ghelp = require('gulp-showhelp');
-var plugins = require('gulp-load-plugins')();
-var del = require('del');
-var beep = require('beepbeep');
-var path = require('path');
-var streamqueue = require('streamqueue');
-var runSequence = require('run-sequence');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
-var gutil = require('gulp-util');
-
-
-var devDependencies;
-
-function getDevDependencies() {
-  if (typeof devDependencies === 'undefined') {
-    devDependencies = {
-      stylish: require('jshint-stylish'),
-      karmaServer: require('karma').Server,
-      childProcess: require('child_process'),
-      gulpWebserver: require('gulp-webserver')
-    };
-  }
-
-  return devDependencies;
-}
-
-
 /**
  * Settings
  */
+var appName = 'app';
 var debugTargetDir   = 'build/debug';
 var releaseTargetDir = 'build/release';
 var DEFAULT_PORT = 8888;
+
+
+// Load .env file if exists
+// Require all vars from .env.example to be exist in env.proccess
+// otherwise it will throw errors!
+// For development/test we want to load env vars from .env file
+// For production we dont want .env file, we want the server env system
+require('dotenv-safe').load();
+
+
+// All dependencies will be loaded to this vars base on NODE_ENV
+var
+  gulp,
+  ghelp,
+  plugins,
+  del,
+  beep,
+  path,
+  streamqueue,
+  runSequence,
+  browserify,
+  source,
+  buffer,
+  uglify,
+  sourcemaps,
+  gutil,
+  stylish,
+  gulpWebserver,
+  karmaServer,
+  childProcess
+;
+
+// Load all the production dependencies base on NODE_ENV
+function loadDependencies () {
+
+  // Load all the production dependencies
+  function loadProductionDependencies () {
+    gulp           = require('gulp');
+    ghelp          = require('gulp-showhelp');
+    plugins        = require('gulp-load-plugins')();
+    del            = require('del');
+    beep           = require('beepbeep');
+    path           = require('path');
+    streamqueue    = require('streamqueue');
+    runSequence    = require('run-sequence');
+    browserify     = require('browserify');
+    source         = require('vinyl-source-stream');
+    buffer         = require('vinyl-buffer');
+    uglify         = require('gulp-uglify');
+    sourcemaps     = require('gulp-sourcemaps');
+    gutil          = require('gulp-util');
+  }
+
+  // Load all the development dependencies
+  // Development dependencies should contain all production dependencies
+  function loadDevelopmentDependencies () {
+    // Development dependencies should contain all production dependencies
+    loadProductionDependencies();
+
+    // Load the development dependencies
+    stylish        = require('jshint-stylish');
+    gulpWebserver  = require('gulp-webserver');
+    karmaServer    = require('karma').Server;
+    childProcess   = require('child_process');
+  }
+
+  // Decide what dependencies to Load based on NODE_ENV
+  switch (process.env['NODE_ENV']) {
+
+    case 'production':
+      loadProductionDependencies();
+      break;
+
+    case 'test':
+    case 'development':
+      loadDevelopmentDependencies();
+      break;
+
+  }
+}
+
+loadDependencies();
 
 /**
  * Parse arguments
@@ -85,13 +134,13 @@ function errorHandler (error) {
 
 /**
  * Default Task
- */
+**/
 gulp.task('default', ['help']);
 
 /**
  * Help Tasks
- */
- // Tasks to show when using 'gulp help'
+ * Tasks to show when using 'gulp help'
+**/
 var helpTasks = [
   '',
   'help',
@@ -159,13 +208,13 @@ gulp.task('help', function() {
 
 /**
  * Lint Tasks
+ * lint js sources based on .jshintrc ruleset
  */
-// lint js sources based on .jshintrc ruleset
 gulp.task('lint', function() {
   return gulp
     .src('app/src/**/*.js')
     .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter(getDevDependencies().stylish))
+    .pipe(plugins.jshint.reporter(stylish))
     .on('error', errorHandler);
 }).help = {
   '': 'lint js sources based on .jshintrc ruleset.'
@@ -197,7 +246,7 @@ gulp.task('clean:release', function(done) {
 /**
  * Build Tasks
  */
- gulp.task('build', function(done) {
+gulp.task('build', function(done) {
   runSequence(
     'build:clean-target',
     'build:iconfont',
@@ -513,7 +562,7 @@ gulp.task('serve', function(done) {
 };
 gulp.task('serve:runserver', function() {
   gulp.src(targetDir)
-    .pipe(getDevDependencies().gulpWebserver({
+    .pipe(gulpWebserver({
       path: '/',
       port: port,
       livereload: true,
@@ -560,7 +609,6 @@ gulp.task('test:unit', function(done) {
   ].join('\n\t')
 };
 gulp.task('test:unit:run-karma-server', function (done) {
-  var karmaServer = getDevDependencies().karmaServer;
   new karmaServer({
     configFile: __dirname + '/unit-tests/karma.conf.js',
     singleRun: true,
@@ -587,12 +635,12 @@ gulp.task('test:e2e', function(done) {
 gulp.task('test:e2e:run-protractor-server', ['test:e2e:run-protractor-install'], function (done) {
   // run dev server
   var devServerStrean = gulp.src(targetDir)
-    .pipe(getDevDependencies().gulpWebserver({
+    .pipe(gulpWebserver({
       path: '/',
       port: port
     }));
   // run protractor server
-  getDevDependencies().childProcess.spawn(getProtractorBinary('protractor'), [
+  childProcess.spawn(getProtractorBinary('protractor'), [
     'e2e-tests/protractor.conf.js'
   ], {
     stdio: 'inherit'
@@ -610,7 +658,7 @@ gulp.task('test:e2e:run-protractor-server', ['test:e2e:run-protractor-install'],
   ].join('\n\t')
 };
 gulp.task('test:e2e:run-protractor-install', function(done) {
-  getDevDependencies().childProcess.spawn(getProtractorBinary('webdriver-manager'), ['update'], {
+  childProcess.spawn(getProtractorBinary('webdriver-manager'), ['update'], {
       stdio: 'inherit'
   }).once('close', done);
 }).help = {
