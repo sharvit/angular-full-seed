@@ -27,6 +27,13 @@ module.exports = function (config) {
       'karma-junit-reporter'
     ],
 
+    customLaunchers: {
+      'Chrome_travis_ci': {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
+
     junitReporter : {
       outputFile: 'test_out/unit.xml',
       suite: 'unit'
