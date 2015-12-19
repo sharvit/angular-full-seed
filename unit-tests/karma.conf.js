@@ -1,50 +1,53 @@
-'use strict';
+(function() {
+  'use strict';
 
-module.exports = function (config) {
-  var cfg = {
+  module.exports = function (config) {
+    var cfg = {
 
-    basePath : './build/debug',
+      basePath : './build/debug',
 
-    files : [
-      'vendor*.js',
-      'scripts/*.js',
+      files : [
+        'vendor*.js',
+        'scripts/*.js',
 
-      '../../bower_components/angular-mocks/angular-mocks.js',
+        '../../bower_components/angular-mocks/angular-mocks.js',
 
-      '../../unit-tests/**/*.spec.js'
-    ],
+        '../../unit-tests/**/*.spec.js'
+      ],
 
-    autoWatch : true,
+      autoWatch : true,
 
-    frameworks: ['jasmine'],
+      frameworks: ['jasmine'],
 
-    browsers : ['Chrome'],
+      browsers : ['Chrome'],
 
-    plugins : [
-      'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-jasmine',
-      'karma-junit-reporter'
-    ],
+      plugins : [
+        'karma-chrome-launcher',
+        'karma-firefox-launcher',
+        'karma-jasmine',
+        'karma-junit-reporter'
+      ],
 
-    customLaunchers: {
-      'Chrome_travis_ci': {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
+      customLaunchers: {
+        'Chrome_travis_ci': {
+          base: 'Chrome',
+          flags: ['--no-sandbox']
+        }
+      },
+
+      junitReporter : {
+        outputFile: 'test_out/unit.xml',
+        suite: 'unit'
       }
-    },
 
-    junitReporter : {
-      outputFile: 'test_out/unit.xml',
-      suite: 'unit'
+    };
+
+    if (process.env.TRAVIS) {
+      cfg.browsers = ['Chrome_travis_ci'];
     }
+
+    config.set(cfg);
 
   };
 
-  if (process.env.TRAVIS) {
-    cfg.browsers = ['Chrome_travis_ci'];
-  }
-
-  config.set(cfg);
-
-};
+})();

@@ -1,19 +1,36 @@
-exports.config = {
-  allScriptsTimeout: 11000,
+(function() {
+  'use strict';
 
-  specs: [
-    '*.spec.js'
-  ],
+  var cfg = {
+    allScriptsTimeout: 11000,
 
-  capabilities: {
-    'browserName': 'chrome'
-  },
+    specs: [
+      '*.spec.js'
+    ],
 
-  baseUrl: 'http://localhost:8888',
+    capabilities: {
+      'browserName': 'chrome'
+    },
 
-  framework: 'jasmine',
+    baseUrl: 'http://localhost:8888',
 
-  jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000
+    framework: 'jasmine',
+
+    jasmineNodeOpts: {
+      defaultTimeoutInterval: 30000
+    }
+  };
+
+  if (process.env.TRAVIS) {
+    cfg.sauceUser = process.env.SAUCE_USERNAME;
+    cfg.sauceKey = process.env.SAUCE_ACCESS_KEY;
+    cfg.capabilities = {
+      'browserName': 'chrome',
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      'build': process.env.TRAVIS_BUILD_NUMBER
+    };
   }
-};
+
+  exports.config = cfg;
+
+})();
