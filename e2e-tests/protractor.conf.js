@@ -22,9 +22,16 @@
   };
 
   if (process.env.TRAVIS) {
-    cfg.capabilities = {
+    cfg.capabilities = null;
+
+    cfg.multiCapabilities: [{
       'browserName': 'firefox'
-    };
+    }, {
+      'browserName': 'chrome',
+      'chromeOptions': {
+        'args': ['--no-sandbox']
+      }
+    }];
   }
 
   exports.config = cfg;

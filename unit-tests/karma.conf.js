@@ -43,7 +43,7 @@
     };
 
     if (process.env.TRAVIS) {
-      cfg.browsers = ['Chrome_travis_ci'];
+      cfg.browsers = ['Chrome_travis_ci', 'Firefox'];
     }
 
     config.set(cfg);
