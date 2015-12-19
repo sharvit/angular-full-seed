@@ -22,13 +22,9 @@
   };
 
   if (process.env.TRAVIS) {
-    cfg.capabilities = null;
-
-    cfg.multiCapabilities = [{
+    cfg.capabilities = {
       'browserName': 'firefox'
-    }, {
-      'browserName': 'chromium'
-    }];
+    };
   }
 
   exports.config = cfg;
