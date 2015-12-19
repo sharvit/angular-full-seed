@@ -27,10 +27,7 @@
     cfg.multiCapabilities = [{
       'browserName': 'firefox'
     }, {
-      'browserName': 'chrome',
-      'chromeOptions': {
-        'args': ['--no-sandbox']
-      }
+      'browserName': 'chromium'
     }];
   }
 
