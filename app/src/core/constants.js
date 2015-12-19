@@ -6,6 +6,6 @@
 
 		.constant('APP_NAME', 'AngularSeed')
 
-		
 	;
+	
 })();

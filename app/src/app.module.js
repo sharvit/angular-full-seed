@@ -15,10 +15,11 @@
 
       'app.components',
       'app.views'
-    ]);
+    ])
+  ;
 
-    require('./core/core.module.js');
-    require('./components/components.module.js');
-    require('./views/views.module.js');
+  require('./core/core.module.js');
+  require('./components/components.module.js');
+  require('./views/views.module.js');
 
 })();

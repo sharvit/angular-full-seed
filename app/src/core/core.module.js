@@ -4,9 +4,9 @@
 	angular
 		.module('app.core', [
 			'ngRoute'
-
-			
-		]);
+		])
+		
+	;
 
 
 	require('./constants.js');

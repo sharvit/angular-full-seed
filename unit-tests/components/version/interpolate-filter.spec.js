@@ -1,15 +1,22 @@
-'use strict';
+(function() {
 
-describe('app.components.version module', function() {
-  beforeEach(module('app.components.version'));
+  'use strict';
 
-  describe('interpolate filter', function() {
-    beforeEach(module(function($provide) {
-      $provide.value('version', 'TEST_VER');
-    }));
+  describe('app.components.version module', function() {
 
-    it('should replace VERSION', inject(function(interpolateFilter) {
-      expect(interpolateFilter('before %VERSION% after')).toEqual('before TEST_VER after');
-    }));
+    beforeEach(module('app.components.version'));
+
+    describe('interpolate filter', function() {
+
+      beforeEach(module(function($provide) {
+        $provide.value('version', 'TEST_VER');
+      }));
+
+      it('should replace VERSION', inject(function(interpolateFilter) {
+        expect(interpolateFilter('before %VERSION% after')).toEqual('before TEST_VER after');
+      }));
+    });
+
   });
-});
+
+})();

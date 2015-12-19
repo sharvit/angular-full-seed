@@ -4,8 +4,9 @@
  * Settings
  */
 var appName = 'app';
-var debugTargetDir   = 'build/debug';
-var releaseTargetDir = 'build/release';
+var scriptsTargetDir = './build/scripts';
+var debugTargetDir   = './build/debug';
+var releaseTargetDir = './build/release';
 var DEFAULT_PORT = 8888;
 
 
@@ -80,10 +81,13 @@ function loadDependencies () {
       loadProductionDependencies();
       break;
 
-    case 'test':
     case 'development':
+    case 'test':
       loadDevelopmentDependencies();
       break;
+
+    default:
+      throw 'Your NODE_ENV (' + process.env['NODE_ENV'] + ') is not supported!\nPlease set a valid one:\n\tproduction\n\tdevelopment\n\ttest';
 
   }
 }
@@ -232,12 +236,12 @@ gulp.task('clean:all', ['clean:debug', 'clean:release']).help = {
   'Run': '[ clean:debug clean:release ]'
 };
 gulp.task('clean:debug', function(done) {
-  del([releaseTargetDir, 'app/scripts/bundle.js','app/scripts/bundle.js.map'], done);
+  del([releaseTargetDir, scriptsTargetDir], done);
 }).help = {
   '': 'clean debug target directory.'
 };
 gulp.task('clean:release', function(done) {
-  del([debugTargetDir, 'app/scripts/bundle.js','app/scripts/bundle.js.map'], done);
+  del([debugTargetDir, scriptsTargetDir], done);
 }).help = {
   '': 'clean release target directory.'
 };
@@ -287,7 +291,7 @@ gulp.task('build', function(done) {
 };
 // clean target directory by --release flag
 gulp.task('build:clean-target', function(done) {
-  del([targetDir, 'app/scripts/bundle.js','app/scripts/bundle.js.map'], done);
+  del([targetDir, scriptsTargetDir], done);
 }).help = {
   '': 'clean target directory',
   '[ --release ] [ -r ]': 'release mode'
@@ -416,7 +420,7 @@ gulp.task('build:scripts', ['build:scripts:bundle'], function() {
     }));
 
   var scriptStream = gulp
-    .src( ['bundle.js', 'bundle.js.map', 'configuration.js', 'templates.js' ], { cwd: 'app/scripts' })
+    .src( ['bundle.js', 'bundle.js.map', 'configuration.js', 'templates.js' ], { cwd: scriptsTargetDir })
 
     .pipe(plugins.if(!release, plugins.changed(dest)));
 
@@ -451,7 +455,7 @@ gulp.task('build:scripts:bundle', function () {
         .pipe(uglify())
         .on('error', gutil.log)
     .pipe(plugins.if(!release,sourcemaps.write('./')))
-    .pipe(gulp.dest('./app/scripts/'));
+    .pipe(gulp.dest(scriptsTargetDir));
 }).help = {
   '': 'bundle all the src files into scripts/bundle.js',
   '[ --release ] [ -r ]': 'release mode'
@@ -522,7 +526,6 @@ gulp.task('watch:source', function() {
   gulp.watch('./vendor.json', ['build:vendor']);
   gulp.watch('app/src/**/*.html', ['build:templates']);
   gulp.watch('app/src/**/*.js', ['build:scripts']);
-  gulp.watch(['app/scripts/**/*.js'], ['build:index']);
   gulp.watch('app/index.html', ['build:index']);
 }).help = {
   '': 'run watchers to auto build source files',
