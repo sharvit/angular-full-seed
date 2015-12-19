@@ -37,7 +37,7 @@ var
   stylish,
   gulpWebserver,
   karmaServer,
-  childProcess
+  angularProtractor
 ;
 
 // Load all the production dependencies base on NODE_ENV
@@ -68,10 +68,10 @@ function loadDependencies () {
     loadProductionDependencies();
 
     // Load the development dependencies
-    stylish        = require('jshint-stylish');
-    gulpWebserver  = require('gulp-webserver');
-    karmaServer    = require('karma').Server;
-    childProcess   = require('child_process');
+    stylish             = require('jshint-stylish');
+    gulpWebserver       = require('gulp-webserver');
+    karmaServer         = require('karma').Server;
+    angularProtractor   = require('gulp-angular-protractor');
   }
 
   // Decide what dependencies to Load based on NODE_ENV
@@ -183,7 +183,6 @@ var helpTasks = [
   '',
   'test:e2e',
   'test:e2e:run-protractor-server',
-  'test:e2e:run-protractor-install',
   '',
   '',
   'clean',
@@ -636,37 +635,36 @@ gulp.task('test:e2e', function(done) {
     'test:e2e:run-protractor-server'
   ].join('\n\t')
 };
-gulp.task('test:e2e:run-protractor-server', ['test:e2e:run-protractor-install'], function (done) {
-  // run dev server
+gulp.task('test:e2e:run-protractor-server', function (done) {
+
+  // Start dev server
   var devServerStrean = gulp.src(targetDir)
     .pipe(gulpWebserver({
       path: '/',
       port: port
-    }));
-  // run protractor server
-  childProcess.spawn(getProtractorBinary('protractor'), [
-    'e2e-tests/protractor.conf.js'
-  ], {
-    stdio: 'inherit'
-  }).once('close', function () {
-    // Kill dev server
-    devServerStrean.emit('kill');
-    done();
-  });
+    }))
+  ;
+
+  gulp.src(['./e2e-tests/*.spec.js'])
+    .pipe(angularProtractor({
+      'configFile': 'e2e-tests/protractor.conf.js',
+      'args': ['--baseUrl', 'http://localhost:' + port],
+      'autoStartStopServer': true,
+      'debug': true
+    }))
+    .on('error', function () {
+      throw 'e2e tests Failed!';
+    })
+    .on('end', function () {
+      // Kill the dev server
+      devServerStrean.emit('kill');
+
+      done();
+    });
+
 }).help = {
   '': 'run protractor server and run all e2e tests',
-  '[ --release ] [ -r ]': 'release mode',
-  'Run': [
-    '',
-    'test:e2e:run-protractor-install'
-  ].join('\n\t')
-};
-gulp.task('test:e2e:run-protractor-install', function(done) {
-  childProcess.spawn(getProtractorBinary('webdriver-manager'), ['update'], {
-      stdio: 'inherit'
-  }).once('close', done);
-}).help = {
-  '': 'install latest protractor server'
+  '[ --release ] [ -r ]': 'release mode'
 };
 
 
