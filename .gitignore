@@ -18,6 +18,3 @@ tmp
 .idea
 .sass-cache
 *.log
-
-app/scripts/bundle.js
-app/scripts/bundle.js.map
