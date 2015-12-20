@@ -33,7 +33,6 @@ var
   buffer,
   uglify,
   sourcemaps,
-  gutil,
   stylish,
   gulpWebserver,
   karmaServer,
@@ -58,7 +57,6 @@ function loadDependencies () {
     buffer         = require('vinyl-buffer');
     uglify         = require('gulp-uglify');
     sourcemaps     = require('gulp-sourcemaps');
-    gutil          = require('gulp-util');
   }
 
   // Load all the development dependencies
@@ -158,7 +156,6 @@ var helpTasks = [
   'build',
   '',
   'build:clean-target',
-  'build:iconfont',
   'build:locales',
   'build:fonts',
   'build:templates',
@@ -235,12 +232,16 @@ gulp.task('clean:all', ['clean:debug', 'clean:release']).help = {
   'Run': '[ clean:debug clean:release ]'
 };
 gulp.task('clean:debug', function(done) {
-  del([releaseTargetDir, scriptsTargetDir], done);
+  del([releaseTargetDir, scriptsTargetDir]).then(function () {
+    done();
+  });
 }).help = {
   '': 'clean debug target directory.'
 };
 gulp.task('clean:release', function(done) {
-  del([debugTargetDir, scriptsTargetDir], done);
+  del([debugTargetDir, scriptsTargetDir]).then(function () {
+    done();
+  });
 }).help = {
   '': 'clean release target directory.'
 };
@@ -252,7 +253,6 @@ gulp.task('clean:release', function(done) {
 gulp.task('build', function(done) {
   runSequence(
     'build:clean-target',
-    'build:iconfont',
     [
       release ? 'private:noop' : 'lint',
       'build:locales',
@@ -272,7 +272,6 @@ gulp.task('build', function(done) {
   'Run': [
     '',
     'build:clean-target',
-    'build:iconfont',
     [
       '[',
       'lint if release?',
@@ -290,29 +289,11 @@ gulp.task('build', function(done) {
 };
 // clean target directory by --release flag
 gulp.task('build:clean-target', function(done) {
-  del([targetDir, scriptsTargetDir], done);
+  del([targetDir, scriptsTargetDir]).then(function () {
+    done();
+  });
 }).help = {
   '': 'clean target directory',
-  '[ --release ] [ -r ]': 'release mode'
-};
-// generate iconfont
-gulp.task('build:iconfont', function(){
-  return gulp.src('app/icons/*.svg', {
-        buffer: false
-    })
-    .pipe(plugins.iconfontCss({
-      fontName: 'ownIconFont',
-      path: 'app/icons/own-icons-template.css',
-      targetPath: '../styles/own-icons.css',
-      fontPath: '../fonts/'
-    }))
-    .pipe(plugins.iconfont({
-        fontName: 'ownIconFont'
-    }))
-    .pipe(gulp.dest(path.join(targetDir, 'fonts')))
-    .on('error', errorHandler);
-}).help = {
-  '': 'generate iconfont',
   '[ --release ] [ -r ]': 'release mode'
 };
 // build locals files (just copy them to target destination)
@@ -452,7 +433,7 @@ gulp.task('build:scripts:bundle', function () {
     .pipe(sourcemaps.init({loadMaps: true}))
         // Add transformation tasks to the pipeline here.
         .pipe(uglify())
-        .on('error', gutil.log)
+        .on('error', plugins.util.log)
     .pipe(plugins.if(!release,sourcemaps.write('./')))
     .pipe(gulp.dest(scriptsTargetDir));
 }).help = {
@@ -520,7 +501,6 @@ gulp.task('watch:source', function() {
   gulp.watch('app/locales/**/*.json', ['build:locales']);
   gulp.watch('app/styles/**/*.scss', ['build:styles']);
   gulp.watch('app/fonts/**', ['build:fonts']);
-  gulp.watch('app/icons/**', ['build:iconfont']);
   gulp.watch('app/images/**', ['build:images']);
   gulp.watch('./vendor.json', ['build:vendor']);
   gulp.watch('app/src/**/*.html', ['build:templates']);
