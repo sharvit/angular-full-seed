@@ -22,11 +22,16 @@
   };
 
   if (process.env.TRAVIS) {
-    cfg.multiCapabilities = [{
+    cfg.capabilities = {
       'browserName': 'firefox'
-    }, {
-      'browserName': 'chrome'
-    }];
+    };
+
+    // TODO: somehow chrome dosent work on travis here
+    // cfg.multiCapabilities = [{
+    //   'browserName': 'firefox'
+    // }, {
+    //   'browserName': 'chrome'
+    // }];
   }
 
   exports.config = cfg;
