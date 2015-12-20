@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/sharvit/angular-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-seed)
 [![Dependency Status](https://david-dm.org/sharvit/angular-seed.svg)](https://david-dm.org/sharvit/angular-seed)
+[![devDependency Status](https://david-dm.org/sharvit/angular-seed/dev-status.svg)](https://david-dm.org/sharvit/angular-seed#info=devDependencies)
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
 You can use it to quickly bootstrap your angular webapp projects and dev environment for these
