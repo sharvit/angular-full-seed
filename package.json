@@ -48,6 +48,7 @@
     "gulp-livereload": "^3.7.0",
     "gulp-webserver": "^0.9.1",
     "jasmine-core": "^2.3.4",
+    "jshint": "^2.8.0",
     "jshint-stylish": "^2.1.0",
     "karma": "^0.13.15",
     "karma-chai": "^0.1.0",
@@ -68,6 +69,6 @@
     "prestart": "npm install",
     "start": "gulp serve",
     "pretest": "npm install",
-    "test": "gulp test --release"
+    "test": "gulp test && gulp test --release"
   }
 }
