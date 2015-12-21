@@ -24,6 +24,15 @@ framework and a bunch of development, testing and production tools for instant w
     4. [Install Dependencies](#install-dependencies)
     5. [Run the Application in Development](#run-the-application-in-development)
   2. [Directory Layout](#directory-layout)
+  3. Workflow
+    1. Git Flow
+    2. Run Local Development Server
+    3. Write Your Feature
+    4. Write Your Tests
+    5. Run Local Tests
+    6. Merge Your Feature
+    7. Create a Release
+    8. Deploy
   3. [Testing](#testing)
     1. [Running Unit Tests](#running-unit-tests)
     2. [End to end testing](#end-to-end-testing)
