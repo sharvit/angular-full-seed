@@ -157,6 +157,7 @@ var helpTasks = [
   '',
   'build:clean-target',
   'build:locales',
+  'build:favicon',
   'build:fonts',
   'build:templates',
   'build:styles',
@@ -256,6 +257,7 @@ gulp.task('build', function(done) {
     [
       release ? 'private:noop' : 'lint',
       'build:locales',
+      'build:favicon',
       'build:fonts',
       'build:templates',
       'build:styles',
@@ -276,6 +278,7 @@ gulp.task('build', function(done) {
       '[',
       'lint if release?',
       'build:locales',
+      'build:favicon',
       'build:fonts',
       'build:templates',
       'build:styles',
@@ -304,6 +307,18 @@ gulp.task('build:locales', function () {
     .on('error', errorHandler);
 }).help = {
   '': 'build locals files (just copy them to target destination)',
+  '[ --release ] [ -r ]': 'release mode'
+};
+// build fivicon, copy from root app to root dest
+gulp.task('build:favicon', function() {
+  return gulp
+    .src(['app/*.*ico'])
+
+    .pipe(gulp.dest(targetDir))
+
+    .on('error', errorHandler);
+}).help = {
+  '': 'build fivicon, copy from root app to root dest',
   '[ --release ] [ -r ]': 'release mode'
 };
 // build fonts (just copy them to target destination)
