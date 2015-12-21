@@ -14,6 +14,7 @@
     "browserify": "^12.0.1",
     "del": "^2.2.0",
     "dotenv-safe": "^2.1.1",
+    "express": "^4.13.3",
     "gulp": "^3.8.10",
     "gulp-angular-templatecache": "^1.5.0",
     "gulp-autoprefixer": "^3.1.0",
@@ -66,7 +67,7 @@
     "gulp": "./node_modules/.bin/gulp",
     "postinstall": "bower install && gulp build --release",
     "prestart": "npm install",
-    "start": "gulp serve",
+    "start": "node server.js",
     "pretest": "npm install",
     "test": "gulp test && gulp test --release"
   }
