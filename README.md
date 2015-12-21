@@ -1,8 +1,12 @@
+
 # [angular-seed] — the seed for AngularJS apps
 
 [![Build Status](https://travis-ci.org/sharvit/angular-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-seed)
 [![Dependency Status](https://david-dm.org/sharvit/angular-seed.svg)](https://david-dm.org/sharvit/angular-seed)
 [![devDependency Status](https://david-dm.org/sharvit/angular-seed/dev-status.svg)](https://david-dm.org/sharvit/angular-seed#info=devDependencies)
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sharvit/angular-seed)
+
 
 This project is an application skeleton for a typical [AngularJS] web app.
 You can use it to quickly bootstrap your [AngularJS] webapp projects and all environments for these
@@ -321,4 +325,5 @@ For more information on AngularJS please check out http://angularjs.org/
 [protractor]: https://github.com/angular/protractor
 [karma]: https://karma-runner.github.io
 [travis]: https://travis-ci.org/
+
 
