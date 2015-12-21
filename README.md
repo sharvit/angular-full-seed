@@ -1,51 +1,64 @@
-# [angular-seed][angular-seed] — the seed for AngularJS apps
+# [angular-seed] — the seed for AngularJS apps
 
 [![Build Status](https://travis-ci.org/sharvit/angular-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-seed)
 [![Dependency Status](https://david-dm.org/sharvit/angular-seed.svg)](https://david-dm.org/sharvit/angular-seed)
 [![devDependency Status](https://david-dm.org/sharvit/angular-seed/dev-status.svg)](https://david-dm.org/sharvit/angular-seed#info=devDependencies)
 
-This project is an application skeleton for a typical [AngularJS][angular] web app.
-You can use it to quickly bootstrap your [AngularJS][angular] webapp projects and all environments for these
+This project is an application skeleton for a typical [AngularJS] web app.
+You can use it to quickly bootstrap your [AngularJS] webapp projects and all environments for these
 projects.
 
-[angular-seed][angular-seed] contains a sample [AngularJS][angular] application and is preconfigured to install the [AngularJS][angular]
+[angular-seed] contains a sample [AngularJS] application and is preconfigured to install the [AngularJS]
 framework and a bunch of development, testing and production tools for instant web development gratification.
 
-[angular-seed][angular-seed] contains a full workflow, ready to build debug and release versions, serve dev server, run tests, simple deploy and ci deploy.
+[angular-seed] contains a full workflow, ready to build debug and release versions, serve dev server, run tests, simple deploy and ci deploy.
 
-[angular-seed][angular-seed] doesn't do much, just shows how to wire two controllers and views together.
+[angular-seed] doesn't do much, just shows how to wire two controllers and views together.
 
+## Table of Contents
+
+  1. [Getting Started](#getting-started)
+    1. [Prerequisites](#prerequisites)
+    2. [Clone angular-seed](#clone-angular-seed)
+    3. [Set the local environment](#set-the-local-environment)
+    4. [Install Dependencies](#install-dependencies)
+    5. [Run the Application in Development](#run-the-application-in-development)
+  2. [Directory Layout](#directory-layout)
+  3. [Testing](#testing)
+    1. [Running Unit Tests](#running-unit-tests)
+    2. [End to end testing](#end-to-end-testing)
+  4. [Updating Angular](#updating-angular)
 
 ## Getting Started
 
-To get you started you can simply clone the [angular-seed][angular-seed] repository and install the dependencies:
+To get you started you can simply clone the [angular-seed] repository and install the dependencies:
 
 ### Prerequisites
 
-#### [Git][git]
+#### [git]
 
-You need [git][git] to clone the [angular-seed][angular-seed] repository.
+You need [git] to clone the [angular-seed] repository.
 
 - [Getting Started Installing Git][git-getting-started]
 
-#### [node.js][node]
+#### [node.js]
 
-We also use a number of [node.js][node] tools to initialize and test [angular-seed][angular-seed].
-You must have [node.js][node] and its package manager ([npm][npm]) installed.
+We also use a number of [node.js] tools to initialize and test [angular-seed].
+You must have [node.js] and its package manager ([npm][npm]) installed.
 It is also recommended to use node version manager ([nvm][nvm]).
 
 - [how to install node using npm][getting-started-installing-node]
 
-### Clone [angular-seed][angular-seed]
+### Clone [angular-seed]
 
-Clone the [angular-seed][angular-seed] repository using [git][git]:
+Clone the [angular-seed] repository using [git]:
 
 ```bash
 git clone https://github.com/sharvit/angular-seed.git
 cd angular-seed
 ```
 
-If you just want to start a new project without the [angular-seed][angular-seed] commit history then you can do:
+If you just want to start a new project without the [angular-seed] commit history then you can do:
 
 ```bash
 git clone --depth=1 https://github.com/sharvit/angular-seed.git <your-project-name>
@@ -53,16 +66,36 @@ git clone --depth=1 https://github.com/sharvit/angular-seed.git <your-project-na
 
 The `depth=1` tells git to only pull down one commit worth of historical data.
 
+### Set the local environment
+
+Their is some required [environment-variables] to our app.
+`NODE_ENV` need to be configured to the right environment (`development` in this case).
+
+ * [what-is-node-env]
+
+We use [dotenv-safe] in order to make it easy,
+just duplicate the `.env.example` file to `.env` file:
+
+```bash
+cp .env.example .env
+```
+
+If we will try to `build`/`run`/`test` the app without the required [environment-variables] we will get this error:
+
+```bash
+Error: Missing environment variables: {{VAR_NAME}}
+```
+
 ### Install Dependencies
 
-We have two kinds of dependencies in [angular-seed][angular-seed]:
+We have two kinds of dependencies in [angular-seed]:
 
  1. Tools, help us build, run and test the application.
    * We get the tools we depend upon via `npm`, the [node package manager][npm].
- 2. App Components, libraries we will use inside our app (like [AngularJS][angular]).
+ 2. App Components, libraries we will use inside our app (like [AngularJS]).
    * We get the components code via `bower`, a [client-side code package manager][bower].
 
-We have preconfigured `npm` to automatically run `bower` so we can simply do:
+We have preconfigured `npm` to automatically run `bower` (and `gulp build --release`) so we can simply do:
 
 ```bash
 npm install
@@ -89,41 +122,20 @@ The app is default running on `http://localhost:8888`
 ## Directory Layout
 
 ```
-app/                    --> all of the source files for the application
-  app.css               --> default stylesheet
-  components/           --> all app specific modules
-    version/              --> version related components
-      version.js                 --> version module declaration and basic "version" value service
-      version_test.js            --> "version" value service tests
-      version-directive.js       --> custom directive that returns the current app version
-      version-directive_test.js  --> version directive tests
-      interpolate-filter.js      --> custom interpolation filter
-      interpolate-filter_test.js --> interpolate filter tests
-  view1/                --> the view1 view template and logic
-    view1.html            --> the partial template
-    view1.js              --> the controller logic
-    view1_test.js         --> tests of the controller
-  view2/                --> the view2 view template and logic
-    view2.html            --> the partial template
-    view2.js              --> the controller logic
-    view2_test.js         --> tests of the controller
-  app.js                --> main application module
-  index.html            --> app layout file (the main html template file of the app)
-  index-async.html      --> just like index.html, but loads js files asynchronously
-karma.conf.js         --> config file for running unit tests with Karma
-e2e-tests/            --> end-to-end tests
-  protractor-conf.js    --> Protractor config file
-  scenarios.js          --> end-to-end scenarios to be run by Protractor
+I will do that at the end
 ```
 
 ## Testing
 
-There are two kinds of tests in the angular-seed application: Unit tests and End to End tests.
+There are two kinds of tests in the [angular-seed] application: Unit tests and End to End tests.
+
+  1. [Running Unit Tests](#running-unit-tests)
+  2. [End to end testing](#end-to-end-testing)
 
 ### Running Unit Tests
 
 The angular-seed app comes preconfigured with unit tests. These are written in
-[Jasmine][jasmine], which we run with the [Karma Test Runner][karma]. We provide a Karma
+[jasmine], which we run with the [Karma Test Runner][karma]. We provide a Karma
 configuration file to run them.
 
 * the configuration is found at `karma.conf.js`
@@ -209,21 +221,6 @@ bower update
 This will find the latest versions that match the version ranges specified in the `bower.json` file.
 
 
-## Loading Angular Asynchronously
-
-The angular-seed project supports loading the framework and application scripts asynchronously.  The
-special `index-async.html` is designed to support this style of loading.  For it to work you must
-inject a piece of Angular JavaScript into the HTML page.  The project has a predefined script to help
-do this.
-
-```
-npm run update-index-async
-```
-
-This will copy the contents of the `angular-loader.js` library file into the `index-async.html` page.
-You can run this every time you update the version of Angular that you are using.
-
-
 ## Serving the Application Files
 
 While angular is client-side-only technology and it's possible to create angular webapps that
@@ -299,14 +296,17 @@ For more information on AngularJS please check out http://angularjs.org/
 **[Back to top](#getting-started)**
 
 [angular-seed]: https://github.com/sharvit/angular-seed
-[angular]: http://angularjs.org/
+[AngularJS]: http://angularjs.org/
 [git]: http://git-scm.com/
 [git-getting-started]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-[node]: https://nodejs.org
+[node.js]: https://nodejs.org
 [npm]: https://www.npmjs.org/
 [nvm]: http://nvm.sh/
 [getting-started-installing-node]: https://docs.npmjs.com/getting-started/installing-node
 [bower]: http://bower.io
+[environment-variables]: https://en.wikipedia.org/wiki/Environment_variable
+[what-is-node-env]: http://stackoverflow.com/questions/16978256/what-is-node-env-in-express?answertab=active#tab-top
+[dotenv-safe]: https://github.com/rolodato/dotenv-safe
 [jasmine]: https://jasmine.github.io
 [protractor]: https://github.com/angular/protractor
 [karma]: https://karma-runner.github.io
