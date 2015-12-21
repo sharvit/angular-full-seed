@@ -1,29 +1,29 @@
 
-# [angular-seed] — the seed for AngularJS apps
+# [angular-full-seed] — the seed for AngularJS apps
 
-[![Build Status](https://travis-ci.org/sharvit/angular-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-seed)
-[![Dependency Status](https://david-dm.org/sharvit/angular-seed.svg)](https://david-dm.org/sharvit/angular-seed)
-[![devDependency Status](https://david-dm.org/sharvit/angular-seed/dev-status.svg)](https://david-dm.org/sharvit/angular-seed#info=devDependencies)
+[![Build Status](https://travis-ci.org/sharvit/angular-full-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-full-seed)
+[![Dependency Status](https://david-dm.org/sharvit/angular-full-seed.svg)](https://david-dm.org/sharvit/angular-full-seed)
+[![devDependency Status](https://david-dm.org/sharvit/angular-full-seed/dev-status.svg)](https://david-dm.org/sharvit/angular-full-seed#info=devDependencies)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sharvit/angular-seed)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sharvit/angular-full-seed)
 
 
 This project is an application skeleton for a typical [AngularJS] web app.
 You can use it to quickly bootstrap your [AngularJS] webapp projects and all environments for these
 projects.
 
-[angular-seed] contains a sample [AngularJS] application and is preconfigured to install the [AngularJS]
+[angular-full-seed] contains a sample [AngularJS] application and is preconfigured to install the [AngularJS]
 framework and a bunch of development, testing and production tools for instant web development gratification.
 
-[angular-seed] contains a full workflow, ready to build debug and release versions, serve dev server, run tests, simple deploy and ci deploy.
+[angular-full-seed] contains a full workflow, ready to build debug and release versions, serve dev server, run tests, simple deploy and ci deploy.
 
-[angular-seed] doesn't do much, just shows how to wire two controllers and views together.
+[angular-full-seed] doesn't do much, just shows how to wire two controllers and views together.
 
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
 	1. [Prerequisites](#prerequisites)
-	2. [Clone angular-seed](#clone-angular-seed)
+	2. [Clone angular-full-seed](#clone-angular-full-seed)
 	3. [Set the local environment](#set-the-local-environment)
 	4. [Install Dependencies](#install-dependencies)
 	5. [Run the Application in Development](#run-the-application-in-development)
@@ -44,37 +44,37 @@ framework and a bunch of development, testing and production tools for instant w
 
 ## Getting Started
 
-To get you started you can simply clone the [angular-seed] repository and install the dependencies:
+To get you started you can simply clone the [angular-full-seed] repository and install the dependencies:
 
 ### Prerequisites
 
 #### [git]
 
-You need [git] to clone the [angular-seed] repository.
+You need [git] to clone the [angular-full-seed] repository.
 
 - [Getting Started Installing Git][git-getting-started]
 
 #### [node.js]
 
-We also use a number of [node.js] tools to initialize and test [angular-seed].
+We also use a number of [node.js] tools to initialize and test [angular-full-seed].
 You must have [node.js] and its package manager ([npm][npm]) installed.
 It is also recommended to use node version manager ([nvm][nvm]).
 
 - [how to install node using npm][getting-started-installing-node]
 
-### Clone [angular-seed]
+### Clone [angular-full-seed]
 
-Clone the [angular-seed] repository using [git]:
+Clone the [angular-full-seed] repository using [git]:
 
 ```bash
-git clone https://github.com/sharvit/angular-seed.git
-cd angular-seed
+git clone https://github.com/sharvit/angular-full-seed.git
+cd angular-full-seed
 ```
 
-If you just want to start a new project without the [angular-seed] commit history then you can do:
+If you just want to start a new project without the [angular-full-seed] commit history then you can do:
 
 ```bash
-git clone --depth=1 https://github.com/sharvit/angular-seed.git <your-project-name>
+git clone --depth=1 https://github.com/sharvit/angular-full-seed.git <your-project-name>
 ```
 
 The `depth=1` tells git to only pull down one commit worth of historical data.
@@ -101,7 +101,7 @@ Error: Missing environment variables: {{VAR_NAME}}
 
 ### Install Dependencies
 
-We have two kinds of dependencies in [angular-seed]:
+We have two kinds of dependencies in [angular-full-seed]:
 
  1. Tools, help us build, run and test the application.
    * We get the tools we depend upon via `npm`, the [node package manager][npm].
@@ -141,14 +141,14 @@ I will do that at the end
 
 ## Testing
 
-There are two kinds of tests in the [angular-seed] application: Unit tests and End to End tests.
+There are two kinds of tests in the [angular-full-seed] application: Unit tests and End to End tests.
 
   1. [Running Unit Tests](#running-unit-tests)
   2. [End to end testing](#end-to-end-testing)
 
 ### Running Unit Tests
 
-The angular-seed app comes preconfigured with unit tests. These are written in
+The angular-full-seed app comes preconfigured with unit tests. These are written in
 [jasmine], which we run with the [Karma Test Runner][karma]. We provide a Karma
 configuration file to run them.
 
@@ -177,7 +177,7 @@ npm run test-single-run
 
 ### End to end testing
 
-The angular-seed app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests
+The angular-full-seed app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests
 are run with the [Protractor][protractor] End-to-End test runner.  It uses native events and has
 special features for Angular applications.
 
@@ -192,7 +192,7 @@ can interact with it.
 npm start
 ```
 
-In addition, since Protractor is built upon WebDriver we need to install this.  The angular-seed
+In addition, since Protractor is built upon WebDriver we need to install this.  The angular-full-seed
 project comes with a predefined script to do this:
 
 ```
@@ -214,7 +214,7 @@ development server.
 
 ## Updating Angular
 
-Previously we recommended that you merge in changes to angular-seed into your own fork of the project.
+Previously we recommended that you merge in changes to angular-full-seed into your own fork of the project.
 Now that the angular framework library code and tools are acquired through package managers (npm and
 bower) you can use these tools instead to update the dependencies.
 
@@ -246,7 +246,7 @@ etc to function properly when an html page is opened via `file://` scheme instea
 
 ### Running the App during Development
 
-The angular-seed project comes preconfigured with a local development webserver.  It is a node.js
+The angular-full-seed project comes preconfigured with a local development webserver.  It is a node.js
 tool called [http-server][http-server].  You can start this webserver with `npm start` but you may choose to
 install the tool globally:
 
@@ -285,7 +285,7 @@ reverse-proxying the backend server(s) and webserver(s).
 ### Travis CI
 
 [Travis CI][travis] is a continuous integration service, which can monitor GitHub for new commits
-to your repository and execute scripts such as building the app or running tests. The angular-seed
+to your repository and execute scripts such as building the app or running tests. The angular-full-seed
 project contains a Travis configuration file, `.travis.yml`, which will cause Travis to run your
 tests when you push to GitHub.
 
@@ -309,7 +309,7 @@ For more information on AngularJS please check out http://angularjs.org/
 
 **[Back to top](#getting-started)**
 
-[angular-seed]: https://github.com/sharvit/angular-seed
+[angular-full-seed]: https://github.com/sharvit/angular-full-seed
 [AngularJS]: http://angularjs.org/
 [git]: http://git-scm.com/
 [git-getting-started]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git

@@ -1,7 +1,7 @@
 {
-  "name": "angular-seed",
+  "name": "angular-full-seed",
   "description": "Angular Seed Project",
-  "repository": "https://github.com/sharvit/angular-seed.git",
-  "logo": "https://node-js-sample.herokuapp.com/node.png",
-  "keywords": ["angular-seed", "angular", "seed", "gulp", "express", "static"]
+  "repository": "https://github.com/sharvit/angular-full-seed.git",
+  "logo": "https://avatars0.githubusercontent.com/u/139426?v=3&s=400",
+  "keywords": ["angular-full-seed", "angular", "seed", "gulp", "express", "static"]
 }

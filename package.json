@@ -1,8 +1,8 @@
 {
-  "name": "angular-seed",
+  "name": "angular-full-seed",
   "version": "0.0.1",
   "description": "Angular Seed Project",
-  "repository": "https://github.com/sharvit/angular-seed.git",
+  "repository": "https://github.com/sharvit/angular-full-seed.git",
   "license": "MIT",
   "engines": {
     "node": "4.2.3",
