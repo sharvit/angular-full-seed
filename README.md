@@ -104,8 +104,8 @@ npm install
 Behind the scenes this will also call `bower install && gulp build --release`. 
 You should find that you have three new folders in your project.
 
-* `node_modules` - contains the npm packages for the tools we need
-* `bower_components` - contains the components files
+* `node_modules` - contains the [npm] packages for the tools we need
+* `bower_components` - contains the [bower] components files
 * `build` - contains the final builds of our app (`debug`/`release`)
 
 ### Run the Application in Development
