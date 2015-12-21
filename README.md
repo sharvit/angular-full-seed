@@ -95,17 +95,19 @@ We have two kinds of dependencies in [angular-seed]:
  2. App Components, libraries we will use inside our app (like [AngularJS]).
    * We get the components code via `bower`, a [client-side code package manager][bower].
 
-We have preconfigured `npm` to automatically run `bower` (and `gulp build --release`) so we can simply do:
+We have preconfigured `npm` to automatically run the release build process.
+ `bower` (and `gulp build --release`) so we can simply do:
 
 ```bash
 npm install
 ```
 
-Behind the scenes this will also call `bower install`.  You should find that you have two new
-folders in your project.
+Behind the scenes this will also call `bower install && gulp build --release`. 
+You should find that you have three new folders in your project.
 
 * `node_modules` - contains the npm packages for the tools we need
 * `bower_components` - contains the components files
+* `build` - contains the final builds of our app (`debug`/`release`)
 
 ### Run the Application in Development
 
