@@ -64,8 +64,7 @@
   },
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
-    "postinstall": "bower install",
-    "build": "gulp build --release",
+    "postinstall": "bower install && gulp build --release",
     "prestart": "npm install",
     "start": "gulp serve",
     "pretest": "npm install",
