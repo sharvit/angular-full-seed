@@ -40,7 +40,7 @@ It is also recommended to use node version manager ([nvm][nvm]).
 
 Clone the [angular-seed][angular-seed] repository using [git][git]:
 
-```
+```bash
 git clone https://github.com/sharvit/angular-seed.git
 cd angular-seed
 ```
@@ -55,15 +55,16 @@ The `depth=1` tells git to only pull down one commit worth of historical data.
 
 ### Install Dependencies
 
-We have two kinds of dependencies in this project: tools and angular framework code.  The tools help
-us manage and test the application.
+We have two kinds of dependencies in [angular-seed][angular-seed]:
 
-* We get the tools we depend upon via `npm`, the [node package manager][npm].
-* We get the angular code via `bower`, a [client-side code package manager][bower].
+ 1. Tools, help us build, run and test the application.
+   * We get the tools we depend upon via `npm`, the [node package manager][npm].
+ 2. App Components, libraries we will use inside our app (like [AngularJS][angular]).
+   * We get the components code via `bower`, a [client-side code package manager][bower].
 
 We have preconfigured `npm` to automatically run `bower` so we can simply do:
 
-```
+```bash
 npm install
 ```
 
@@ -71,24 +72,19 @@ Behind the scenes this will also call `bower install`.  You should find that you
 folders in your project.
 
 * `node_modules` - contains the npm packages for the tools we need
-* `app/bower_components` - contains the angular framework files
+* `bower_components` - contains the components files
 
-*Note that the `bower_components` folder would normally be installed in the root folder but
-angular-seed changes this location through the `.bowerrc` file.  Putting it in the app folder makes
-it easier to serve the files by a webserver.*
-
-### Run the Application
+### Run the Application in Development
 
 We have preconfigured the project with a simple development web server.  The simplest way to start
 this server is:
 
 ```
-npm start
+gulp serve
 ```
 
-Now browse to the app at `http://localhost:8000/app/index.html`.
-
-
+The development server is running now and the browser should auto open the app.
+The app is default running on `http://localhost:8888`
 
 ## Directory Layout
 
@@ -299,6 +295,8 @@ along with a CI service (in Jenkins) hosted that will run unit and end to end te
 ## Contact
 
 For more information on AngularJS please check out http://angularjs.org/
+
+**[Back to top](#getting-started)**
 
 [angular-seed]: https://github.com/sharvit/angular-seed
 [angular]: http://angularjs.org/
