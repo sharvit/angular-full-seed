@@ -9,10 +9,11 @@ You can use it to quickly bootstrap your angular webapp projects and dev environ
 projects.
 
 The seed contains a sample AngularJS application and is preconfigured to install the Angular
-framework and a bunch of development and testing tools for instant web development gratification.
+framework and a bunch of development, testing and production tools for instant web development gratification.
+
+The seed contains a full workflow, ready to build debug and release versions, serve dev server, run tests, simple deploy and ci deploy.
 
 The seed app doesn't do much, just shows how to wire two controllers and views together.
-
 
 
 ## Getting Started
@@ -21,8 +22,13 @@ To get you started you can simply clone the angular-seed repository and install 
 
 ### Prerequisites
 
-You need git to clone the angular-seed repository. You can get git from
-[http://git-scm.com/](http://git-scm.com/).
+#### Git
+
+You need git to clone the angular-seed repository.
+[http://git-scm.com/](http://git-scm.com/)
+[https://git-scm.com/book/en/v2/Getting-Started-Installing-Git](Getting Started Installing Git)
+
+#### Node
 
 We also use a number of node.js tools to initialize and test angular-seed. You must have node.js and
 its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
