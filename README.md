@@ -1,4 +1,5 @@
 
+
 # [angular-full-seed] — the seed for AngularJS apps
 
 [![Build Status](https://travis-ci.org/sharvit/angular-full-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-full-seed)
@@ -21,37 +22,34 @@ framework and a bunch of development, testing and production tools for instant w
 
 ## Table of Contents
 
-1. [Getting Started](#getting-started)
-	1. [Prerequisites](#prerequisites)
-	2. [Clone angular-full-seed](#clone-angular-full-seed)
-	3. [Set the local environment](#set-the-local-environment)
-	4. [Install Dependencies](#install-dependencies)
-	5. [Run the Application in Development](#run-the-application-in-development)
+1. [Getting Started With a New Project](#getting-started-with-a-new-project)
+  1. [Prerequisites](#prerequisites)
+  2. [Clone angular-full-seed](#clone-angular-full-seed)
+  3. [Set the local environment](#set-the-local-environment)
+  4. [Install Dependencies](#install-dependencies)
+  5. [Run the Application in Development](#run-the-application-in-development)
 2. [Directory Layout](#directory-layout)
-3. Workflow
-	4. Git Flow
-	5. Run Local Development Server
-	6. Write Your Feature
-	7. Write Your Tests
-	8. Run Local Tests
-	9. Merge Your Feature
-	10. Create a Release
-	11. Deploy
-4. [Testing](#testing)
-	1. [Running Unit Tests](#running-unit-tests)
-	2. [End to end testing](#end-to-end-testing)
-5. [Updating Angular](#updating-angular)
+3. [Testing](#testing)
+  1. [Running Unit Tests](#running-unit-tests)
+  2. [End to end testing](#end-to-end-testing)
+4. [Updating Angular](#updating-angular)
+5. [Serving the Application Files](#serving-the-application-files)
+  1. [Running the App during Development](#running-the-app-during-development)
+  2. [Running the App in Production](#running-the-app-in-production)
+    1. [Heroku](#Heroku)
+6. [Continuous Integration](#continuous-integration)
 
-## Getting Started
+## Getting Started With a New Project
 
-To get you started you can simply clone the [angular-full-seed] repository and install the dependencies:
+To get you started with a new angular project you can fork the [angular-full-seed] and then clone your own repository
+
+If you don't want to use GitHub as your repository you can clone this repository and then change to another [git] remote
 
 ### Prerequisites
 
 #### [git]
 
 You need [git] to clone the [angular-full-seed] repository.
-
 - [Getting Started Installing Git][git-getting-started]
 
 #### [node.js]
@@ -64,24 +62,23 @@ It is also recommended to use node version manager ([nvm][nvm]).
 
 ### Clone [angular-full-seed]
 
-Clone the [angular-full-seed] repository using [git]:
+Clone your [angular-full-seed] repository using [git]:
 
 ```bash
-git clone https://github.com/sharvit/angular-full-seed.git
+git clone --depth=1 <your-angular-full-seed-repository-url>
 cd angular-full-seed
 ```
 
-If you just want to start a new project without the [angular-full-seed] commit history then you can do:
+If you want to start a new project without your own fork you can clone the original [angular-full-seed] repository:
 
 ```bash
 git clone --depth=1 https://github.com/sharvit/angular-full-seed.git <your-project-name>
 ```
 
-The `depth=1` tells git to only pull down one commit worth of historical data.
-
 ### Set the local environment
 
 Their is some required [environment-variables] to our app.
+
 `NODE_ENV` need to be configured to the right environment (`development` in this case).
 
  * [what-is-node-env]
@@ -115,7 +112,7 @@ npm install
 ```
 
 Behind the scenes this will also call `bower install && gulp build --release`. 
-You should find that you have three new folders in your project.
+You should find that you have three new folders in your project:
 
 * `node_modules` - contains the [npm] packages for the tools we need
 * `bower_components` - contains the [bower] components files
@@ -123,20 +120,89 @@ You should find that you have three new folders in your project.
 
 ### Run the Application in Development
 
-We have preconfigured the project with a simple development web server.  The simplest way to start
-this server is:
+We have preconfigured the project with a bunch of [gulp] tasks in order manage the workflow.
 
-```
+The simplest way to start this server is:
+
+```bash
 gulp serve
 ```
 
-The development server is running now and the browser should auto open the app.
-The app is default running on `http://localhost:8888`
+The development server is running now with [livereload] and the browser should auto open the app.
+
+The app is default running on: `http://localhost:8888`
+
 
 ## Directory Layout
 
-```
-I will do that at the end
+```bash
+.
+├── Procfile
+├── README.md
+├── app
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── locales
+│   │   ├── locale-en.json
+│   │   ├── locale-fr.json
+│   │   └── locale-he.json
+│   ├── src
+│   │   ├── app.js
+│   │   ├── app.module.js
+│   │   ├── components
+│   │   │   ├── components.module.js
+│   │   │   └── version
+│   │   │       ├── interpolate-filter.js
+│   │   │       ├── version-directive.js
+│   │   │       └── version.module.js
+│   │   ├── core
+│   │   │   ├── config.js
+│   │   │   ├── constants.js
+│   │   │   ├── core.module.js
+│   │   │   ├── router.js
+│   │   │   └── run.js
+│   │   └── views
+│   │       ├── view1
+│   │       │   ├── view1.html
+│   │       │   └── view1.js
+│   │       ├── view2
+│   │       │   ├── view2.html
+│   │       │   └── view2.js
+│   │       └── views.module.js
+│   └── styles
+│       ├── _fonts.scss
+│       ├── _variables.scss
+│       ├── layout
+│       │   └── layout.scss
+│       └── main.scss
+├── app.json
+├── bower.json
+├── bower_components
+├── build
+│   ├── debug
+│   └── release
+├── e2e-tests
+│   ├── protractor.conf.js
+│   └── scenarios.spec.js
+├── gulpfile.js
+├── node_modules
+├── package.json
+├── server.js
+├── unit-tests
+│   ├── components
+│   │   └── version
+│   │       ├── interpolate-filter.spec.js
+│   │       ├── version-directive.spec.js
+│   │       └── version.spec.js
+│   ├── karma.conf.js
+│   └── views
+│       ├── view1
+│       │   └── view1.spec.js
+│       └── view2
+│           └── view2.spec.js
+└── vendor.json
+
+23 directories, 41 files
 ```
 
 ## Testing
@@ -148,75 +214,49 @@ There are two kinds of tests in the [angular-full-seed] application: Unit tests 
 
 ### Running Unit Tests
 
-The angular-full-seed app comes preconfigured with unit tests. These are written in
-[jasmine], which we run with the [Karma Test Runner][karma]. We provide a Karma
+The [angular-full-seed] app comes preconfigured with unit tests. These are written in
+[jasmine], which we run with the [Karma Test Runner][karma]. We provide a [karma]
 configuration file to run them.
 
-* the configuration is found at `karma.conf.js`
-* the unit tests are found next to the code they are testing and are named as `..._test.js`.
+* the configuration is found at `unit-tests/karma.conf.js`.
+* the unit tests are found at the `unit-tests` folder and are named as `*.spec.js`.
 
-The easiest way to run the unit tests is to use the supplied npm script:
-
-```
-npm test
-```
-
-This script will start the Karma test runner to execute the unit tests. Moreover, Karma will sit and
-watch the source and test files for changes and then re-run the tests whenever any of them change.
-This is the recommended strategy; if your unit tests are being run every time you save a file then
-you receive instant feedback on any changes that break the expected code functionality.
-
-You can also ask Karma to do a single run of the tests and then exit.  This is useful if you want to
-check that a particular version of the code is operating as expected.  The project contains a
-predefined script to do this:
+The easiest way to run the unit tests is to use the supplied [gulp] script:
 
 ```
-npm run test-single-run
+gulp test:unit
 ```
 
+This script will start the Karma test runner to execute the unit tests.
 
 ### End to end testing
 
-The angular-full-seed app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests
-are run with the [Protractor][protractor] End-to-End test runner.  It uses native events and has
-special features for Angular applications.
+The [angular-full-seed] app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests
+are run with the [protractor] End-to-End test runner.  It uses native events and has
+special features for [AngularJS] applications.
 
 * the configuration is found at `e2e-tests/protractor-conf.js`
 * the end-to-end tests are found in `e2e-tests/scenarios.js`
 
 Protractor simulates interaction with our web app and verifies that the application responds
-correctly. Therefore, our web server needs to be serving up the application, so that Protractor
-can interact with it.
+correctly.
+
+You can run the end-to-end tests using the supplied [gulp] script:
 
 ```
-npm start
+gulp test:e2e
 ```
 
-In addition, since Protractor is built upon WebDriver we need to install this.  The angular-full-seed
-project comes with a predefined script to do this:
+This script will run a development server and then execute the end-to-end tests against the application being hosted on the development server.
+
+You can run run the whole tests (`unit` and `e2e`) together using the supplied [gulp] script:
 
 ```
-npm run update-webdriver
+gulp test
 ```
-
-This will download and install the latest version of the stand-alone WebDriver tool.
-
-Once you have ensured that the development web server hosting our application is up and running
-and WebDriver is updated, you can run the end-to-end tests using the supplied npm script:
-
-```
-npm run protractor
-```
-
-This script will execute the end-to-end tests against the application being hosted on the
-development server.
 
 
 ## Updating Angular
-
-Previously we recommended that you merge in changes to angular-full-seed into your own fork of the project.
-Now that the angular framework library code and tools are acquired through package managers (npm and
-bower) you can use these tools instead to update the dependencies.
 
 You can update the tool dependencies by running:
 
@@ -226,7 +266,7 @@ npm update
 
 This will find the latest versions that match the version ranges specified in the `package.json` file.
 
-You can update the Angular dependencies by running:
+You can update the [bower] dependencies by running:
 
 ```
 bower update
@@ -246,38 +286,47 @@ etc to function properly when an html page is opened via `file://` scheme instea
 
 ### Running the App during Development
 
-The angular-full-seed project comes preconfigured with a local development webserver.  It is a node.js
-tool called [http-server][http-server].  You can start this webserver with `npm start` but you may choose to
-install the tool globally:
+The [angular-full-seed] project comes preconfigured with a local development server using [gulp] webserver.
 
-```
-sudo npm install -g http-server
-```
+Then you can start your own development web server using the supplied [gulp] script:
 
-Then you can start your own development web server to serve static files from a folder by
-running:
-
+```bash
+gulp serve
 ```
-http-server -a localhost -p 8000
-```
-
-Alternatively, you can choose to configure your own webserver, such as apache or nginx. Just
-configure your server to serve the files under the `app/` directory.
 
 
 ### Running the App in Production
 
-This really depends on how complex your app is and the overall infrastructure of your system, but
-the general rule is that all you need in production are all the files under the `app/` directory.
-Everything else should be omitted.
-
-Angular apps are really just a bunch of static html, css and js files that just need to be hosted
-somewhere they can be accessed by browsers.
-
-If your Angular app is talking to the backend server via xhr or other means, you need to figure
+If your [AngularJS] app is talking to the backend server via xhr or other means, you need to figure
 out what is the best way to host the static files to comply with the same origin policy if
 applicable. Usually this is done by hosting the files by the backend server or through
 reverse-proxying the backend server(s) and webserver(s).
+
+We prefer to have a micro service in production that only serving the client side [AngularJS] app.
+
+**This [angular-full-seed] project is hosting on a micro service on [heroku]:**
+
+  +  [https://angular-full-seed.herokuapp.com](https://angular-full-seed.herokuapp.com)
+
+#### Heroku
+
+[Heroku] is a cloud Platform-as-a-Service supporting several programming languages.
+
+Create new app using [heroku]:
+
+```bash
+heroku create <your-app-name>
+```
+
+Push the app to [heroku] using [git]:
+
+```bash
+git push heroku master
+```
+
+[heroku] will build the app and host it for you.
+
+
 
 
 ## Continuous Integration
@@ -285,29 +334,31 @@ reverse-proxying the backend server(s) and webserver(s).
 ### Travis CI
 
 [Travis CI][travis] is a continuous integration service, which can monitor GitHub for new commits
-to your repository and execute scripts such as building the app or running tests. The angular-full-seed
-project contains a Travis configuration file, `.travis.yml`, which will cause Travis to run your
-tests when you push to GitHub.
+to your repository and execute scripts such as building the app, running tests and deploy to [heroku].
 
-You will need to enable the integration between Travis and GitHub. See the Travis website for more
-instruction on how to do this.
+The [angular-full-seed] project contains a [Travis] configuration file, `.travis.yml`, which will cause Travis to run your tests and auto deploy to [heroku] when you push to GitHub.
 
-### CloudBees
+You will need to enable the integration between [Travis] and GitHub. See the Travis website for more instruction on how to do this.
 
-CloudBees have provided a CI/deployment setup:
+In order to allow [travis] deploy premissions to [heroku] you will need first to install [travis-ci-client]:
 
-<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/angular-js-clickstart/master/clickstart.json">
-<img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>
+```bash
+gem install travis
+```
 
-If you run this, you will get a cloned version of this repo to start working on in a private git repo,
-along with a CI service (in Jenkins) hosted that will run unit and end to end tests in both Firefox and Chrome.
+After installing [travis-ci-client] :
+
+```bash
+travis encrypt $(heroku auth:token) --add deploy.api_key
+```
+
+This will add your [heroku] encrypted auth token to the [travis] configuration file: `.travis.yml`.
+
+Now you can make changes and push to GitHub, then [travis] will run your tests and deploy your changes to [heroku].
 
 
-## Contact
 
-For more information on AngularJS please check out http://angularjs.org/
-
-**[Back to top](#getting-started)**
+**[Back to top](#table-of-contents)**
 
 [angular-full-seed]: https://github.com/sharvit/angular-full-seed
 [AngularJS]: http://angularjs.org/
@@ -321,9 +372,13 @@ For more information on AngularJS please check out http://angularjs.org/
 [environment-variables]: https://en.wikipedia.org/wiki/Environment_variable
 [what-is-node-env]: http://stackoverflow.com/questions/16978256/what-is-node-env-in-express?answertab=active#tab-top
 [dotenv-safe]: https://github.com/rolodato/dotenv-safe
+[gulp]: http://gulpjs.com/
+[livereload]: http://livereload.com/
 [jasmine]: https://jasmine.github.io
 [protractor]: https://github.com/angular/protractor
 [karma]: https://karma-runner.github.io
+[heroku]: https://heroku.com
 [travis]: https://travis-ci.org/
+[travis-ci-client]: https://github.com/travis-ci/travis.rb
 
 
