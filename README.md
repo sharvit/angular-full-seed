@@ -17,26 +17,26 @@ framework and a bunch of development, testing and production tools for instant w
 
 ## Table of Contents
 
-  1. [Getting Started](#getting-started)
-    1. [Prerequisites](#prerequisites)
-    2. [Clone angular-seed](#clone-angular-seed)
-    3. [Set the local environment](#set-the-local-environment)
-    4. [Install Dependencies](#install-dependencies)
-    5. [Run the Application in Development](#run-the-application-in-development)
-  2. [Directory Layout](#directory-layout)
-  3. Workflow
-    1. Git Flow
-    2. Run Local Development Server
-    3. Write Your Feature
-    4. Write Your Tests
-    5. Run Local Tests
-    6. Merge Your Feature
-    7. Create a Release
-    8. Deploy
-  3. [Testing](#testing)
-    1. [Running Unit Tests](#running-unit-tests)
-    2. [End to end testing](#end-to-end-testing)
-  4. [Updating Angular](#updating-angular)
+1. [Getting Started](#getting-started)
+	1. [Prerequisites](#prerequisites)
+	2. [Clone angular-seed](#clone-angular-seed)
+	3. [Set the local environment](#set-the-local-environment)
+	4. [Install Dependencies](#install-dependencies)
+	5. [Run the Application in Development](#run-the-application-in-development)
+2. [Directory Layout](#directory-layout)
+3. Workflow
+	4. Git Flow
+	5. Run Local Development Server
+	6. Write Your Feature
+	7. Write Your Tests
+	8. Run Local Tests
+	9. Merge Your Feature
+	10. Create a Release
+	11. Deploy
+4. [Testing](#testing)
+	1. [Running Unit Tests](#running-unit-tests)
+	2. [End to end testing](#end-to-end-testing)
+5. [Updating Angular](#updating-angular)
 
 ## Getting Started
 
