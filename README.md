@@ -1,62 +1,54 @@
-# angular-seed — the seed for AngularJS apps
+# [angular-seed][angular-seed] — the seed for AngularJS apps
 
 [![Build Status](https://travis-ci.org/sharvit/angular-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-seed)
 [![Dependency Status](https://david-dm.org/sharvit/angular-seed.svg)](https://david-dm.org/sharvit/angular-seed)
 [![devDependency Status](https://david-dm.org/sharvit/angular-seed/dev-status.svg)](https://david-dm.org/sharvit/angular-seed#info=devDependencies)
 
-This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
-You can use it to quickly bootstrap your angular webapp projects and dev environment for these
+This project is an application skeleton for a typical [AngularJS][angular] web app.
+You can use it to quickly bootstrap your [AngularJS][angular] webapp projects and all environments for these
 projects.
 
-The seed contains a sample AngularJS application and is preconfigured to install the Angular
+[angular-seed][angular-seed] contains a sample [AngularJS][angular] application and is preconfigured to install the [AngularJS][angular]
 framework and a bunch of development, testing and production tools for instant web development gratification.
 
-The seed contains a full workflow, ready to build debug and release versions, serve dev server, run tests, simple deploy and ci deploy.
+[angular-seed][angular-seed] contains a full workflow, ready to build debug and release versions, serve dev server, run tests, simple deploy and ci deploy.
 
-The seed app doesn't do much, just shows how to wire two controllers and views together.
+[angular-seed][angular-seed] doesn't do much, just shows how to wire two controllers and views together.
 
 
 ## Getting Started
 
-To get you started you can simply clone the angular-seed repository and install the dependencies:
+To get you started you can simply clone the [angular-seed][angular-seed] repository and install the dependencies:
 
 ### Prerequisites
 
-#### Git
+#### [Git][git]
 
-You need git to clone the angular-seed repository.
+You need [git][git] to clone the [angular-seed][angular-seed] repository.
 
-[http://git-scm.com/](http://git-scm.com/)
+- [Getting Started Installing Git][git-getting-started]
 
-[https://git-scm.com/book/en/v2/Getting-Started-Installing-Git](Getting Started Installing Git)
+#### [node.js][node]
 
-#### Node
+We also use a number of [node.js][node] tools to initialize and test [angular-seed][angular-seed].
+You must have [node.js][node] and its package manager ([npm][npm]) installed.
+It is also recommended to use node version manager ([nvm][nvm]).
 
-We also use a number of node.js tools to initialize and test angular-seed.
-You must have node.js and its package manager (npm) installed.
-It is also recomended to use node version manager (nvm).
+- [how to install node using npm][getting-started-installing-node]
 
-[https://nodejs.org](nodejs website)
+### Clone [angular-seed][angular-seed]
 
-[https://www.npmjs.com/](npm website)
-
-[https://docs.npmjs.com/getting-started/installing-node](how to install node using npm)
-
-[http://nvm.sh](nvm)
-
-### Clone angular-seed
-
-Clone the angular-seed repository using [git][git]:
+Clone the [angular-seed][angular-seed] repository using [git][git]:
 
 ```
-git clone https://github.com/angular/angular-seed.git
+git clone https://github.com/sharvit/angular-seed.git
 cd angular-seed
 ```
 
-If you just want to start a new project without the angular-seed commit history then you can do:
+If you just want to start a new project without the [angular-seed][angular-seed] commit history then you can do:
 
 ```bash
-git clone --depth=1 https://github.com/angular/angular-seed.git <your-project-name>
+git clone --depth=1 https://github.com/sharvit/angular-seed.git <your-project-name>
 ```
 
 The `depth=1` tells git to only pull down one commit worth of historical data.
@@ -308,12 +300,16 @@ along with a CI service (in Jenkins) hosted that will run unit and end to end te
 
 For more information on AngularJS please check out http://angularjs.org/
 
+[angular-seed]: https://github.com/sharvit/angular-seed
+[angular]: http://angularjs.org/
 [git]: http://git-scm.com/
-[bower]: http://bower.io
+[git-getting-started]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+[node]: https://nodejs.org
 [npm]: https://www.npmjs.org/
-[node]: http://nodejs.org
+[nvm]: http://nvm.sh/
+[getting-started-installing-node]: https://docs.npmjs.com/getting-started/installing-node
+[bower]: http://bower.io
+[jasmine]: https://jasmine.github.io
 [protractor]: https://github.com/angular/protractor
-[jasmine]: http://jasmine.github.io
-[karma]: http://karma-runner.github.io
+[karma]: https://karma-runner.github.io
 [travis]: https://travis-ci.org/
-[http-server]: https://github.com/nodeapps/http-server
