@@ -5,7 +5,7 @@
   "repository": "https://github.com/sharvit/angular-seed.git",
   "license": "MIT",
   "engines": {
-    "node": "5.2.0",
+    "node": "4.2.3",
     "npm": "2.1.x"
   },
   "dependencies": {
