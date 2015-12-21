@@ -19,7 +19,8 @@ before_script:
 script:
 - npm test
 deploy:
+  provider: heroku
+  app:
+    master: sharvit-angular-seed
   api_key:
-    app:
-      master: sharvit-angular-seed
     secure: lLgDIC2IYGQ3/NV17luy8g4tkKwxxoWdgaEz4xrAvitlxSHQsD6rm/+fMoLDTmyvDF9C/xvWV6G26+CXqq0DYEfGI1kCcsTqZ4XXreB4974/RLD5gA+TzaydqRpebqzYdrxEL+m9MdynvqyjgZColNCj89Fi6Gxj2a/Lrf8qZaEwOA/82S4KNLSGiy+cDJ2b/56OutXNjAnTnnEvEfXLalomBn03jcjL4bf6e6rc6KGmTV1xUP0Z8k79Jk6DpTdvpcibLDV+TQ+khTHZ+jYwAjA9F7eNuK2Gjkb7cZndVRbCelA9VF7HoJ0pu3ilqujhXytFCkFfoKrBY+z1LKNlgAi54j7409ZkpwxxlSVBA2i69Qs3EYOOepg91QUzX8FtHRogaD5O2dGTSzSUbfoOv8IrIWufHzVYA3PumVr1T6naQOLeeaPv0sqYJTFRgL2MLvrLqJV60HW8zurPUbM86HwCp6fhbpYxaZX7SnKVS2tO07xD3shyz092ZiyWQW+EAYy0H4zxokjaj9wY3OF6ej7YLIlxfn4FjMly1Nl4PtU4xF8rYv+ZZtx44CacciwlYcRT668YxaVJtulUjmO/OM0vxEGa2FAFnBRprx3aAhyr2cvXgD/wh4N2ubDAbDVS6K89BryfUzdsOWWmiJo0rNSIZVri+06fjM8r05ZR6NQ=
