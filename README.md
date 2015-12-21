@@ -15,8 +15,6 @@ framework and a bunch of development, testing and production tools for instant w
 
 [angular-seed] doesn't do much, just shows how to wire two controllers and views together.
 
-[TOC]
-
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
