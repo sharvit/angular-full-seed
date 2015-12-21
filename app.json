@@ -1,0 +1,7 @@
+{
+  "name": "angular-seed",
+  "description": "Angular Seed Project",
+  "repository": "https://github.com/sharvit/angular-seed.git",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["angular-seed", "angular", "seed", "gulp", "express", "static"]
+}
