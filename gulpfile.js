@@ -274,7 +274,7 @@ gulp.task('build', function(done) {
     ],
     'build:scripts',
     'build:index',
-    // 'clean:tempfiles',
+    'clean:tempfiles',
     done
   );
 }).help = {
