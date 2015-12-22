@@ -10,8 +10,6 @@
 
   ;
 
-  appVersion.$inject = ['version'];
-
   function appVersion (version) {
     return function(scope, elm) {
       elm.text(version);

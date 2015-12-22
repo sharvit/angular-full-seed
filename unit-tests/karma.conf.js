@@ -4,11 +4,11 @@
   module.exports = function (config) {
     var cfg = {
 
-      basePath : './build/debug',
+      basePath : '../build/debug',
 
       files : [
-        'vendor*.js',
-        'scripts/*.js',
+        'scripts/vendor/*.js',
+        'scripts/app/*.js',
 
         '../../bower_components/angular-mocks/angular-mocks.js',
 

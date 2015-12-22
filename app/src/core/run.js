@@ -6,8 +6,6 @@
 		.run(run)
 	;
 
-	run.$inject = [];
-
 	function run () {
 		
 	}

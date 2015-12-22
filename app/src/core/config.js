@@ -6,8 +6,6 @@
 		.config(config)
 	;
 
-	config.$inject = [];
-
 	function config () {
 		
 	}

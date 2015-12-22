@@ -12,8 +12,6 @@
 
   ;
 
-  config.$inject = ['$routeProvider'];
-
   function config ($routeProvider) {
     $routeProvider.when('/view2', {
       templateUrl: 'templates/views/view2/view2.html',

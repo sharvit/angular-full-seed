@@ -6,11 +6,14 @@
 		.config(router)
 	;
 
-	router.$inject = ['$routeProvider'];
-
-	function router ($routeProvider) {
+	function router ($routeProvider, $locationProvider) {
 		$routeProvider.otherwise({
 			redirectTo: '/view1'
 		});
+
+		$locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
 	}
 })();

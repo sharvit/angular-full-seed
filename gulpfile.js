@@ -4,7 +4,7 @@
  * Settings
  */
 var appName = 'app';
-var scriptsTargetDir = './build/scripts';
+var tempTragetDir    = './build/.tmp';
 var debugTargetDir   = './build/debug';
 var releaseTargetDir = './build/release';
 var DEFAULT_PORT = 8888;
@@ -232,19 +232,26 @@ gulp.task('clean:all', ['clean:debug', 'clean:release']).help = {
   '': 'clean all target directories.',
   'Run': '[ clean:debug clean:release ]'
 };
-gulp.task('clean:debug', function(done) {
-  del([releaseTargetDir, scriptsTargetDir]).then(function () {
+gulp.task('clean:debug', ['clean:tempfiles'], function(done) {
+  del(releaseTargetDir).then(function () {
     done();
   });
 }).help = {
   '': 'clean debug target directory.'
 };
-gulp.task('clean:release', function(done) {
-  del([debugTargetDir, scriptsTargetDir]).then(function () {
+gulp.task('clean:release', ['clean:tempfiles'], function(done) {
+  del(debugTargetDir).then(function () {
     done();
   });
 }).help = {
   '': 'clean release target directory.'
+};
+gulp.task('clean:tempfiles', function(done) {
+  del(tempTragetDir).then(function () {
+    done();
+  });
+}).help = {
+  '': 'clean the temporary directory.'
 };
 
 
@@ -253,6 +260,7 @@ gulp.task('clean:release', function(done) {
  */
 gulp.task('build', function(done) {
   runSequence(
+    'clean:tempfiles',
     'build:clean-target',
     [
       release ? 'private:noop' : 'lint',
@@ -266,6 +274,7 @@ gulp.task('build', function(done) {
     ],
     'build:scripts',
     'build:index',
+    // 'clean:tempfiles',
     done
   );
 }).help = {
@@ -273,6 +282,7 @@ gulp.task('build', function(done) {
   '[ --release ] [ -r ]': 'release mode',
   'Run': [
     '',
+    'clean:tempfiles',
     'build:clean-target',
     [
       '[',
@@ -287,12 +297,13 @@ gulp.task('build', function(done) {
     ].join('\n\t\t'),
     ']',
     'build:scripts',
-    'build:index'
+    'build:index',
+    'clean:tempfiles'
   ].join('\n\t')
 };
 // clean target directory by --release flag
 gulp.task('build:clean-target', function(done) {
-  del([targetDir, scriptsTargetDir]).then(function () {
+  del(targetDir).then(function () {
     done();
   });
 }).help = {
@@ -335,10 +346,16 @@ gulp.task('build:fonts', function() {
 };
 // build templates (just copy them to target destination)
 gulp.task('build:templates', function() {
-  return gulp.src('app/src/**/*.html')
-    .pipe(gulp.dest(path.join(targetDir, 'templates')))
 
+  return gulp.src('app/src/**/*.html')
+    .pipe(plugins.angularTemplatecache('templates.js', {
+      root: 'templates/',
+      module: appName,
+      htmlmin: release
+    }))
+    .pipe(gulp.dest(tempTragetDir))
     .on('error', errorHandler);
+
 }).help = {
   '': 'build templates (just copy them to target destination)',
   '[ --release ] [ -r ]': 'release mode'
@@ -379,13 +396,14 @@ gulp.task('build:images', function() {
 // concatenate and minify vendor sources
 gulp.task('build:vendor', function() {
   var vendorFiles = require('./vendor.json');
+  var dest = path.join(targetDir, 'scripts/vendor');
 
   return gulp.src(vendorFiles)
     .pipe(plugins.concat('vendor.js'))
     .pipe(plugins.if(release, plugins.uglify()))
     .pipe(plugins.if(release, plugins.rev()))
 
-    .pipe(gulp.dest(targetDir))
+    .pipe(gulp.dest(dest))
 
     .on('error', errorHandler);
 }).help = {
@@ -395,32 +413,14 @@ gulp.task('build:vendor', function() {
 // build templatecache, copy scripts.
 // if release: concat, minsafe, uglify and versionize
 gulp.task('build:scripts', ['build:scripts:bundle'], function() {
-  var dest = path.join(targetDir, 'scripts');
-
-  var minifyConfig = {
-    collapseWhitespace: true,
-    collapseBooleanAttributes: true,
-    removeAttributeQuotes: true,
-    removeComments: true
-  };
-
-  // prepare angular template cache from html templates
-  // (remember to change appName var to desired module name)
-  var templateStream = gulp
-    .src('**/*.html', { cwd: 'app/templates'})
-    .pipe(plugins.angularTemplatecache('templates.js', {
-      root: 'templates/',
-      module: appName,
-      htmlmin: release && minifyConfig
-    }));
+  var dest = path.join(targetDir, 'scripts/app');
 
   var scriptStream = gulp
-    .src( ['bundle.js', 'bundle.js.map', 'configuration.js', 'templates.js' ], { cwd: scriptsTargetDir })
+    .src( ['bundle.js', 'bundle.js.map', 'configuration.js', 'templates.js' ], { cwd: tempTragetDir })
 
-    .pipe(plugins.if(!release, plugins.changed(dest)));
+    .pipe(plugins.changed(dest));
 
-  return streamqueue({ objectMode: true }, scriptStream, templateStream)
-    .pipe(plugins.if(release, plugins.ngAnnotate()))
+  return streamqueue({ objectMode: true }, scriptStream)
     .pipe(plugins.if(release, plugins.stripDebug()))
     .pipe(plugins.if(release, plugins.concat('app.js')))
     .pipe(plugins.if(release, plugins.uglify()))
@@ -444,13 +444,14 @@ gulp.task('build:scripts:bundle', function () {
 
   return b.bundle()
     .pipe(source('bundle.js'))
+    .pipe(plugins.ngAnnotate({'single_quotes': true}))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
         // Add transformation tasks to the pipeline here.
         .pipe(uglify())
         .on('error', plugins.util.log)
     .pipe(plugins.if(!release,sourcemaps.write('./')))
-    .pipe(gulp.dest(scriptsTargetDir));
+    .pipe(gulp.dest(tempTragetDir));
 }).help = {
   '': 'bundle all the src files into scripts/bundle.js',
   '[ --release ] [ -r ]': 'release mode'
@@ -470,24 +471,13 @@ gulp.task('build:index', function() {
     });
   };
 
-  // get all our javascript sources
-  // in development mode, it's better to add each file seperately.
-  // it makes debugging easier.
-  var _getAllScriptSources = function() {
-    var scriptStream = gulp.src(['scripts/app.js', 'scripts/**/*.js'], { cwd: targetDir });
-    return streamqueue({ objectMode: true }, scriptStream);
-  };
-
   return gulp.src('app/index.html')
     // inject css
     .pipe(_inject(gulp.src(cssNaming, { cwd: targetDir }), 'app-styles'))
-    // inject vendor.js
-    .pipe(_inject(gulp.src('vendor*.js', { cwd: targetDir }), 'vendor'))
-    // inject app.js (release) or all js files indivually (debug)
-    .pipe(plugins.if(release,
-      _inject(gulp.src('scripts/app*.js', { cwd: targetDir }), 'app'),
-      _inject(_getAllScriptSources(), 'app')
-    ))
+    // inject app.js and vendor.js (release) or all js files indivually (debug)
+    .pipe(
+      _inject(gulp.src(['scripts/vendor/*.js', 'scripts/app/*.js'], { cwd: targetDir }), 'app-scripts')
+    )
 
     .pipe(gulp.dest(targetDir))
     .on('error', errorHandler);
@@ -561,6 +551,7 @@ gulp.task('serve:runserver', function() {
   gulp.src(targetDir)
     .pipe(gulpWebserver({
       path: '/',
+      fallback: 'index.html',
       port: port,
       livereload: true,
       open: true
@@ -636,6 +627,7 @@ gulp.task('test:e2e:run-protractor-server', function (done) {
   var devServerStrean = gulp.src(targetDir)
     .pipe(gulpWebserver({
       path: '/',
+      fallback: 'index.html',
       port: port
     }))
   ;
