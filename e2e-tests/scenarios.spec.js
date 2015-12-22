@@ -6,40 +6,51 @@
 
   describe('my app', function() {
 
-    it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
+    it('should automatically redirect to /login when location hash/fragment is empty', function() {
       browser.get('/');
-      expect(browser.getLocationAbsUrl()).toMatch('/view1');
+      expect(browser.getLocationAbsUrl()).toMatch('/login');
     });
 
 
-    describe('view1', function() {
+    describe('dashboard', function() {
 
-      beforeEach(function() {
-        browser.get('/view1');
+      it('should automatically redirect to /dashboard/state1 when location hash/fragment is /dashboard', function() {
+        browser.get('/dashboard');
+        expect(browser.getLocationAbsUrl()).toMatch('/dashboard/state1');
       });
 
 
-      it('should render view1 when user navigates to /view1', function() {
-        expect(element.all(by.css('[ng-view] p')).first().getText()).
-          toMatch(/partial for view 1/);
+      describe('state1', function() {
+
+        beforeEach(function() {
+          browser.get('/dashboard/state1');
+        });
+
+
+        it('should render state1 when user navigates to /dashboard/state1', function() {
+          expect(element.all(by.css('[ui-view] p')).first().getText()).
+            toMatch(/partial for state 1/);
+        });
+
+      });
+
+
+      describe('state2', function() {
+
+        beforeEach(function() {
+          browser.get('/dashboard/state2');
+        });
+
+
+        it('should render state2 when user navigates to /dashboard/state2', function() {
+          expect(element.all(by.css('[ui-view] p')).first().getText()).
+            toMatch(/partial for state 2/);
+        });
+
       });
 
     });
 
-
-    describe('view2', function() {
-
-      beforeEach(function() {
-        browser.get('/view2');
-      });
-
-
-      it('should render view2 when user navigates to /view2', function() {
-        expect(element.all(by.css('[ng-view] p')).first().getText()).
-          toMatch(/partial for view 2/);
-      });
-
-    });
   });
 
 

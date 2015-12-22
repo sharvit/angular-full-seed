@@ -6,10 +6,8 @@
 		.config(router)
 	;
 
-	function router ($routeProvider, $locationProvider) {
-		$routeProvider.otherwise({
-			redirectTo: '/view1'
-		});
+	function router ($urlRouterProvider, $locationProvider) {
+    $urlRouterProvider.otherwise('/login');
 
 		$locationProvider.html5Mode({
       enabled: true,

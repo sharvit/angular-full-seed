@@ -4,7 +4,7 @@
   module.exports = function (config) {
     var cfg = {
 
-      basePath : '../build/debug',
+      basePath : './build/debug',
 
       files : [
         'scripts/vendor/*.js',
@@ -12,7 +12,7 @@
 
         '../../bower_components/angular-mocks/angular-mocks.js',
 
-        '../../unit-tests/**/*.spec.js'
+        '../../app/src/**/*.spec.js'
       ],
 
       autoWatch : true,

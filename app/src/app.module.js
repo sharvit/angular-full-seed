@@ -2,24 +2,23 @@
   'use strict';
 
   /**
-  * @ngdoc overview
-  * @name app
-  * @description
-  * # Initializes main application and routing
   *
   * Main module of the application.
+  *
   */
   angular
     .module('app', [
+      'ui.router',
+
       'app.core',
 
       'app.components',
-      'app.views'
+      'app.states'
     ])
   ;
 
   require('./core/core.module.js');
   require('./components/components.module.js');
-  require('./views/views.module.js');
+  require('./states/states.module.js');
 
 })();

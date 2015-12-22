@@ -508,7 +508,7 @@ gulp.task('watch:source', function() {
   gulp.watch('app/fonts/**', ['build:fonts']);
   gulp.watch('app/images/**', ['build:images']);
   gulp.watch('./vendor.json', ['build:vendor']);
-  gulp.watch('app/src/**/*.html', ['build:templates']);
+  gulp.watch('app/src/**/*.html', ['build:templates', 'build:scripts']);
   gulp.watch('app/src/**/*.js', ['build:scripts']);
   gulp.watch('app/index.html', ['build:index']);
 }).help = {
@@ -598,7 +598,7 @@ gulp.task('test:unit', function(done) {
 };
 gulp.task('test:unit:run-karma-server', function (done) {
   new karmaServer({
-    configFile: __dirname + '/unit-tests/karma.conf.js',
+    configFile: __dirname + '/unit-tests.karma.conf.js',
     singleRun: true,
     basePath: targetDir,
     reporters: 'dots'

@@ -3,7 +3,7 @@
 
 	angular
 		.module('app.core', [
-			'ngRoute'
+			'ui.router'
 		])
 		
 	;
