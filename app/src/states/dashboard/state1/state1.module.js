@@ -12,6 +12,7 @@
 
   ;
 
+  /* @ngInject */
   function config ($stateProvider) {
     $stateProvider.state('dashboard.state1', {
       url: '/state1',

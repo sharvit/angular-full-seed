@@ -15,6 +15,7 @@
 
   ;
 
+  /* @ngInject */
   function config ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.when('/dashboard', '/dashboard/state1');
 

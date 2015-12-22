@@ -12,6 +12,7 @@
 
   ;
 
+  /* @ngInject */
   function config ($stateProvider) {
     $stateProvider.state('login', {
       url: '/login',

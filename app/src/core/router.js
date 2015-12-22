@@ -6,6 +6,7 @@
 		.config(router)
 	;
 
+  /* @ngInject */
 	function router ($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/login');
 
