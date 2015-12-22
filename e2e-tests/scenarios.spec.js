@@ -11,6 +11,16 @@
       expect(browser.getLocationAbsUrl()).toMatch('/login');
     });
 
+    describe('login', function() {
+      beforeEach(function() {
+        browser.get('/login');
+      });
+
+      it('should take you to dashboard after clicking on "Login to Dashboard"', function() {
+        element(by.id('login-button')).click();
+        expect(browser.getLocationAbsUrl()).toMatch('/dashboard/state1');
+      });
+    });
 
     describe('dashboard', function() {
 
