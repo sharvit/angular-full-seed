@@ -140,69 +140,99 @@ The app is default running on: `http://localhost:8888`
 ├── Procfile
 ├── README.md
 ├── app
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── locales
-│   │   ├── locale-en.json
-│   │   ├── locale-fr.json
-│   │   └── locale-he.json
-│   ├── src
-│   │   ├── app.js
-│   │   ├── app.module.js
-│   │   ├── components
-│   │   │   ├── components.module.js
-│   │   │   └── version
-│   │   │       ├── interpolate-filter.js
-│   │   │       ├── version-directive.js
-│   │   │       └── version.module.js
-│   │   ├── core
-│   │   │   ├── config.js
-│   │   │   ├── constants.js
-│   │   │   ├── core.module.js
-│   │   │   ├── router.js
-│   │   │   └── run.js
-│   │   └── views
-│   │       ├── view1
-│   │       │   ├── view1.html
-│   │       │   └── view1.js
-│   │       ├── view2
-│   │       │   ├── view2.html
-│   │       │   └── view2.js
-│   │       └── views.module.js
-│   └── styles
-│       ├── _fonts.scss
-│       ├── _variables.scss
-│       ├── layout
-│       │   └── layout.scss
-│       └── main.scss
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── locales
+│   │   ├── locale-en.json
+│   │   ├── locale-fr.json
+│   │   └── locale-he.json
+│   ├── src
+│   │   ├── app.js
+│   │   ├── app.module.js
+│   │   ├── components
+│   │   │   ├── components.module.js
+│   │   │   └── version
+│   │   │       ├── interpolate-filter.js
+│   │   │       ├── version-directive.js
+│   │   │       ├── version.module.js
+│   │   │       └── version.spec.js
+│   │   ├── core
+│   │   │   ├── config.js
+│   │   │   ├── constants.js
+│   │   │   ├── core.module.js
+│   │   │   ├── router.js
+│   │   │   └── run.js
+│   │   └── states
+│   │       ├── dashboard
+│   │       │   ├── dashboard.html
+│   │       │   ├── dashboard.module.js
+│   │       │   ├── state1
+│   │       │   │   ├── state1.html
+│   │       │   │   ├── state1.module.js
+│   │       │   │   └── state1.spec.js
+│   │       │   └── state2
+│   │       │       ├── state2.html
+│   │       │       ├── state2.module.js
+│   │       │       └── state2.spec.js
+│   │       ├── login
+│   │       │   ├── login.html
+│   │       │   └── login.module.js
+│   │       └── states.module.js
+│   └── styles
+│       ├── _fonts.scss
+│       ├── _variables.scss
+│       ├── layout
+│       │   └── layout.scss
+│       └── main.scss
 ├── app.json
 ├── bower.json
 ├── bower_components
 ├── build
-│   ├── debug
-│   └── release
+│   ├── debug
+│   └── release
 ├── e2e-tests
-│   ├── protractor.conf.js
-│   └── scenarios.spec.js
+│   ├── protractor.conf.js
+│   └── scenarios.spec.js
+├── gulp
+│   ├── errorHandler.js
+│   ├── settings.js
+│   └── tasks
+│       ├── build
+│       │   ├── build.favicon.js
+│       │   ├── build.fonts.js
+│       │   ├── build.images.js
+│       │   ├── build.index.js
+│       │   ├── build.js
+│       │   ├── build.locales.js
+│       │   ├── build.scripts.bundle.js
+│       │   ├── build.scripts.js
+│       │   ├── build.styles.js
+│       │   ├── build.templates.js
+│       │   └── build.vendor.js
+│       ├── clean.js
+│       ├── help.js
+│       ├── lint.js
+│       ├── serve
+│       │   ├── serve.js
+│       │   └── serve.runserver.js
+│       ├── test
+│       │   ├── test.e2e.js
+│       │   ├── test.e2e.run-protractor-server.js
+│       │   ├── test.js
+│       │   ├── test.unit.js
+│       │   └── test.unit.run-karma-server.js
+│       └── watch
+│           ├── watch.js
+│           ├── watch.source.js
+│           └── watch.target.js
 ├── gulpfile.js
 ├── node_modules
 ├── package.json
 ├── server.js
-├── unit-tests
-│   ├── components
-│   │   └── version
-│   │       ├── interpolate-filter.spec.js
-│   │       ├── version-directive.spec.js
-│   │       └── version.spec.js
-│   ├── karma.conf.js
-│   └── views
-│       ├── view1
-│       │   └── view1.spec.js
-│       └── view2
-│           └── view2.spec.js
+├── unit-tests.karma.conf.js
 └── vendor.json
 
-23 directories, 41 files
+25 directories, 69 files
 ```
 
 ## Testing
