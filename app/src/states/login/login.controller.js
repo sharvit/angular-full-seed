@@ -11,6 +11,7 @@
   /* @ngInject */
   function LoginController ($state) {
     var vm = this;
+    vm.invalidPassword = false;
     vm.password = '';
 
     vm.login = login;
@@ -21,7 +22,7 @@
       if (vm.password === '121212') {
         $state.go('dashboard.state1');
       } else {
-        window.alert('Wrong Password');
+        vm.invalidPassword = true;
       }
     }
   }

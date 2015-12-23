@@ -1,3 +1,5 @@
 <p>Type your password (121212) and click Login</p>
-<input id="passwordInput" type="password" ng-model="vm.password" />
+<input type="password" ng-model="vm.password" />
 <button type="button" ng-click="vm.login()">Login</button>
+<br />
+<strong class="invalid-password-error" ng-show="vm.invalidPassword">Wrong Password</strong>

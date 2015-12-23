@@ -21,15 +21,15 @@
       describe('login method', function(){
 
         beforeEach(inject(function($state) {
+          LoginController.invalidPassword = false;
           LoginController.password = '';
           spyOn($state, 'go').and.callFake(function() {});
-          spyOn(window, 'alert').and.callFake(function() {});
         }));
 
         it('should alert after entering wrong password', function() {
           LoginController.password = 'some wrong password';
           LoginController.login();
-          expect(window.alert).toHaveBeenCalledWith('Wrong Password');
+          expect(LoginController.invalidPassword).toEqual(true);
         });
 
         it('should take you to /dashboard/state1 after success login', inject(function($state) {

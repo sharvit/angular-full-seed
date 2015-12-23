@@ -16,6 +16,16 @@
         browser.get('/login');
       });
 
+      it('should not show the "Wrong Password" error by default', function() {
+        expect(element(by.css('[ui-view] .invalid-password-error.ng-hide')).isPresent()).toBeTruthy();
+      });
+
+      it('should show the "Wrong Password" error after entering wrong password and clicking "Login"', function() {
+        element(by.css('[ui-view] input[type=password]')).sendKeys('some wrong password');
+        element(by.css('[ui-view] button[type=button]')).click();
+        expect(element(by.css('[ui-view] .invalid-password-error.ng-hide')).isPresent()).toBeFalsy();
+      });
+
       it('should take you to dashboard after entering the right password and clicking "Login"', function() {
         element(by.css('[ui-view] input[type=password]')).sendKeys('121212');
         element(by.css('[ui-view] button[type=button]')).click();
