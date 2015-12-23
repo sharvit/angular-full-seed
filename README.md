@@ -38,7 +38,6 @@ framework and a bunch of development, testing and production tools for instant w
 7. [Serving the Application Files](#serving-the-application-files)
     1. [Running the App during Development](#running-the-app-during-development)
     2. [Running the App in Production](#running-the-app-in-production)
-        1. [Heroku](#Heroku)
 8. [Testing](#testing)
     1. [Unit Testing](#unit-testing)
     2. [End to End Testing](#end-to-end-testing)
@@ -479,6 +478,8 @@ Now you can make changes and push to GitHub, then [travis] will run your tests a
 
 
 **[Back to top](#table-of-contents)**
+
+
 
 [angular-full-seed]: https://github.com/sharvit/angular-full-seed
 [AngularJS]: http://angularjs.org/
