@@ -1,5 +1,6 @@
 
 
+
 # [angular-full-seed] — the seed for AngularJS apps
 
 [![Build Status](https://travis-ci.org/sharvit/angular-full-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-full-seed)
@@ -29,15 +30,16 @@ framework and a bunch of development, testing and production tools for instant w
   4. [Install Dependencies](#install-dependencies)
   5. [Run the Application in Development](#run-the-application-in-development)
 2. [Directory Layout](#directory-layout)
-3. [Testing](#testing)
+3. [Coding Style](#coding-style)
+4. [Testing](#testing)
   1. [Running Unit Tests](#running-unit-tests)
   2. [End to end testing](#end-to-end-testing)
-4. [Updating Angular](#updating-angular)
-5. [Serving the Application Files](#serving-the-application-files)
+5. [Updating Angular](#updating-angular)
+6. [Serving the Application Files](#serving-the-application-files)
   1. [Running the App during Development](#running-the-app-during-development)
   2. [Running the App in Production](#running-the-app-in-production)
     1. [Heroku](#Heroku)
-6. [Continuous Integration](#continuous-integration)
+7. [Continuous Integration](#continuous-integration)
 
 ## Getting Started With a New Project
 
@@ -132,6 +134,9 @@ The development server is running now with [livereload] and the browser should a
 
 The app is default running on: `http://localhost:8888`
 
+## Coding Style
+
+Coding style are followed by [johnpapa/angular-styleguide], angular code style guide written by [johnpapa].
 
 ## Directory Layout
 
@@ -407,6 +412,8 @@ Now you can make changes and push to GitHub, then [travis] will run your tests a
 [dotenv-safe]: https://github.com/rolodato/dotenv-safe
 [gulp]: http://gulpjs.com/
 [livereload]: http://livereload.com/
+[johnpapa/angular-styleguide]: https://github.com/johnpapa/angular-styleguide
+[johnpapa]: http://johnpapa.net
 [jasmine]: https://jasmine.github.io
 [protractor]: https://github.com/angular/protractor
 [karma]: https://karma-runner.github.io
