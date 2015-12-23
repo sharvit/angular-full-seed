@@ -16,8 +16,9 @@
         browser.get('/login');
       });
 
-      it('should take you to dashboard after clicking on "Login to Dashboard"', function() {
-        element(by.id('login-button')).click();
+      it('should take you to dashboard after entering the right password and clicking "Login"', function() {
+        element(by.css('[ui-view] input[type=password]')).sendKeys('121212');
+        element(by.css('[ui-view] button[type=button]')).click();
         expect(browser.getLocationAbsUrl()).toMatch('/dashboard/state1');
       });
     });

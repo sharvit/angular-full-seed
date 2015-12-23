@@ -5,23 +5,9 @@
     .module('app.states.login', [
       'ui.router'
     ])
-
-    .config(config)
-
-    .controller('LoginCtrl', LoginCtrl)
-
   ;
 
-  /* @ngInject */
-  function config ($stateProvider) {
-    $stateProvider.state('login', {
-      url: '/login',
-      templateUrl: 'templates/states/login/login.html',
-      controller: 'LoginCtrl'
-    });
-  }
+  require('./login.route-config.js');
+  require('./login.controller.js');
 
-  function LoginCtrl () {
-
-  }
 })();

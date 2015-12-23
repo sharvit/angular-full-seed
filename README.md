@@ -168,15 +168,16 @@ The app is default running on: `http://localhost:8888`
 │   │       │   ├── dashboard.module.js
 │   │       │   ├── state1
 │   │       │   │   ├── state1.html
-│   │       │   │   ├── state1.module.js
-│   │       │   │   └── state1.spec.js
+│   │       │   │   └── state1.module.js
 │   │       │   └── state2
 │   │       │       ├── state2.html
-│   │       │       ├── state2.module.js
-│   │       │       └── state2.spec.js
+│   │       │       └── state2.module.js
 │   │       ├── login
+│   │       │   ├── login.controller.js
 │   │       │   ├── login.html
-│   │       │   └── login.module.js
+│   │       │   ├── login.module.js
+│   │       │   ├── login.route-config.js
+│   │       │   └── login.spec.js
 │   │       └── states.module.js
 │   └── styles
 │       ├── _fonts.scss
@@ -232,8 +233,10 @@ The app is default running on: `http://localhost:8888`
 ├── unit-tests.karma.conf.js
 └── vendor.json
 
-25 directories, 69 files
+25 directories, 70 files
 ```
+
+[angular styleguide by johnpapa][https://github.com/johnpapa/angular-styleguide]
 
 ## Testing
 

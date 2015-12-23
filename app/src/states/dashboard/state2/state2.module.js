@@ -8,21 +8,14 @@
 
     .config(config)
 
-    .controller('State2Ctrl', State2Ctrl)
-
   ;
 
   /* @ngInject */
   function config ($stateProvider) {
     $stateProvider.state('dashboard.state2', {
       url: '/state2',
-      templateUrl: 'templates/states/dashboard/state2/state2.html',
-      controller: 'State2Ctrl'
+      templateUrl: 'templates/states/dashboard/state2/state2.html'
     });
-  }
-
-  function State2Ctrl () {
-
   }
 
 })();

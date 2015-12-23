@@ -11,8 +11,6 @@
 
     .config(config)
 
-    .controller('DashboardCtrl', DashboardCtrl)
-
   ;
 
   /* @ngInject */
@@ -22,13 +20,8 @@
     $stateProvider.state('dashboard', {
       url: '/dashboard',
       templateUrl: 'templates/states/dashboard/dashboard.html',
-      abstract: true,
-      controller: 'DashboardCtrl'
+      abstract: true
     });
-  }
-
-  function DashboardCtrl () {
-
   }
 
   require('./state1/state1.module.js');
