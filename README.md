@@ -1,4 +1,4 @@
-# [angular-full-seed] — the seed for AngularJS apps
+# [angular-full-seed] — the full skeleton for AngularJS apps
 
 [![Build Status](https://travis-ci.org/sharvit/angular-full-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-full-seed)
 [![Dependency Status](https://david-dm.org/sharvit/angular-full-seed.svg)](https://david-dm.org/sharvit/angular-full-seed)
