@@ -248,8 +248,8 @@ The [angular-full-seed] app comes preconfigured with unit tests. These are writt
 [jasmine], which we run with the [Karma Test Runner][karma]. We provide a [karma]
 configuration file to run them.
 
-* the configuration is found at `unit-tests/karma.conf.js`.
-* the unit tests are found at the `unit-tests` folder and are named as `*.spec.js`.
+* the configuration is found at `unit-tests.karma.conf.js`.
+* the unit tests are found next to the code they are testing and are named as `*.spec.js`.
 
 The easiest way to run the unit tests is to use the supplied [gulp] script:
 
