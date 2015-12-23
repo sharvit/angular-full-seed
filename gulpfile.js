@@ -3,10 +3,11 @@
   'use strict';
 
   var gulp = require('gulp');
+  var path = require('path');
 
   // Require all tasks.
   require('require-dir')(
-    './gulp/tasks',
+    path.resolve(__dirname, 'gulp/tasks'),
     { recurse: true }
   );
 
