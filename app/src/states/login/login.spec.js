@@ -33,7 +33,7 @@
         });
 
         it('should take you to /dashboard/state1 after success login', inject(function($state) {
-          LoginController.password = '121212';
+          LoginController.password = LoginController.desiredPassword;
           LoginController.login();
           expect($state.go).toHaveBeenCalledWith('dashboard.state1');
         }));

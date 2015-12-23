@@ -3,7 +3,9 @@
 
   angular
     .module('app.states.login', [
-      'ui.router'
+      'ui.router',
+
+      'app.core'
     ])
   ;
 

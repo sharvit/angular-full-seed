@@ -6,6 +6,8 @@
 
 		.constant('APP_NAME', 'AngularSeed')
 
+    .constant('DASHBOARD_PASSWORD', '121212')
+
 	;
 	
 })();

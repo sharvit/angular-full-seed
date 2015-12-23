@@ -9,8 +9,9 @@
   ;
 
   /* @ngInject */
-  function LoginController ($state) {
+  function LoginController ($state, DASHBOARD_PASSWORD) {
     var vm = this;
+    vm.desiredPassword = DASHBOARD_PASSWORD;
     vm.invalidPassword = false;
     vm.password = '';
 
@@ -19,7 +20,7 @@
     ////////////////
 
     function login () {
-      if (vm.password === '121212') {
+      if (vm.password === vm.desiredPassword) {
         $state.go('dashboard.state1');
       } else {
         vm.invalidPassword = true;
