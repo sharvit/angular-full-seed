@@ -32,15 +32,18 @@ framework and a bunch of development, testing and production tools for instant w
 3. [Structure](#structure)
 4. [Directory Layout](#directory-layout)
 5. [Coding Style](#coding-style)
-6. [Testing](#testing)
-    1. [Unit Testing](#unit-testing)
-    2. [End to End Testing](#end-to-end-testing)
-7. [Updating Angular](#updating-angular)
-8. [Serving the Application Files](#serving-the-application-files)
+6. [Building](#building)
+  1. [Build a Debug](#build-a-debug)
+  2. [Build a Release](#build-a-release)
+7. [Serving the Application Files](#serving-the-application-files)
     1. [Running the App during Development](#running-the-app-during-development)
     2. [Running the App in Production](#running-the-app-in-production)
         1. [Heroku](#Heroku)
-9. [Continuous Integration](#continuous-integration)
+8. [Testing](#testing)
+    1. [Unit Testing](#unit-testing)
+    2. [End to End Testing](#end-to-end-testing)
+9. [Updating Angular](#updating-angular)
+10. [Continuous Integration](#continuous-integration)
 
 ## Features
 
@@ -291,7 +294,7 @@ gulp serve --release
 gulp test  --release
 ```
 
-#### Build a Debug
+### Build a Debug
 
 build into `build/debug` folder (gitignored)
 
@@ -307,12 +310,74 @@ build into `build/debug` folder (gitignored)
 - automatically inject sources into `index.html` so we don't have to add / remove sources manually.
 
 
-#### Build a Release
+### Build a Release
 
 build into `build/debug` folder (gitignored)
 
 - minsafe, uglify and versionize `style.css`,  `app.js` and `vendor.js` files.
 - remove debugs messages such as `console.log` or `alert`
+
+## Serving the Application Files
+
+While angular is client-side-only technology and it's possible to create angular webapps that
+don't require a backend server at all, we recommend serving the project files using a local
+webserver during development to avoid issues with security restrictions (sandbox) in browsers. The sandbox implementation varies between browsers, but quite often prevents things like cookies, xhr, etc to function properly when an html page is opened via `file://` scheme instead of `http://`.
+
+
+### Running the App during Development
+
+The [angular-full-seed] project comes preconfigured with a local development server using [gulp] webserver.
+
+Then you can start your own development web server using the supplied [gulp] script:
+
+```bash
+gulp serve
+```
+
+
+### Running the App in Production
+
+If your [AngularJS] app is talking to the backend server via xhr or other means, you need to figure
+out what is the best way to host the static files to comply with the same origin policy if
+applicable. Usually this is done by hosting the files by the backend server or through
+reverse-proxying the backend server(s) and webserver(s).
+
+We prefer to have a micro service in production that only serving the client side [AngularJS] app.
+
+[angular-full-seed] come with a production ready express server, you can run it by:
+
+```bash
+node server.js
+```
+
+Or with [foreman] by:
+
+
+```bash
+foreman start
+```
+
+**This [angular-full-seed] project is hosting on a micro service on [heroku]:**
+
+  +  [https://angular-full-seed.herokuapp.com](https://angular-full-seed.herokuapp.com)
+
+#### Heroku
+
+[Heroku] is a cloud Platform-as-a-Service supporting several programming languages.
+
+Create new app using [heroku]:
+
+```bash
+heroku create <your-app-name>
+```
+
+Push the app to [heroku] using [git]:
+
+```bash
+git push heroku master
+```
+
+[heroku] will build the app and host it for you.
 
 ## Testing
 
@@ -382,72 +447,6 @@ bower update
 ```
 
 This will find the latest versions that match the version ranges specified in the `bower.json` file.
-
-
-## Serving the Application Files
-
-While angular is client-side-only technology and it's possible to create angular webapps that
-don't require a backend server at all, we recommend serving the project files using a local
-webserver during development to avoid issues with security restrictions (sandbox) in browsers. The sandbox implementation varies between browsers, but quite often prevents things like cookies, xhr, etc to function properly when an html page is opened via `file://` scheme instead of `http://`.
-
-
-### Running the App during Development
-
-The [angular-full-seed] project comes preconfigured with a local development server using [gulp] webserver.
-
-Then you can start your own development web server using the supplied [gulp] script:
-
-```bash
-gulp serve
-```
-
-
-### Running the App in Production
-
-If your [AngularJS] app is talking to the backend server via xhr or other means, you need to figure
-out what is the best way to host the static files to comply with the same origin policy if
-applicable. Usually this is done by hosting the files by the backend server or through
-reverse-proxying the backend server(s) and webserver(s).
-
-We prefer to have a micro service in production that only serving the client side [AngularJS] app.
-
-[angular-full-seed] come with a production ready express server, you can run it by:
-
-```bash
-node server.js
-```
-
-Or with [foreman] by:
-
-
-```bash
-foreman start
-```
-
-**This [angular-full-seed] project is hosting on a micro service on [heroku]:**
-
-  +  [https://angular-full-seed.herokuapp.com](https://angular-full-seed.herokuapp.com)
-
-#### Heroku
-
-[Heroku] is a cloud Platform-as-a-Service supporting several programming languages.
-
-Create new app using [heroku]:
-
-```bash
-heroku create <your-app-name>
-```
-
-Push the app to [heroku] using [git]:
-
-```bash
-git push heroku master
-```
-
-[heroku] will build the app and host it for you.
-
-
-
 
 ## Continuous Integration
 
