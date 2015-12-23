@@ -10,7 +10,7 @@
   var plugins       = require('gulp-load-plugins')();
   
   /**
-   * bundle all the src files into scripts/bundle.js
+   * inject .js and .css files into index.html
    */
   gulp.task('build:index', function() {
 
@@ -37,7 +37,7 @@
       .pipe(gulp.dest(Settings['TARGET_DIR']))
       .on('error', errorHandler);
   }).help = {
-    '': 'inject the files in index.html',
+    '': 'inject .js and .css files into index.html',
     '[ --release ] [ -r ]': 'release mode'
   };
 

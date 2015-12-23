@@ -11,7 +11,7 @@
   var plugins       = require('gulp-load-plugins')();
   
   /**
-   * build images (just copy them to target destination)
+   * concatenate and minify vendor sources
    */
   gulp.task('build:vendor', function() {
     var vendorFiles = require(Settings['VENDOR_PATH']);

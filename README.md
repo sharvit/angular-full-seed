@@ -1,7 +1,3 @@
-
-
-
-
 # [angular-full-seed] — the seed for AngularJS apps
 
 [![Build Status](https://travis-ci.org/sharvit/angular-full-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-full-seed)
@@ -21,12 +17,15 @@ framework and a bunch of development, testing and production tools for instant w
 
 [angular-full-seed] doesn't do much, just shows how to wire two controllers and views together.
 
+[angular-full-seed] based on the original seed project [angular-seed] created by the [AngularJS] team and on the ionic seed project [ionic-gulp-seed] created by [tmaximini].
+
+
 ## Table of Contents
 
 1. [Features](#features)
 2. [Getting Started With a New Project](#getting-started-with-a-new-project)
     1. [Prerequisites](#prerequisites)
-    2. [Clone angular-full-seed](#clone-angular-full-seed)
+    2. [Clone angular-full-seed Project](#clone-angular-full-seed-project)
     3. [Set the local environment](#set-the-local-environment)
     4. [Install Dependencies](#install-dependencies)
     5. [Run the Application in Development](#run-the-application-in-development)
@@ -45,22 +44,23 @@ framework and a bunch of development, testing and production tools for instant w
 
 ## Features
 
-* [gulp] jobs for development, building, testing, and running your app
-* Come with a production ready express server
-* Easy deploy to [heroku]
+* [gulp] jobs for development, building, testing, and running your app.
+* Come with a production ready express server.
+* Easy deploy to [heroku].
 * Comes already with [travis], a continuous integration service, configured to automatically test and deploy to [heroku].
-* Comes already with [ui-router] the de-facto solution to flexible routing with nested views
-* Compiles and concatenates your Sass
-* Local development server with live reload
-* Automatically build and inject all your `js` and `css` sources into `index.html`
-* Auto min-safe all Angular DI through `ng-annotate`, no need to use weird bracket notation
-* Blazing fast
+* Comes already with [ui-router] the de-facto solution to flexible routing with nested views.
+* Comes already with multi language support.
+* Compiles and concatenates your Sass.
+* Local development server with live reload.
+* Automatically build and inject all your `js` and `css` sources into `index.html`.
+* Auto min-safe all Angular DI through `ng-annotate`, no need to use weird bracket notation.
+* Blazing fast.
 
 ## Getting Started With a New Project
 
-To get you started with a new angular project you can fork the [angular-full-seed] and then clone your own repository
+To get you started with a new angular project you can fork the [angular-full-seed] and then clone your own repository.
 
-If you don't want to use GitHub as your repository you can clone this repository and then change to another [git] remote
+If you don't want to use GitHub as your repository you can clone this repository and then change to another [git] remote.
 
 ### Prerequisites
 
@@ -77,7 +77,7 @@ It is also recommended to use node version manager ([nvm][nvm]).
 
 - [how to install node using npm][getting-started-installing-node]
 
-### Clone [angular-full-seed]
+### Clone the [angular-full-seed] Project
 
 Clone your [angular-full-seed] repository using [git]:
 
@@ -277,14 +277,51 @@ Unit Testing with [Karma] runner is next to the code and named `*.spec.js`. E2E 
 25 directories, 70 files
 ```
 
+## Building
+
+[angular-full-seed] contains a two different builds mode, `debug` and `release` so we can easily debug the app in development and release a clean version to production.
+
+Just run `gulp build` to build a `debug` version and run `gulp build -r` to build a `release` version.
+
+By default, when running the [gulp] tasks like `build`, `serve` and `test`, the will run with the debug version of the app. In order to run tasks with the `release` version, you should run tasks with the flag `--release` or short `-r`:
+
+```bash
+gulp build --release
+gulp serve --release
+gulp test  --release
+```
+
+#### Build a Debug
+
+build into `build/debug` folder (gitignored)
+
+- build favicon, copy from `app` root to `build/debug` root.
+- build fonts, copy from  `app/fonts` to `build/debug/fonts`.
+- build images, copy from `app/images` to `build/debug/images`.
+- build locales, copy from `app/locales` to `build/debug/locales`.
+- build [templatecache] using [gulp-angular-templatecache]
+- linting all `*.js` files `app/src`, see `.jshintrc` for ruleset.
+- concat all `.js` sources into single `app.js` file with debug [source-mapping-url] flag.
+- compiling, concatenating, auto-prefixing of all `.scss` files required by `app/styles/main.scss`.
+- creating concat `vendor.js` file from external sources defined in `./vendor.json`.
+- automatically inject sources into `index.html` so we don't have to add / remove sources manually.
+
+
+#### Build a Release
+
+build into `build/debug` folder (gitignored)
+
+- minsafe, uglify and versionize `style.css`,  `app.js` and `vendor.js` files.
+- remove debugs messages such as `console.log` or `alert`
+
 ## Testing
 
 There are two kinds of tests in the [angular-full-seed] application: Unit tests and End to End tests.
 
-  1. [Running Unit Tests](#running-unit-tests)
-  2. [End to end testing](#end-to-end-testing)
+  1. [Unit Testing](#unit-testing)
+  2. [End to End Testing](#end-to-end-testing)
 
-### Running Unit Tests
+### Unit Testing
 
 The [angular-full-seed] app comes preconfigured with unit tests. These are written in
 [jasmine], which we run with the [Karma Test Runner][karma]. We provide a [karma]
@@ -301,7 +338,7 @@ gulp test:unit
 
 This script will start the Karma test runner to execute the unit tests.
 
-### End to end testing
+### End to End Testing
 
 The [angular-full-seed] app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests
 are run with the [protractor] End-to-End test runner.  It uses native events and has
@@ -321,7 +358,7 @@ gulp test:e2e
 
 This script will run a development server and then execute the end-to-end tests against the application being hosted on the development server.
 
-You can run run the whole tests (`unit` and `e2e`) together using the supplied [gulp] script:
+You can run run the whole tests together (`unit` and `e2e`) using the supplied [gulp] script:
 
 ```
 gulp test
@@ -351,9 +388,7 @@ This will find the latest versions that match the version ranges specified in th
 
 While angular is client-side-only technology and it's possible to create angular webapps that
 don't require a backend server at all, we recommend serving the project files using a local
-webserver during development to avoid issues with security restrictions (sandbox) in browsers. The
-sandbox implementation varies between browsers, but quite often prevents things like cookies, xhr,
-etc to function properly when an html page is opened via `file://` scheme instead of `http://`.
+webserver during development to avoid issues with security restrictions (sandbox) in browsers. The sandbox implementation varies between browsers, but quite often prevents things like cookies, xhr, etc to function properly when an html page is opened via `file://` scheme instead of `http://`.
 
 
 ### Running the App during Development
@@ -434,6 +469,9 @@ Now you can make changes and push to GitHub, then [travis] will run your tests a
 
 [angular-full-seed]: https://github.com/sharvit/angular-full-seed
 [AngularJS]: http://angularjs.org/
+[angular-seed]: https://github.com/angular/angular-seed
+[ionic-gulp-seed]: https://github.com/tmaximini/ionic-gulp-seed
+[tmaximini]: http://www.thomasmaximini.com/
 [ui-router]: https://github.com/angular-ui/ui-router
 [git]: http://git-scm.com/
 [git-getting-started]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
@@ -457,5 +495,9 @@ Now you can make changes and push to GitHub, then [travis] will run your tests a
 [travis-ci-client]: https://github.com/travis-ci/travis.rb
 [wiredep]: (https://github.com/taptapship/wiredep)
 [MochaJS]: https://mochajs.org/
+[gulp-webserver]: https://github.com/schickling/gulp-webserver
+[source-mapping-url]: http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
+[templatecache]: https://docs.angularjs.org/api/ng/service/$templateCache
+[gulp-angular-templatecache]: https://github.com/miickel/gulp-angular-templatecache
 
 

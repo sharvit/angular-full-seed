@@ -10,7 +10,7 @@
   var plugins       = require('gulp-load-plugins')();
   
   /**
-   * build templates (just copy them to target destination)
+   * build templates (just copy them to temp destination)
    */
   gulp.task('build:templates', function() {
     return gulp.src('app/src/**/*.html')
@@ -23,7 +23,7 @@
       .on('error', errorHandler);
 
   }).help = {
-    '': 'build templates (just copy them to target destination)',
+    '': 'build templates (just copy them to temp destination)',
     '[ --release ] [ -r ]': 'release mode'
   };
 
