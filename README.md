@@ -56,7 +56,7 @@ framework and a bunch of development, testing and production tools for instant w
 * Compiles and concatenates your Sass.
 * Local development server with live reload.
 * Automatically build and inject all your `js` and `css` sources into `index.html`.
-* Auto min-safe all Angular DI through `ng-annotate`, no need to use weird bracket notation.
+* Auto min-safe all Angular DI through [ng-annotate], no need to use weird bracket notation.
 * Blazing fast.
 
 ## Getting Started With a New Project
@@ -305,6 +305,7 @@ build into `build/debug` folder (gitignored)
 - build [templatecache] using [gulp-angular-templatecache]
 - linting all `*.js` files `app/src`, see `.jshintrc` for ruleset.
 - concat all `.js` sources into single `app.js` file with debug [source-mapping-url] flag.
+- auto inject all Angular DI through [ng-annotate]
 - compiling, concatenating, auto-prefixing of all `.scss` files required by `app/styles/main.scss`.
 - creating concat `vendor.js` file from external sources defined in `./vendor.json`.
 - automatically inject sources into `index.html` so we don't have to add / remove sources manually.
@@ -512,3 +513,4 @@ Now you can make changes and push to GitHub, then [travis] will run your tests a
 [templatecache]: https://docs.angularjs.org/api/ng/service/$templateCache
 [gulp-angular-templatecache]: https://github.com/miickel/gulp-angular-templatecache
 [foreman]: https://github.com/ddollar/foreman
+[ng-annotate]: https://github.com/olov/ng-annotate
