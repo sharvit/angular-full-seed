@@ -49,8 +49,6 @@
   SETTINGS['isProductionMode']      =   function () { return process.env['NODE_ENV'] === 'production'; };
   SETTINGS['isDevelopmentMode']     =   function () { return process.env['NODE_ENV'] !== 'production'; };
 
-  console.log('SETTINGS', SETTINGS);
-
   // export the settings object
   module.exports = SETTINGS;
 
