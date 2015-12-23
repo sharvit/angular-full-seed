@@ -30,16 +30,18 @@ framework and a bunch of development, testing and production tools for instant w
     3. [Set the local environment](#set-the-local-environment)
     4. [Install Dependencies](#install-dependencies)
     5. [Run the Application in Development](#run-the-application-in-development)
-3. [Directory Layout](#directory-layout)
-4. [Testing](#testing)
+3. [Coding Style](#coding-style)
+4. [Structure](#structure)
+5. [Directory Layout](#directory-layout)
+6. [Testing](#testing)
     1. [Running Unit Tests](#running-unit-tests)
     2. [End to end testing](#end-to-end-testing)
-5. [Updating Angular](#updating-angular)
-6. [Serving the Application Files](#serving-the-application-files)
+7. [Updating Angular](#updating-angular)
+8. [Serving the Application Files](#serving-the-application-files)
     1. [Running the App during Development](#running-the-app-during-development)
     2. [Running the App in Production](#running-the-app-in-production)
         1. [Heroku](#Heroku)
-7. [Continuous Integration](#continuous-integration)
+9. [Continuous Integration](#continuous-integration)
 
 ## Features
 
@@ -47,12 +49,11 @@ framework and a bunch of development, testing and production tools for instant w
 * Come with a production ready express server
 * Easy deploy to [heroku]
 * Comes already with [travis], a continuous integration service, configured to automatically test and deploy to [heroku].
+* Comes already with [ui-router] the de-facto solution to flexible routing with nested views
 * Compiles and concatenates your Sass
 * Local development server with live reload
 * Automatically build and inject all your `js` and `css` sources into `index.html`
 * Auto min-safe all Angular DI through `ng-annotate`, no need to use weird bracket notation
-* Comes already with [ui-router] the de-facto solution to flexible routing with nested views
-* Generate icon font from `svg` files
 * Blazing fast
 
 ## Getting Started With a New Project
@@ -163,6 +164,15 @@ The source code lives inside the `app` folder.
 | Images                            | `app/images`     |
 | Fonts                             | `app/fonts`      |
 | Locales (`multi language`)        | `app/locales`    |
+
+A lot of starter kits and tutorials encourage you to create an `app` folder for the sources and a `dest` folder the build, but I chose `build` for the destination instead, as it conforms better with most projects. Note that `/build` is gitignored and will be created dynamically during our build process.
+
+Inside the `build` folder their is `build/debug` and `build/release` so we can easily debug the app in development and release a clean version to production.
+
+All 3rd party Javascript sources have to be manually added into `.vendor.json` and will be concatenated into a single `vendor.js` file.
+I know there is [wiredep] but I prefer to explicitly control which files get injected and also [wiredep] ends up adding lots of `<script>` tags in your index.html instead of building a single `vendor.js` file.
+
+Unit Testing with [Karma] runner is next to the code and named `*.spec.js`. E2E testing specs are inside `e2e-tests` folder. They both use [MochaJS] as the main framework.
 
 ## Directory Layout
 
@@ -424,6 +434,7 @@ Now you can make changes and push to GitHub, then [travis] will run your tests a
 
 [angular-full-seed]: https://github.com/sharvit/angular-full-seed
 [AngularJS]: http://angularjs.org/
+[ui-router]: https://github.com/angular-ui/ui-router
 [git]: http://git-scm.com/
 [git-getting-started]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [node.js]: https://nodejs.org
@@ -444,5 +455,7 @@ Now you can make changes and push to GitHub, then [travis] will run your tests a
 [heroku]: https://heroku.com
 [travis]: https://travis-ci.org/
 [travis-ci-client]: https://github.com/travis-ci/travis.rb
+[wiredep]: (https://github.com/taptapship/wiredep)
+[MochaJS]: https://mochajs.org/
 
 
