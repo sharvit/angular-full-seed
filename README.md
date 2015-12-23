@@ -1,6 +1,7 @@
 
 
 
+
 # [angular-full-seed] — the seed for AngularJS apps
 
 [![Build Status](https://travis-ci.org/sharvit/angular-full-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-full-seed)
@@ -11,8 +12,7 @@
 
 
 This project is an application skeleton for a typical [AngularJS] web app.
-You can use it to quickly bootstrap your [AngularJS] webapp projects and all environments for these
-projects.
+You can use it to quickly bootstrap your [AngularJS] webapp projects with full workflow environments for these projects.
 
 [angular-full-seed] contains a sample [AngularJS] application and is preconfigured to install the [AngularJS]
 framework and a bunch of development, testing and production tools for instant web development gratification.
@@ -23,22 +23,37 @@ framework and a bunch of development, testing and production tools for instant w
 
 ## Table of Contents
 
-1. [Getting Started With a New Project](#getting-started-with-a-new-project)
+1. [Features](#features)
+2. [Getting Started With a New Project](#getting-started-with-a-new-project)
     1. [Prerequisites](#prerequisites)
     2. [Clone angular-full-seed](#clone-angular-full-seed)
     3. [Set the local environment](#set-the-local-environment)
     4. [Install Dependencies](#install-dependencies)
     5. [Run the Application in Development](#run-the-application-in-development)
-2. [Directory Layout](#directory-layout)
-3. [Testing](#testing)
+3. [Directory Layout](#directory-layout)
+4. [Testing](#testing)
     1. [Running Unit Tests](#running-unit-tests)
     2. [End to end testing](#end-to-end-testing)
-4. [Updating Angular](#updating-angular)
-5. [Serving the Application Files](#serving-the-application-files)
+5. [Updating Angular](#updating-angular)
+6. [Serving the Application Files](#serving-the-application-files)
     1. [Running the App during Development](#running-the-app-during-development)
     2. [Running the App in Production](#running-the-app-in-production)
         1. [Heroku](#Heroku)
-6. [Continuous Integration](#continuous-integration)
+7. [Continuous Integration](#continuous-integration)
+
+## Features
+
+* [gulp] jobs for development, building, testing, and running your app
+* Come with a production ready express server
+* Easy deploy to [heroku]
+* Comes already with [travis], a continuous integration service, configured to automatically test and deploy to [heroku].
+* Compiles and concatenates your Sass
+* Local development server with live reload
+* Automatically build and inject all your `js` and `css` sources into `index.html`
+* Auto min-safe all Angular DI through `ng-annotate`, no need to use weird bracket notation
+* Comes already with [ui-router] the de-facto solution to flexible routing with nested views
+* Generate icon font from `svg` files
+* Blazing fast
 
 ## Getting Started With a New Project
 
@@ -136,6 +151,18 @@ The app is default running on: `http://localhost:8888`
 ## Coding Style
 
 Coding style are followed by [johnpapa/angular-styleguide], angular code style guide written by [johnpapa].
+
+## Structure
+
+The source code lives inside the `app` folder.
+
+| Source Files                      | Location       |
+| --------------------------------- | ---------------- |
+| Angular Sources (`js` and `html`) | `app/src`        |
+| Styles (`scss`)                   | `app/styles`     |
+| Images                            | `app/images`     |
+| Fonts                             | `app/fonts`      |
+| Locales (`multi language`)        | `app/locales`    |
 
 ## Directory Layout
 
@@ -239,8 +266,6 @@ Coding style are followed by [johnpapa/angular-styleguide], angular code style g
 
 25 directories, 70 files
 ```
-
-[angular styleguide by johnpapa][https://github.com/johnpapa/angular-styleguide]
 
 ## Testing
 
