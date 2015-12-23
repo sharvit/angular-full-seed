@@ -24,22 +24,21 @@ framework and a bunch of development, testing and production tools for instant w
 ## Table of Contents
 
 1. [Getting Started With a New Project](#getting-started-with-a-new-project)
-  1. [Prerequisites](#prerequisites)
-  2. [Clone angular-full-seed](#clone-angular-full-seed)
-  3. [Set the local environment](#set-the-local-environment)
-  4. [Install Dependencies](#install-dependencies)
-  5. [Run the Application in Development](#run-the-application-in-development)
+    1. [Prerequisites](#prerequisites)
+    2. [Clone angular-full-seed](#clone-angular-full-seed)
+    3. [Set the local environment](#set-the-local-environment)
+    4. [Install Dependencies](#install-dependencies)
+    5. [Run the Application in Development](#run-the-application-in-development)
 2. [Directory Layout](#directory-layout)
-3. [Coding Style](#coding-style)
-4. [Testing](#testing)
-  1. [Running Unit Tests](#running-unit-tests)
-  2. [End to end testing](#end-to-end-testing)
-5. [Updating Angular](#updating-angular)
-6. [Serving the Application Files](#serving-the-application-files)
-  1. [Running the App during Development](#running-the-app-during-development)
-  2. [Running the App in Production](#running-the-app-in-production)
-    1. [Heroku](#Heroku)
-7. [Continuous Integration](#continuous-integration)
+3. [Testing](#testing)
+    1. [Running Unit Tests](#running-unit-tests)
+    2. [End to end testing](#end-to-end-testing)
+4. [Updating Angular](#updating-angular)
+5. [Serving the Application Files](#serving-the-application-files)
+    1. [Running the App during Development](#running-the-app-during-development)
+    2. [Running the App in Production](#running-the-app-in-production)
+        1. [Heroku](#Heroku)
+6. [Continuous Integration](#continuous-integration)
 
 ## Getting Started With a New Project
 
@@ -140,103 +139,103 @@ Coding style are followed by [johnpapa/angular-styleguide], angular code style g
 
 ## Directory Layout
 
-```bash
+```javascript
 .
-├── Procfile
+├── Procfile          //Procfile will be used to run the production server
 ├── README.md
-├── app
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── locales
-│   │   ├── locale-en.json
-│   │   ├── locale-fr.json
-│   │   └── locale-he.json
-│   ├── src
-│   │   ├── app.js
-│   │   ├── app.module.js
-│   │   ├── components
-│   │   │   ├── components.module.js
-│   │   │   └── version
-│   │   │       ├── interpolate-filter.js
-│   │   │       ├── version-directive.js
-│   │   │       ├── version.module.js
-│   │   │       └── version.spec.js
-│   │   ├── core
-│   │   │   ├── config.js
-│   │   │   ├── constants.js
-│   │   │   ├── core.module.js
-│   │   │   ├── router.js
-│   │   │   └── run.js
-│   │   └── states
-│   │       ├── dashboard
-│   │       │   ├── dashboard.html
-│   │       │   ├── dashboard.module.js
-│   │       │   ├── state1
-│   │       │   │   ├── state1.html
-│   │       │   │   └── state1.module.js
-│   │       │   └── state2
-│   │       │       ├── state2.html
-│   │       │       └── state2.module.js
-│   │       ├── login
-│   │       │   ├── login.controller.js
-│   │       │   ├── login.html
-│   │       │   ├── login.module.js
-│   │       │   ├── login.route-config.js
-│   │       │   └── login.spec.js
-│   │       └── states.module.js
-│   └── styles
-│       ├── _fonts.scss
-│       ├── _variables.scss
-│       ├── layout
-│       │   └── layout.scss
-│       └── main.scss
+├── app           // App source files
+│   ├── favicon.ico
+│   ├── index.html      // Main index.html file
+│   ├── locales       // Locale files for multi language support
+│   │   ├── locale-en.json
+│   │   ├── locale-fr.json
+│   │   └── locale-he.json
+│   ├── src         // Angular source files (js and html)
+│   │   ├── app.js      // Main route for the browserify to start build the app
+│   │   ├── app.module.js // Main angular module
+│   │   ├── components    // Angular components
+│   │   │   ├── components.module.js // Angular components main module
+│   │   │   └── version       // Version component
+│   │   │       ├── interpolate-filter.js     // Some filter
+│   │   │       ├── version-directive.js    // Some directive
+│   │   │       ├── version.module.js     // Version component main module
+│   │   │       └── version.spec.js     // Version unit tests
+│   │   ├── core          // Core files
+│   │   │   ├── config.js     // Core config
+│   │   │   ├── constants.js    // Core constants
+│   │   │   ├── core.module.js    // Core main module
+│   │   │   ├── router.js     // Core routes
+│   │   │   └── run.js        // Core initializations
+│   │   └── states        // App States
+│   │       ├── dashboard   // dashboard State
+│   │       │   ├── dashboard.html      // dashboard view
+│   │       │   ├── dashboard.module.js   // dashboard module
+│   │       │   ├── state1      // dashboard.state1 State
+│   │       │   │   ├── state1.html     // dashboard.state1 view
+│   │       │   │   └── state1.module.js  // dashboard.state1 module
+│   │       │   └── state2      // dashboard.state2 State
+│   │       │       ├── state2.html     // dashboard.state2 view
+│   │       │       └── state2.module.js  // dashboard.state2 module
+│   │       ├── login       // login State
+│   │       │   ├── login.controller.js     // login controller
+│   │       │   ├── login.html          // login view
+│   │       │   ├── login.module.js       // login module
+│   │       │   ├── login.route-config.js   // login route-config
+│   │       │   └── login.spec.js   // login unit tests
+│   │       └── states.module.js  // States Main Module
+│   └── styles    // styles (scss) folder
+│       ├── _fonts.scss
+│       ├── _variables.scss
+│       ├── layout
+│       │   └── layout.scss
+│       └── main.scss   // main style, from here the build start
 ├── app.json
 ├── bower.json
 ├── bower_components
-├── build
-│   ├── debug
-│   └── release
-├── e2e-tests
-│   ├── protractor.conf.js
-│   └── scenarios.spec.js
-├── gulp
-│   ├── errorHandler.js
-│   ├── settings.js
-│   └── tasks
-│       ├── build
-│       │   ├── build.favicon.js
-│       │   ├── build.fonts.js
-│       │   ├── build.images.js
-│       │   ├── build.index.js
-│       │   ├── build.js
-│       │   ├── build.locales.js
-│       │   ├── build.scripts.bundle.js
-│       │   ├── build.scripts.js
-│       │   ├── build.styles.js
-│       │   ├── build.templates.js
-│       │   └── build.vendor.js
-│       ├── clean.js
-│       ├── help.js
-│       ├── lint.js
-│       ├── serve
-│       │   ├── serve.js
-│       │   └── serve.runserver.js
-│       ├── test
-│       │   ├── test.e2e.js
-│       │   ├── test.e2e.run-protractor-server.js
-│       │   ├── test.js
-│       │   ├── test.unit.js
-│       │   └── test.unit.run-karma-server.js
-│       └── watch
-│           ├── watch.js
-│           ├── watch.source.js
-│           └── watch.target.js
+├── build     // Build results
+│   ├── debug   // Debug version
+│   └── release   // Release version
+├── e2e-tests // End to End tests
+│   ├── protractor.conf.js    // e2e tests protractor config
+│   └── scenarios.spec.js   // main scenarios
+├── gulp    // Gulp workflow tasks
+│   ├── errorHandler.js
+│   ├── settings.js
+│   └── tasks
+│       ├── build
+│       │   ├── build.favicon.js
+│       │   ├── build.fonts.js
+│       │   ├── build.images.js
+│       │   ├── build.index.js
+│       │   ├── build.js
+│       │   ├── build.locales.js
+│       │   ├── build.scripts.bundle.js
+│       │   ├── build.scripts.js
+│       │   ├── build.styles.js
+│       │   ├── build.templates.js
+│       │   └── build.vendor.js
+│       ├── clean.js
+│       ├── help.js
+│       ├── lint.js
+│       ├── serve
+│       │   ├── serve.js
+│       │   └── serve.runserver.js
+│       ├── test
+│       │   ├── test.e2e.js
+│       │   ├── test.e2e.run-protractor-server.js
+│       │   ├── test.js
+│       │   ├── test.unit.js
+│       │   └── test.unit.run-karma-server.js
+│       └── watch
+│           ├── watch.js
+│           ├── watch.source.js
+│           └── watch.target.js
 ├── gulpfile.js
 ├── node_modules
 ├── package.json
-├── server.js
-├── unit-tests.karma.conf.js
-└── vendor.json
+├── server.js     // Production Server file
+├── unit-tests.karma.conf.js  // unit tests karma config file
+└── vendor.json   // important to add all our vendors to this file
 
 25 directories, 70 files
 ```
