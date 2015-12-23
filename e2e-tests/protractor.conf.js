@@ -25,13 +25,6 @@
     cfg.capabilities = {
       'browserName': 'firefox'
     };
-
-    // TODO: somehow chrome dosent work on travis here
-    // cfg.multiCapabilities = [{
-    //   'browserName': 'firefox'
-    // }, {
-    //   'browserName': 'chrome'
-    // }];
   }
 
   exports.config = cfg;
