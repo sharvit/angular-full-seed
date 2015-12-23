@@ -25,16 +25,16 @@ framework and a bunch of development, testing and production tools for instant w
 1. [Features](#features)
 2. [Getting Started With a New Project](#getting-started-with-a-new-project)
     1. [Prerequisites](#prerequisites)
-    2. [Clone angular-full-seed Project](#clone-angular-full-seed-project)
+    2. [Clone the angular-full-seed Project](#clone-the-angular-full-seed-project)
     3. [Set the local environment](#set-the-local-environment)
     4. [Install Dependencies](#install-dependencies)
     5. [Run the Application in Development](#run-the-application-in-development)
-3. [Coding Style](#coding-style)
-4. [Structure](#structure)
-5. [Directory Layout](#directory-layout)
+3. [Structure](#structure)
+4. [Directory Layout](#directory-layout)
+5. [Coding Style](#coding-style)
 6. [Testing](#testing)
-    1. [Running Unit Tests](#running-unit-tests)
-    2. [End to end testing](#end-to-end-testing)
+    1. [Unit Testing](#unit-testing)
+    2. [End to End Testing](#end-to-end-testing)
 7. [Updating Angular](#updating-angular)
 8. [Serving the Application Files](#serving-the-application-files)
     1. [Running the App during Development](#running-the-app-during-development)
@@ -148,10 +148,6 @@ gulp serve
 The development server is running now with [livereload] and the browser should auto open the app.
 
 The app is default running on: `http://localhost:8888`
-
-## Coding Style
-
-Coding style are followed by [johnpapa/angular-styleguide], angular code style guide written by [johnpapa].
 
 ## Structure
 
@@ -276,6 +272,10 @@ Unit Testing with [Karma] runner is next to the code and named `*.spec.js`. E2E 
 
 25 directories, 70 files
 ```
+
+## Coding Style
+
+Coding style are followed by [johnpapa/angular-styleguide], angular code style guide written by [johnpapa].
 
 ## Building
 
@@ -411,6 +411,19 @@ reverse-proxying the backend server(s) and webserver(s).
 
 We prefer to have a micro service in production that only serving the client side [AngularJS] app.
 
+[angular-full-seed] come with a production ready express server, you can run it by:
+
+```bash
+node server.js
+```
+
+Or with [foreman] by:
+
+
+```bash
+foreman start
+```
+
 **This [angular-full-seed] project is hosting on a micro service on [heroku]:**
 
   +  [https://angular-full-seed.herokuapp.com](https://angular-full-seed.herokuapp.com)
@@ -499,5 +512,4 @@ Now you can make changes and push to GitHub, then [travis] will run your tests a
 [source-mapping-url]: http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
 [templatecache]: https://docs.angularjs.org/api/ng/service/$templateCache
 [gulp-angular-templatecache]: https://github.com/miickel/gulp-angular-templatecache
-
-
+[foreman]: https://github.com/ddollar/foreman
