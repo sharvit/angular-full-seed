@@ -4,9 +4,9 @@
 !.gitkeep
 
 logs/
-node_modules/
-bower_components/
-build/
+/node_modules/
+/bower_components/
+/build/
 .tmp/
 
 tmp
