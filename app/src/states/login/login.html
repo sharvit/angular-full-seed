@@ -1,5 +1,10 @@
-<p>Type your password ({{vm.desiredPassword}}) and click Login</p>
-<input type="password" ng-model="vm.password" />
-<button type="button" ng-click="vm.login()">Login</button>
-<br />
-<strong class="invalid-password-error" ng-show="vm.invalidPassword">Wrong Password</strong>
+<p>{{ 'login.description' | translate:vm }}</p>
+
+<div>
+    <input type="password" ng-model="vm.password" />
+    <button type="button" ng-click="vm.login()">{{ 'login.button' | translate }}</button>
+</div>
+
+<p class="invalid-password-error" ng-show="vm.invalidPassword">
+    <strong>{{ 'login.wrongPassword' | translate }}</strong>
+</p>

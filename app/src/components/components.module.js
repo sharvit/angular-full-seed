@@ -1,13 +1,11 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('app.components', [
-      'app.components.version'
-    ])
+    angular
+        .module('app.components', [
+            'app.components.version'
+        ])
+    ;
 
-  ;
-
-  require('./version/version.module.js');
-
+    require('./version/version.module.js');
 })();

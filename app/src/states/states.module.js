@@ -3,13 +3,13 @@
 
   angular
     .module('app.states', [
-      'app.states.login',
-      'app.states.dashboard'
+        'app.states.login',
+        'app.states.dashboard'
     ])
 
-  ;
+    ;
 
-  require('./login/login.module.js');
+    require('./login/login.module.js');
 	require('./dashboard/dashboard.module.js');
 
 })();

@@ -1,13 +1,12 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('app.states.login', [
-      'app.core'
-    ])
-  ;
+    angular
+        .module('app.states.login', [
+            'app.core'
+        ])
+    ;
 
-  require('./login.route-config.js');
-  require('./login.controller.js');
-
+    require('./login.config.js');
+    require('./login.controller.js');
 })();

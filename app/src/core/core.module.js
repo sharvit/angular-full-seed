@@ -12,7 +12,6 @@
 
 
 	require('./core.constants.js');
-	require('./core.router.js');
-	require('./core.run.js');
+	require('./core.config.js');
 	require('./core.translations.config.js');
 })();

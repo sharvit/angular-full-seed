@@ -1,13 +1,11 @@
 (function() {
-	'use strict';
+    'use strict';
 
-	angular
-		.module('app.core')
+    angular
+        .module('app.core')
 
-		.constant('APP_NAME', 'AngularSeed')
+        .constant('APP_NAME', 'AngularSeed')
 
-    .constant('DASHBOARD_PASSWORD', '121212')
-
-	;
-	
+        .constant('DASHBOARD_PASSWORD', '121212')
+    ;
 })();

@@ -3,18 +3,15 @@
 
 !.gitkeep
 
-logs/
-/node_modules/
-/bower_components/
 /build/
+
+logs/
+node_modules/
+bower_components/
 .tmp/
 
-tmp
-
 .env
-
 .DS_Store
-*.DS_Store
 .idea
 .sass-cache
-*.log
+.log

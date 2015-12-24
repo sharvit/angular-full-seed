@@ -9,8 +9,7 @@
     ])
   ;
 
-  require('./dashboard.route-config.js');
-  require('./dashboard.controller.js');
+  require('./dashboard.config.js');
 
   require('./state1/state1.module.js');
   require('./state2/state2.module.js');

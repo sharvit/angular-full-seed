@@ -1,17 +1,13 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('app.components.version', [
-      'app.components.version.interpolate-filter',
-      'app.components.version.version-directive'
-    ])
+    angular
+        .module('app.components.version', [
 
-    .value('version', '0.0.1')
+        ])
 
-  ;
+        .value('version', '0.0.1')
+    ;
 
-  require('./interpolate-filter.js');
-  require('./version-directive.js');
-
+    require('./app-version.directive.js');
 })();

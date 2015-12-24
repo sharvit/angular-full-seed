@@ -1,7 +1,6 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  // Just load the main AngularJS app module
-  require('./app.module.js');
-
+    // Just load the main AngularJS app module
+    require('./app.module.js');
 })();
