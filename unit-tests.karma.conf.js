@@ -24,8 +24,7 @@
       plugins : [
         'karma-chrome-launcher',
         'karma-firefox-launcher',
-        'karma-jasmine',
-        'karma-junit-reporter'
+        'karma-jasmine'
       ],
 
       customLaunchers: {
@@ -33,16 +32,12 @@
           base: 'Chrome',
           flags: ['--no-sandbox']
         }
-      },
-
-      junitReporter : {
-        outputFile: 'test_out/unit.xml',
-        suite: 'unit'
       }
 
     };
 
     if (process.env.TRAVIS) {
+      cfg.basePath = './build/release';
       cfg.browsers = ['Chrome_travis_ci', 'Firefox'];
     }
 
