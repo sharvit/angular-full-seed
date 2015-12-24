@@ -1,0 +1,23 @@
+{
+    "hello": "Hello",
+    "footer": "Angular full seed app",
+    "languages": {
+        "en": "English",
+        "fr": "French",
+        "he": "Hebrew"
+    },
+    "login": {
+        "description": "Type your password ({{desiredPassword}}) and click Login",
+        "button": "Login",
+        "wrongPassword": "Wrong Password!"
+    },
+    "dashboard": {
+        "state1": {
+            "paragraph1": "This is the partial for state 1."
+        },
+        "state2": {
+            "paragraph1": "This is the partial for state 2.",
+            "paragraph2": "This is the seconde paragraph for state 2."
+        }
+    }
+}

@@ -1,0 +1,13 @@
+<h1>{{ 'hello' | translate }}</h1>
+
+<!-- Language Changers -->
+<ul class="menu menu-locales">
+    <li><a href="#" ng-click="vm.changeLanguage('en')">{{ 'languages.en' | translate }}</a></li>
+    <li><a href="#" ng-click="vm.changeLanguage('fr')">{{ 'languages.fr' | translate }}</a></li>
+    <li><a href="#" ng-click="vm.changeLanguage('he')">{{ 'languages.he' | translate }}</a></li>
+</ul>
+
+<!-- Inner View -->
+<div ui-view></div>
+
+<p>{{ 'footer' | translate }}: v<span app-version></span></p>
