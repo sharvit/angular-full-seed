@@ -3,14 +3,16 @@
 
 	angular
 		.module('app.core', [
-			'ui.router'
+			'ngCookies',
+			'ui.router',
+			'pascalprecht.translate'
 		])
 		
 	;
 
 
-	require('./constants.js');
-	require('./config.js');
-	require('./run.js');
-	require('./router.js');
+	require('./core.constants.js');
+	require('./core.router.js');
+	require('./core.run.js');
+	require('./core.translations.config.js');
 })();

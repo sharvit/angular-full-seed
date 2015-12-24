@@ -5,6 +5,9 @@
   "dependencies": {
     "angular": "~1.4.0",
     "angular-mocks": "~1.4.0",
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.15",
+    "angular-translate": "~2.8.1",
+    "angular-translate-loader-static-files": "~2.8.1",
+    "angular-translate-storage-local": "~2.8.1"
   }
 }

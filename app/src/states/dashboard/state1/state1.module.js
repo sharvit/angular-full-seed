@@ -3,7 +3,7 @@
 
   angular
     .module('app.states.dashboard.state1', [
-      'ui.router'
+
     ])
 
     .config(config)

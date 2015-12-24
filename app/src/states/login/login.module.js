@@ -3,8 +3,6 @@
 
   angular
     .module('app.states.login', [
-      'ui.router',
-
       'app.core'
     ])
   ;
