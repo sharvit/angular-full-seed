@@ -8,9 +8,10 @@
     ;
 
     /* @ngInject */
-    function LayoutController ($translate) {
+    function LayoutController ($translate, supportedLanguages) {
         var vm = this;
         vm.changeLanguage = changeLanguage;
+        vm.supportedLanguages = supportedLanguages;
 
         ////////////////
 

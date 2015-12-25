@@ -14,6 +14,7 @@
       'clean:target',
       [
         Settings['DEBUG'] ? 'lint' : 'private:noop',
+        'build:config',
         'build:locales',
         'build:favicon',
         'build:fonts',

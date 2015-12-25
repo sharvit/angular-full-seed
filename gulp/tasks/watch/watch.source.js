@@ -2,6 +2,8 @@
 
   'use strict';
 
+  var Settings      = require('../../settings.js');
+
   // dependencies 
   var gulp          = require('gulp');
   
@@ -9,7 +11,7 @@
    * run watchers to auto build source files
    */
   gulp.task('watch:source', function() {
-    gulp.watch('app/locales/**/*.json', ['build:locales']);
+    gulp.watch(Settings['LOCALES_PATH'], ['build:locales']);
     gulp.watch('app/styles/**/*.scss', ['build:styles']);
     gulp.watch('app/fonts/**', ['build:fonts']);
     gulp.watch('app/images/**', ['build:images']);

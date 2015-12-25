@@ -10,8 +10,8 @@ node_modules/
 bower_components/
 .tmp/
 
-.env
-.DS_Store
-.idea
-.sass-cache
-.log
+*.env
+*.DS_Store
+*.idea
+*.sass-cache
+*.log

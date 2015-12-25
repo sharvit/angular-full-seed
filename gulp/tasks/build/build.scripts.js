@@ -19,7 +19,7 @@
     var dest = path.join(Settings['TARGET_DIR'], 'scripts/app');
 
     var scriptStream = gulp
-      .src( ['bundle.js', 'bundle.js.map', 'configuration.js', 'templates.js' ], { cwd: Settings.TEMP_TARGET_DIR })
+      .src( ['bundle.js', 'bundle.js.map', 'ngConstants.js', 'templates.js' ], { cwd: Settings.TEMP_TARGET_DIR })
 
       .pipe(plugins.changed(dest));
 

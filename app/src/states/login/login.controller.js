@@ -8,9 +8,9 @@
     ;
 
     /* @ngInject */
-    function LoginController ($state, DASHBOARD_PASSWORD) {
+    function LoginController ($state, dashboardPassword) {
         var vm = this;
-        vm.desiredPassword = DASHBOARD_PASSWORD;
+        vm.desiredPassword = dashboardPassword;
         vm.invalidPassword = false;
         vm.password = '';
 
