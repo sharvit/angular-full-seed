@@ -13,7 +13,7 @@
    * build images (just copy them to target destination)
    */
   gulp.task('build:images', function() {
-    return gulp.src('app/images/**/*.*')
+    return gulp.src(Settings['PATTERNS']['IMAGES'])
       .pipe(gulp.dest(path.join(Settings['TARGET_DIR'], 'images')))
 
       .on('error', errorHandler);

@@ -1,0 +1,7 @@
+{
+    "login": {
+        "description": "Type your password ({{desiredPassword}}) and click Login",
+        "button": "Login",
+        "wrongPassword": "Wrong Password!"
+    }
+}

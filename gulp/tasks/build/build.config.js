@@ -17,7 +17,7 @@
 
         return ngConstant({
                 name: 'app.core.config',
-                constants: Settings['JSONS'].config,
+                constants: Settings['CONFIGURATION'],
                 stream: true
             })
             .pipe(gulp.dest(Settings['TEMP_TARGET_DIR']))

@@ -8,10 +8,10 @@
     ;
 
     /* @ngInject */
-    function LayoutController ($translate, supportedLanguages) {
+    function LayoutController ($translate, I18N_CONFIG) {
         var vm = this;
         vm.changeLanguage = changeLanguage;
-        vm.supportedLanguages = supportedLanguages;
+        vm.supportedLanguages = I18N_CONFIG.avilableLocales;
 
         ////////////////
 

@@ -14,7 +14,7 @@
    */
   gulp.task('build:favicon', function() {
     return gulp
-      .src(['app/*.*ico'])
+      .src(Settings['PATTERNS']['FAV_ICON'])
 
       .pipe(gulp.dest(Settings['TARGET_DIR']))
 

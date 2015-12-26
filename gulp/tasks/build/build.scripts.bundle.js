@@ -19,7 +19,7 @@
   gulp.task('build:scripts:bundle', function () {
     // set up the browserify instance on a task basis
     var b = browserify({
-      entries: './app/src/app.js',
+      entries: Settings['APP_JS_PATH'],
       debug: Settings['DEBUG']
     });
 

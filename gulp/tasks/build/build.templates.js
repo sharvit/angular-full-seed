@@ -10,10 +10,10 @@
   var plugins       = require('gulp-load-plugins')();
   
   /**
-   * build templates (just copy them to temp destination)
+   * build html templates to angularTemplatecache
    */
   gulp.task('build:templates', function() {
-    return gulp.src('app/src/**/*.html')
+    return gulp.src(Settings['PATTERNS']['TEMPLATES'])
       .pipe(plugins.angularTemplatecache('templates.js', {
         root: 'templates/',
         module: Settings['APP_NAME'],
@@ -23,7 +23,7 @@
       .on('error', errorHandler);
 
   }).help = {
-    '': 'build templates (just copy them to temp destination)',
+    '': 'build html templates to angularTemplatecache',
     '[ --release ] [ -r ]': 'release mode'
   };
 

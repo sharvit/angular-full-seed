@@ -15,7 +15,7 @@
   gulp.task('build:index', function() {
 
     // build has a '-versionnumber' suffix
-    var cssNaming = 'styles/main*';
+    var cssNaming = 'styles/app*';
 
     // injects 'src' into index.html at position 'tag'
     var _inject = function(src, tag) {
@@ -26,7 +26,7 @@
       });
     };
 
-    return gulp.src('app/index.html')
+    return gulp.src(Settings['INDEX_PATH'])
       // inject css
       .pipe(_inject(gulp.src(cssNaming, { cwd: Settings['TARGET_DIR'] }), 'app-styles'))
       // inject app.js and vendor.js (release) or all js files indivually (debug)

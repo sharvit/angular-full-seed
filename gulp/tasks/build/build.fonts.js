@@ -14,7 +14,7 @@
   **/
   gulp.task('build:fonts', function() {
     return gulp
-      .src(['app/fonts/*.*'])
+      .src(Settings['PATTERNS']['FONTS'])
 
       .pipe(gulp.dest(path.join(Settings['TARGET_DIR'], 'fonts')))
 

@@ -17,13 +17,13 @@
   gulp.task('build:styles', function() {
     var options = Settings['RELEASE'] ? { style: 'compressed' } : { style: 'expanded' };
 
-    var sassStream = gulp.src('app/styles/main.scss')
+    var sassStream = gulp.src(Settings['APP_SCSS_PATH'])
       .pipe(plugins.sass(options))
       .on('error', errorHandler);
 
     return streamqueue({ objectMode: true }, sassStream)
       .pipe(plugins.autoprefixer())
-      .pipe(plugins.concat('main.css'))
+      .pipe(plugins.concat('app.css'))
       .pipe(plugins.if(Settings['RELEASE'], plugins.stripCssComments()))
       .pipe(plugins.if(Settings['RELEASE'], plugins.rev()))
       .pipe(gulp.dest(path.join(Settings['TARGET_DIR'], 'styles')))
