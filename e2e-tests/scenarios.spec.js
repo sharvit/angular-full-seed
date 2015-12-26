@@ -50,7 +50,7 @@
 
         it('should render state1 when user navigates to /dashboard/state1', function() {
           expect(element.all(by.css('[ui-view] p')).first().getText()).
-            toMatch(/partial for state 1/);
+            toMatch(/paragraph for state number one/);
         });
 
       });
@@ -65,7 +65,7 @@
 
         it('should render state2 when user navigates to /dashboard/state2', function() {
           expect(element.all(by.css('[ui-view] p')).first().getText()).
-            toMatch(/partial for state 2/);
+            toMatch(/paragraph for state number two/);
         });
 
       });
