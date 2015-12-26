@@ -46,7 +46,7 @@
 
         // Use that way:
         //      Settings['PATTERNS']['LOCALE_REPLACE'].replace(/{{locale}}/g, 'en')
-        LOCALE_REPLACE            :     path.resolve(SETTINGS['LOCALES_PATH'],      '{{locale}}/*.{{locale}}.json')
+        LOCALE_REPLACE            :     path.resolve(SETTINGS['LOCALES_PATH'],      '{{locale}}/*.json')
     };
 
     // add the root path into the settings

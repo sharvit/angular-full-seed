@@ -1,7 +1,0 @@
-{
-    "login": {
-        "description": "הקלד סיסמה ({{desiredPassword}}) ולחץ על התחבר",
-        "button": "התחבר",
-        "wrongPassword": "סיסמה שגויה!"
-    }
-}
