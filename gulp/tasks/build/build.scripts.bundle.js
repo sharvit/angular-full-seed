@@ -9,8 +9,6 @@
   var browserify    = require('browserify');
   var source        = require('vinyl-source-stream');
   var buffer        = require('vinyl-buffer');
-  var uglify        = require('gulp-uglify');
-  var sourcemaps    = require('gulp-sourcemaps');
   var plugins       = require('gulp-load-plugins')();
   
   /**
@@ -27,11 +25,11 @@
       .pipe(source('bundle.js'))
       .pipe(plugins.ngAnnotate({'single_quotes': true}))
       .pipe(buffer())
-      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(plugins.sourcemaps.init({loadMaps: true}))
           // Add transformation tasks to the pipeline here.
-          .pipe(uglify())
+          .pipe(plugins.uglify())
           .on('error', plugins.util.log)
-      .pipe(plugins.if(Settings['DEBUG'], sourcemaps.write('./')))
+      .pipe(plugins.if(Settings['DEBUG'], plugins.sourcemaps.write('./')))
       .pipe(gulp.dest(Settings['TEMP_TARGET_DIR']));
   }).help = {
     '': 'bundle all the src files into scripts/bundle.js',
