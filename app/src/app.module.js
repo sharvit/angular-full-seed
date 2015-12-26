@@ -10,6 +10,8 @@
         .module('app', [
             'app.core',
 
+            'app.services',
+
             'app.components',
 
             'app.layout',
@@ -18,6 +20,7 @@
     ;
 
     require('./core/core.module.js');
+    require('./services/services.module.js');
     require('./components/components.module.js');
     require('./layout/layout.module.js');
     require('./states/states.module.js');
