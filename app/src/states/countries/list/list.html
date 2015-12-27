@@ -1,4 +1,4 @@
-<div ng-repeat="country in vm.countries">
-    <h4>{{country.name}}</h4>
+<a ng-href="/countries/{{country.alpha2Code}}" ng-repeat="country in vm.countries">
+    <h4>{{country.alpha2Code}}: {{country.name}}</h4>
     <img ng-src="http://www.geonames.org/flags/x/{{ country.alpha2Code | lowercase }}.gif" />
-</div>
+</a>

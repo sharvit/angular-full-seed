@@ -11,7 +11,8 @@
     /* @ngInject */
     function Country ($http) {
         var service = {
-            all: all
+            all: all,
+            getByAlpha: getByAlpha
         };
         
         return service;
@@ -21,12 +22,19 @@
         function all () {
             return $http
                 .get('https://restcountries.eu/rest/v1/all')
-                .then(getAllSuccess)
+                .then(countryResponseSucceed)
             ;
+        }
 
-            function getAllSuccess (response) {
-                return response.data;
-            }
+        function getByAlpha (alpha) {
+            return $http
+                .get('https://restcountries.eu/rest/v1/alpha/' + alpha)
+                .then(countryResponseSucceed)
+            ;
+        }
+
+        function countryResponseSucceed (response) {
+            return response.data;
         }
     }
 })();

@@ -3,7 +3,7 @@
 
     angular
         .module('app.states.countries.list', [
-
+            'app.core'
         ])
     ;
 

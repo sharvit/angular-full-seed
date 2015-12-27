@@ -8,4 +8,5 @@
     ;
 
     require('./show.config.js');
+    require('./show.controller.js');
 })();
