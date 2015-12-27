@@ -3,8 +3,11 @@
 
 	angular
 		.module('app.core', [
-			'ngCookies',
 			'ui.router',
+			'ui.bootstrap',
+
+			'ngCookies',
+			'ngAnimate',
 			'pascalprecht.translate',
 
 			'app.core.config'

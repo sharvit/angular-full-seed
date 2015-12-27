@@ -12,7 +12,6 @@
         $urlRouterProvider.when('/dashboard', '/dashboard/state1');
 
         $stateProvider.state('app.dashboard', {
-            abstract: true,
             url: '/dashboard',
             templateUrl: 'templates/states/dashboard/dashboard.html'
         });

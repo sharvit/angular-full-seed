@@ -37,4 +37,8 @@
             return response.data;
         }
     }
+
+
+
+// RANDOM WIKI: https://he.wikipedia.org/w/api.php?action=query&generator=random&grnnamespace=0&prop=extracts&format=json
 })();

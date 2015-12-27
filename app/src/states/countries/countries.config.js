@@ -12,7 +12,6 @@
         $urlRouterProvider.when('/countries', '/countries/list');
 
         $stateProvider.state('app.countries', {
-            abstract: true,
             url: '/countries',
             templateUrl: 'templates/states/countries/countries.html'
         });

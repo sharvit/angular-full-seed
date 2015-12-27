@@ -1,10 +1,14 @@
-<p>{{ 'login.description' | translate:vm }}</p>
+<div class="container">
+    <h1>{{ 'utils.hello' | translate }}</h1>
 
-<div>
-    <input type="password" ng-model="vm.password" />
-    <button type="button" ng-click="vm.login()">{{ 'login.button' | translate }}</button>
+    <p>{{ 'login.description' | translate:vm }}</p>
+
+    <div>
+        <input type="password" ng-model="vm.password" />
+        <button type="button" ng-click="vm.login()">{{ 'login.button' | translate }}</button>
+    </div>
+
+    <p class="invalid-password-error" ng-show="vm.invalidPassword">
+        <strong>{{ 'login.wrongPassword' | translate }}</strong>
+    </p>
 </div>
-
-<p class="invalid-password-error" ng-show="vm.invalidPassword">
-    <strong>{{ 'login.wrongPassword' | translate }}</strong>
-</p>

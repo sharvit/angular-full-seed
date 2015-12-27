@@ -1,13 +1,8 @@
-<h1>{{ 'utils.hello' | translate }}</h1>
-
-<!-- Language Changers -->
-<ul class="menu menu-locales">
-    <li><a href="#" ng-click="vm.changeLanguage('en')">{{ 'languages.en' | translate }}</a></li>
-    <li><a href="#" ng-click="vm.changeLanguage('fr')">{{ 'languages.fr' | translate }}</a></li>
-    <li><a href="#" ng-click="vm.changeLanguage('he')">{{ 'languages.he' | translate }}</a></li>
-</ul>
+<!-- include the navbar -->
+<ng-include src="'templates/layout/navbar.html'"></ng-include>
 
 <!-- Inner View -->
 <div ui-view></div>
 
-<p>{{ 'layout.footer' | translate }}: v<span app-version></span></p>
+<!-- include the footer -->
+<ng-include src="'templates/layout/footer.html'"></ng-include>
