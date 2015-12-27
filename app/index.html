@@ -22,8 +22,11 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <!-- angular layout state goes here -->
     <div ui-view class="dn-fade"></div>
-    <div class="container" ng-show="false">
+
+    <!-- show loading animation untill the angular done loading -->
+    <div class="container" ng-hide="true">
         <div class="panel panel-default">
             <div class="panel-body text-center">
                 <h1>Angular Full Seed</h1>

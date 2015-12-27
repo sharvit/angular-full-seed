@@ -8,5 +8,6 @@
   "bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js",
   "bower_components/angular-ui-router/release/angular-ui-router.js",
   "bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
-  "bower_components/ngAnimate-animate.css/animate.js"
+  "bower_components/ngAnimate-animate.css/animate.js",
+  "bower_components/angular-loading-bar/build/loading-bar.js"
 ]

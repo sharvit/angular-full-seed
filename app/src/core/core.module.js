@@ -8,6 +8,7 @@
 
 			'ngAnimate',
 			'ngAnimate-animate.css',
+			'angular-loading-bar',
 
 			'ngCookies',
 			'pascalprecht.translate',

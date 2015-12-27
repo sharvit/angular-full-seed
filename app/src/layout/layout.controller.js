@@ -8,7 +8,7 @@
     ;
 
     /* @ngInject */
-    function LayoutController ($rootScope, $translate, I18N_CONFIG) {
+    function LayoutController ($rootScope, $translate, $timeout, I18N_CONFIG) {
         var vm = this;
         vm.currentLocale = null;
         vm.currentLocaleNativeName = null;
