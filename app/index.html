@@ -4,8 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Angular Full Seed</title>
-
     <base href="/">
+
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none!important;
+        }
+    </style>
 
     <!-- inject:app-styles:css --><!-- endinject -->
 </head>
@@ -15,7 +22,17 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ui-view></div>
+    <div ui-view class="dn-fade"></div>
+    <div class="container" ng-show="false">
+        <div class="panel panel-default">
+            <div class="panel-body text-center">
+                <h1>Angular Full Seed</h1>
+                <div class="progress progress-striped active page-progress-bar">
+                    <div role="progressbar" class="progress-bar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<!-- inject:app-scripts:js --><!-- endinject -->
 </body>

@@ -12,6 +12,8 @@
     "bootstrap-sass": "~3.3.6",
     "angular-bootstrap": "~0.14.3",
     "angular-animate": "~1.4.8",
-    "bootstrap-rtl": "~3.3.4"
+    "bootstrap-rtl": "~3.3.4",
+    "animate.css": "~3.5.0",
+    "ngAnimate-animate.css": "~0.1.1"
   }
 }

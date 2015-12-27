@@ -6,8 +6,10 @@
 			'ui.router',
 			'ui.bootstrap',
 
-			'ngCookies',
 			'ngAnimate',
+			'ngAnimate-animate.css',
+
+			'ngCookies',
 			'pascalprecht.translate',
 
 			'app.core.config'
