@@ -1,5 +1,9 @@
 {
     "utils": {
+        "languageCode": "en",
+        "nativeLanguageName": "English",
+        "enLanguageName": "English",
+        "dir": "ltr",
         "hello": "hello"
     }
 }

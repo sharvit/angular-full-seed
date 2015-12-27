@@ -1,5 +1,11 @@
 {
     "defaultLocale": "en",
 
-    "avilableLocales": ["en", "fr", "he"]
+    "avilableLocales": ["en", "fr", "he"],
+
+    "avilableLocalesNames": {
+        "en": "English",
+        "fr": "French",
+        "he": "Hebrew"
+    }
 }

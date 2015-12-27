@@ -23,12 +23,12 @@
             <ul class="nav navbar-nav navbar-right flip">
                 <li uib-dropdown>
                     <a uib-dropdown-toggle role="button">
-                        Language: {{ vm.currentLocaleNativeName }} <span class="caret"></span>
+                        Language: {{ 'utils.nativeLanguageName' | translate }} <span class="caret"></span>
                     </a>
                     <ul uib-dropdown-menu>
-                        <li><a ng-click="vm.changeLanguage('en')">{{ 'languages.en' | translate }}</a></li>
-                        <li><a ng-click="vm.changeLanguage('fr')">{{ 'languages.fr' | translate }}</a></li>
-                        <li><a ng-click="vm.changeLanguage('he')">{{ 'languages.he' | translate }}</a></li>
+                        <li ng-repeat="(locale, localeName) in vm.avilableLocalesNames">
+                            <a ng-click="vm.changeLanguage(locale)">{{ localeName }}</a>
+                        </li>
 
                         <li role="separator" class="divider"></li>
 

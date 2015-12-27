@@ -1,5 +1,9 @@
 {
     "utils": {
-        "hello": "Salut"
+        "languageCode": "fr",
+        "nativeLanguageName": "Français",
+        "enLanguageName": "French",
+        "dir": "ltr",
+        "hello": "salut"
     }
 }

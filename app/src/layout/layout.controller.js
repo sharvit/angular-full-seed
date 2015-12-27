@@ -15,7 +15,7 @@
         vm.isNavbarCollapsed = true;
         vm.toggleNavbar = toggleNavbar;
         vm.changeLanguage = changeLanguage;
-        vm.supportedLanguages = I18N_CONFIG.avilableLocales;
+        vm.avilableLocalesNames = I18N_CONFIG.avilableLocalesNames;
 
         activate();
 

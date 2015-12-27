@@ -1,5 +1,9 @@
 {
     "utils": {
-        "hello": "\u05e9\u05c1\u05b8\u05dc\u05d5\u05b9\u05dd"
+        "languageCode": "he",
+        "nativeLanguageName": "עברית",
+        "enLanguageName": "Hebrew",
+        "dir": "rtl",
+        "hello": "שלום"
     }
 }
