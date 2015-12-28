@@ -9,7 +9,7 @@
 
     /* @ngInject */
     function config ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.when('/countries', '/countries/list');
+        $urlRouterProvider.when('/countries', '/countries/all');
 
         $stateProvider.state('app.countries', {
             url: '/countries',

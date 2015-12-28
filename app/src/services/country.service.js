@@ -12,6 +12,11 @@
     function Country ($http) {
         var service = {
             all: all,
+            allByCurrency: allByCurrency,
+            allByRegion: allByRegion,
+            allBySubRegion: allBySubRegion,
+            allByLang: allByLang,
+
             getByAlpha: getByAlpha
         };
         
@@ -22,6 +27,34 @@
         function all () {
             return $http
                 .get('https://restcountries.eu/rest/v1/all')
+                .then(countryResponseSucceed)
+            ;
+        }
+
+        function allByCurrency (currency) {
+            return $http
+                .get('https://restcountries.eu/rest/v1/currency/' + currency)
+                .then(countryResponseSucceed)
+            ;
+        }
+
+        function allByRegion (region) {
+            return $http
+                .get('https://restcountries.eu/rest/v1/region/' + region)
+                .then(countryResponseSucceed)
+            ;
+        }
+
+        function allBySubRegion (subRegion) {
+            return $http
+                .get('https://restcountries.eu/rest/v1/subregion/' + subRegion)
+                .then(countryResponseSucceed)
+            ;
+        }
+
+        function allByLang (lang) {
+            return $http
+                .get('https://restcountries.eu/rest/v1/lang/' + lang)
                 .then(countryResponseSucceed)
             ;
         }

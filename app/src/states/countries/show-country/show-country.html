@@ -2,12 +2,6 @@
 
     <h2>{{vm.country.name}}</h2>
 
-    <div class="alert alert-danger" role="alert">
-        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        <span class="sr-only">Error:</span>
-        Enter a valid email address
-    </div>
-
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
@@ -40,7 +34,7 @@
                     <strong>Region:</strong>
                 </div>
                 <div class="col-md-10 col-sm-9 col-sm-6">
-                    {{vm.country.region}}
+                    <a ng-href="/countries/region/{{vm.country.region}}">{{vm.country.region}}</a>
                 </div>
             </div>
             <div class="row">
@@ -48,7 +42,7 @@
                     <strong>Sub Region:</strong>
                 </div>
                 <div class="col-md-10 col-sm-9 col-sm-6">
-                    {{vm.country.subregion}}
+                    <a ng-href="/countries/sub-region/{{vm.country.subregion}}">{{vm.country.subregion}}</a>
                 </div>
             </div>
             <br />
@@ -84,13 +78,13 @@
             <p>
                 <strong>Currencies</strong>
                 <ul>
-                    <li ng-repeat="currency in vm.country.currencies">{{currency}}</li>
+                    <li ng-repeat="currency in vm.country.currencies"><a ng-href="/countries/currency/{{currency}}">{{currency}}</a></li>
                 </ul>
             </p>
             <p>
                 <strong>Languages</strong>
                 <ul>
-                    <li ng-repeat="language in vm.country.languages">{{language}}</li>
+                    <li ng-repeat="language in vm.country.languages"><a ng-href="/countries/lang/{{language}}">{{language}}</a></li>
                 </ul>
             </p>
             <p>
@@ -102,7 +96,7 @@
             <p>
                 <strong>Borders</strong>
                 <ul>
-                    <li ng-repeat="border in vm.country.borders">{{border}}</li>
+                    <li ng-repeat="border in vm.country.borders"><a ng-href="/countries/{{border}}">{{border}}</a></li>
                 </ul>
             </p>
 
