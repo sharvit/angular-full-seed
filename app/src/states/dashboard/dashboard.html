@@ -1,10 +1,7 @@
 <div class="container dashboard-state">
 
-    <!-- Inner States Srefs -->
-    <ul class="menu">
-        <li><a ui-sref="app.dashboard.state1">state1</a></li>
-        <li><a ui-sref="app.dashboard.state2">state2</a></li>
-    </ul>
+    <!-- include the dashboard-navbar -->
+    <ng-include src="'templates/states/dashboard/dashboard-navbar.html'"></ng-include>
 
     <!-- Inner View -->
     <div ui-view></div>

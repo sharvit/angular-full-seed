@@ -26,13 +26,13 @@
 
       it('should show the "Wrong Password" error after entering wrong password and clicking "Login"', function() {
         element(by.css('.login-state input[type=password]')).sendKeys('some wrong password');
-        element(by.css('.login-state button[type=button]')).click();
+        element(by.css('.login-state button[type=submit]')).click();
         expect(element(by.css('.login-state .invalid-password-error.ng-hide')).isPresent()).toBeFalsy();
       });
 
       it('should take you to dashboard after entering the right password and clicking "Login"', function() {
         element(by.css('.login-state input[type=password]')).sendKeys('121212');
-        element(by.css('.login-state button[type=button]')).click();
+        element(by.css('.login-state button[type=submit]')).click();
         expect(browser.getLocationAbsUrl()).toMatch('/dashboard/state1');
       });
     });

@@ -1,14 +1,17 @@
 <div class="container login-state">
     <h1>{{ 'utils.hello' | translate }}</h1>
 
-    <p>{{ 'login.description' | translate:vm }}</p>
-
-    <div>
-        <input type="password" ng-model="vm.password" />
-        <button type="button" ng-click="vm.login()">{{ 'login.button' | translate }}</button>
-    </div>
-
-    <p class="invalid-password-error" ng-show="vm.invalidPassword">
-        <strong>{{ 'login.wrongPassword' | translate }}</strong>
-    </p>
+    <form ng-submit="vm.login()">
+        <div class="form-group" ng-class="{ 'has-error': vm.invalidPassword }">
+            <label for="exampleInputPassword1">Password</label>
+            <input ng-model="vm.password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <span class="help-block">
+                <p class="invalid-password-error" ng-show="vm.invalidPassword">
+                    <strong>{{ 'login.wrongPassword' | translate }}</strong>
+                </p>
+                {{ 'login.description' | translate:vm }}
+            </span>
+        </div>
+        <button type="submit" class="btn btn-default">{{ 'login.button' | translate }}</button>
+    </form>
 </div>
