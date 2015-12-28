@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.states.countries.show')
+        .module('app.states.countries.show-country')
 
         .controller('ShowController', ShowController)
     ;

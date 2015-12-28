@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.states.countries.show')
+        .module('app.states.countries.show-country')
 
         .config(config)
     ;
@@ -11,7 +11,7 @@
     function config ($stateProvider) {
         $stateProvider.state('app.countries.show', {
             url: '/:id',
-            templateUrl: 'templates/states/countries/show/show.html',
+            templateUrl: 'templates/states/countries/show-country/show-country.html',
             controller: 'ShowController',
             controllerAs: 'vm',
             resolve: {

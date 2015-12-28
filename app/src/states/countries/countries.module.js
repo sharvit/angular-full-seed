@@ -4,13 +4,13 @@
   angular
     .module('app.states.countries', [
       
-      'app.states.countries.list',
-      'app.states.countries.show'
+      'app.states.countries.countries-list',
+      'app.states.countries.show-country'
     ])
   ;
 
   require('./countries.config.js');
 
-  require('./list/list.module.js');
-  require('./show/show.module.js');
+  require('./countries-list/countries-list.module.js');
+  require('./show-country/show-country.module.js');
 })();

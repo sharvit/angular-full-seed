@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.states.countries.list')
+        .module('app.states.countries.countries-list')
 
         .controller('ListController', ListController)
     ;

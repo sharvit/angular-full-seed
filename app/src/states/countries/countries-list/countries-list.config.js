@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.states.countries.list')
+        .module('app.states.countries.countries-list')
 
         .config(config)
     ;
@@ -11,7 +11,7 @@
     function config ($stateProvider) {
         $stateProvider.state('app.countries.list', {
             url: '/list',
-            templateUrl: 'templates/states/countries/list/list.html',
+            templateUrl: 'templates/states/countries/countries-list/countries-list.html',
             controller: 'ListController',
             controllerAs: 'vm',
             resolve: {
