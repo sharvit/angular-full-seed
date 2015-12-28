@@ -10,7 +10,8 @@
    */
   gulp.task('watch', [
     'watch:source',
-    'watch:target'
+    'watch:target',
+    'watch:protractor-qa'
   ]).help = {
     '': 'run watchers to auto build source files and live reload browser',
     '[ --release ] [ -r ]': 'release mode',

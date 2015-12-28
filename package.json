@@ -52,6 +52,7 @@
     "gulp-angular-protractor": "0.0.6",
     "gulp-jshint": "^2.0.0",
     "gulp-livereload": "^3.7.0",
+    "gulp-protractor-qa": "^0.2.0",
     "gulp-webserver": "^0.9.1",
     "jasmine-core": "^2.3.4",
     "jshint": "^2.8.0",

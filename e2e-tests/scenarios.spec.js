@@ -20,19 +20,12 @@
         expect(element(by.css('.login-state')).isPresent()).toBeTruthy();
       });
 
-      it('should not show the "Wrong Password" error by default', function() {
-        expect(element(by.css('.login-state .invalid-password-error.ng-hide')).isPresent()).toBeTruthy();
-      });
-
-      it('should show the "Wrong Password" error after entering wrong password and clicking "Login"', function() {
-        element(by.css('.login-state input[type=password]')).sendKeys('some wrong password');
-        element(by.css('.login-state button[type=submit]')).click();
-        expect(element(by.css('.login-state .invalid-password-error.ng-hide')).isPresent()).toBeFalsy();
-      });
-
       it('should take you to dashboard after entering the right password and clicking "Login"', function() {
-        element(by.css('.login-state input[type=password]')).sendKeys('121212');
-        element(by.css('.login-state button[type=submit]')).click();
+        var passwordField = element(by.model('vm.password'));
+        var submitButton = element(by.css('.login-state button[type=submit]'));
+
+        passwordField.sendKeys('121212');
+        submitButton.click();
         expect(browser.getLocationAbsUrl()).toMatch('/dashboard/state1');
       });
     });
