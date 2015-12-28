@@ -20,16 +20,7 @@
                 controller: countriesListController,
                 controllerAs: 'vm',
                 resolve: {
-                    countries: resolveCountries
-                }
-            })
-            .state('app.countries.by-currency', {
-                url: '/currency/:currency',
-                templateUrl: countriesListTemplate,
-                controller: countriesListController,
-                controllerAs: 'vm',
-                resolve: {
-                    countries: resolveCountriesByCurrency
+                    countries: resolveAllCountries
                 }
             })
             .state('app.countries.by-region', {
@@ -59,17 +50,21 @@
                     countries: resolveCountriesByLang
                 }
             })
+            .state('app.countries.by-currency', {
+                url: '/currency/:currency',
+                templateUrl: countriesListTemplate,
+                controller: countriesListController,
+                controllerAs: 'vm',
+                resolve: {
+                    countries: resolveCountriesByCurrency
+                }
+            })
         ;
     }
 
     /* @ngInject */
-    function resolveCountries (Country) {
+    function resolveAllCountries (Country) {
         return Country.all();
-    }
-
-    /* @ngInject */
-    function resolveCountriesByCurrency ($stateParams, Country) {
-        return Country.allByCurrency($stateParams.currency);
     }
 
     /* @ngInject */
@@ -85,5 +80,10 @@
     /* @ngInject */
     function resolveCountriesByLang ($stateParams, Country) {
         return Country.allByLang($stateParams.lang);
+    }
+
+    /* @ngInject */
+    function resolveCountriesByCurrency ($stateParams, Country) {
+        return Country.allByCurrency($stateParams.currency);
     }
 })();

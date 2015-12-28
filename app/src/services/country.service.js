@@ -12,11 +12,10 @@
     function Country ($http) {
         var service = {
             all: all,
-            allByCurrency: allByCurrency,
             allByRegion: allByRegion,
             allBySubRegion: allBySubRegion,
             allByLang: allByLang,
-
+            allByCurrency: allByCurrency,
             getByAlpha: getByAlpha
         };
         
