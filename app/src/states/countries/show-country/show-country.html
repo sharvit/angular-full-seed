@@ -1,4 +1,91 @@
-<div class="show-country-state">
-    <h3>{{vm.country.name}}</h3>
-    <p>Show Country goes here!!</p>
+<div class="container show-country-state">
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h2>{{vm.country.name}}</h2>
+
+            <p>
+                Region: {{vm.country.region}}<br />
+                Sub Region: {{vm.country.subregion}}<br />
+            </p>
+
+            <p>
+                Capital: {{vm.country.capital}}<br />
+                Population: {{vm.country.population}}<br />
+                Location: [{{vm.country.latlng[0]}}, {{vm.country.latlng[1]}}]
+            </p>
+
+            <p>
+                <strong>Spellings</strong>
+                <ul>
+                    <li ng-repeat="spell in vm.country.altSpellings">{{spell}}</li>
+                </ul>
+            </p>
+
+            <p>
+                <strong>Translations</strong>
+                <ul>
+                    <li ng-repeat="translation in vm.country.translations">{{translation}}</li>
+                </ul>
+            </p>
+
+            <img country-image="{{vm.country.alpha2Code}}" />
+        </div>
+    </div>
 </div>
+
+
+
+
+<!-- {
+    "name": "Colombia",
+    "capital": "Bogotá",
+    "altSpellings": [
+        "CO",
+        "Republic of Colombia",
+        "República de Colombia"
+    ],
+    "relevance": "0",
+    "region": "Americas",
+    "subregion": "South America",
+    "translations": {
+        "de": "Kolumbien",
+        "es": "Colombia",
+        "fr": "Colombie",
+        "ja": "コロンビア",
+        "it": "Colombia"
+    },
+    "population": 48266600,
+    "latlng": [
+        4,
+        -72
+    ],
+    "demonym": "Colombian",
+    "area": 1141748,
+    "gini": 55.9,
+    "timezones": [
+        "UTC−05:00"
+    ],
+    "borders": [
+        "BRA",
+        "ECU",
+        "PAN",
+        "PER",
+        "VEN"
+    ],
+    "nativeName": "Colombia",
+    "callingCodes": [
+        "57"
+    ],
+    "topLevelDomain": [
+        ".co"
+    ],
+    "alpha2Code": "CO",
+    "alpha3Code": "COL",
+    "currencies": [
+        "COP"
+    ],
+    "languages": [
+        "es"
+    ]
+} -->

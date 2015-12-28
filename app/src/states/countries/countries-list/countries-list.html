@@ -1,6 +1,7 @@
-<div class="countries-list-state">
-    <a ng-href="/countries/{{country.alpha2Code}}" ng-repeat="country in vm.countries">
-        <h4>{{country.alpha2Code}}: {{country.name}}</h4>
-        <img ng-src="http://www.geonames.org/flags/x/{{ country.alpha2Code | lowercase }}.gif" />
+<div class="container-fluid countries-list-state">
+    <h2>World Countries List</h2>
+
+    <a class="country-list-item pull-left flip" ng-href="/countries/{{country.alpha2Code}}" ng-repeat="country in vm.countries">
+        <img country-image="{{country.alpha2Code}}" />
     </a>
 </div>
