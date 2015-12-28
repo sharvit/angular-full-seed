@@ -9,10 +9,10 @@
 
     /* @ngInject */
     function config ($stateProvider) {
-        $stateProvider.state('app.countries.show', {
+        $stateProvider.state('app.countries.show-country', {
             url: '/:id',
             templateUrl: 'templates/states/countries/show-country/show-country.html',
-            controller: 'ShowController',
+            controller: 'ShowCountryController',
             controllerAs: 'vm',
             resolve: {
                 country: resolveCountry

@@ -4,11 +4,11 @@
     angular
         .module('app.states.countries.show-country')
 
-        .controller('ShowController', ShowController)
+        .controller('ShowCountryController', ShowCountryController)
     ;
 
     /* @ngInject */
-    function ShowController ($state, country) {
+    function ShowCountryController ($state, country) {
         var vm = this;
         vm.country = country;
 

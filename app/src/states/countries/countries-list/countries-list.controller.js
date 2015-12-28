@@ -4,11 +4,11 @@
     angular
         .module('app.states.countries.countries-list')
 
-        .controller('ListController', ListController)
+        .controller('CountriesListController', CountriesListController)
     ;
 
     /* @ngInject */
-    function ListController ($state, countries) {
+    function CountriesListController ($state, countries) {
         var vm = this;
         vm.countries = countries;
 
