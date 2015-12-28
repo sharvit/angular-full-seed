@@ -2,7 +2,9 @@
  VENDORS
  */
 
-// bootstrap
+// bootstrap-sass
+// The path for our bootstrap font files
+$icon-font-path: "/fonts/" !default;
 @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 // Original Bootstrap's CSS depends on empty href attributes to style cursors for several components (pagination, tabs etc.).
 // But in AngularJS adding empty href attributes to link tags will cause unwanted route changes.

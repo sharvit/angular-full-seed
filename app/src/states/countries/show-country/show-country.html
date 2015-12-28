@@ -1,31 +1,108 @@
 <div class="container show-country-state">
 
+    <h2>{{vm.country.name}}</h2>
+
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        Enter a valid email address
+    </div>
+
     <div class="panel panel-default">
         <div class="panel-body">
-            <h2>{{vm.country.name}}</h2>
-
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <strong>English Name:</strong>
+                </div>
+                <div class="col-md-10 col-sm-9 col-sm-6">
+                    {{vm.country.name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <strong>Native Name:</strong>
+                </div>
+                <div class="col-md-10 col-sm-9 col-sm-6">
+                    {{vm.country.nativeName}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <strong>Capital:</strong>
+                </div>
+                <div class="col-md-10 col-sm-9 col-sm-6">
+                    {{vm.country.capital}}
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <strong>Region:</strong>
+                </div>
+                <div class="col-md-10 col-sm-9 col-sm-6">
+                    {{vm.country.region}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <strong>Sub Region:</strong>
+                </div>
+                <div class="col-md-10 col-sm-9 col-sm-6">
+                    {{vm.country.subregion}}
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <strong>Population:</strong>
+                </div>
+                <div class="col-md-10 col-sm-9 col-sm-6">
+                    {{vm.country.population}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <strong>Location:</strong>
+                </div>
+                <div class="col-md-10 col-sm-9 col-sm-6">
+                    [{{vm.country.latlng[0]}}, {{vm.country.latlng[1]}}]
+                </div>
+            </div>
+            <br />
             <p>
-                Region: {{vm.country.region}}<br />
-                Sub Region: {{vm.country.subregion}}<br />
+                <strong>Timezones</strong>
+                <ul>
+                    <li ng-repeat="timezone in vm.country.timezones">{{timezone}}</li>
+                </ul>
             </p>
-
-            <p>
-                Capital: {{vm.country.capital}}<br />
-                Population: {{vm.country.population}}<br />
-                Location: [{{vm.country.latlng[0]}}, {{vm.country.latlng[1]}}]
-            </p>
-
             <p>
                 <strong>Spellings</strong>
                 <ul>
                     <li ng-repeat="spell in vm.country.altSpellings">{{spell}}</li>
                 </ul>
             </p>
-
+            <p>
+                <strong>Currencies</strong>
+                <ul>
+                    <li ng-repeat="currency in vm.country.currencies">{{currency}}</li>
+                </ul>
+            </p>
+            <p>
+                <strong>Languages</strong>
+                <ul>
+                    <li ng-repeat="language in vm.country.languages">{{language}}</li>
+                </ul>
+            </p>
             <p>
                 <strong>Translations</strong>
                 <ul>
-                    <li ng-repeat="translation in vm.country.translations">{{translation}}</li>
+                    <li ng-repeat="(locale, translation) in vm.country.translations">{{locale}}: {{translation}}</li>
+                </ul>
+            </p>
+            <p>
+                <strong>Borders</strong>
+                <ul>
+                    <li ng-repeat="border in vm.country.borders">{{border}}</li>
                 </ul>
             </p>
 
@@ -33,59 +110,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-<!-- {
-    "name": "Colombia",
-    "capital": "Bogotá",
-    "altSpellings": [
-        "CO",
-        "Republic of Colombia",
-        "República de Colombia"
-    ],
-    "relevance": "0",
-    "region": "Americas",
-    "subregion": "South America",
-    "translations": {
-        "de": "Kolumbien",
-        "es": "Colombia",
-        "fr": "Colombie",
-        "ja": "コロンビア",
-        "it": "Colombia"
-    },
-    "population": 48266600,
-    "latlng": [
-        4,
-        -72
-    ],
-    "demonym": "Colombian",
-    "area": 1141748,
-    "gini": 55.9,
-    "timezones": [
-        "UTC−05:00"
-    ],
-    "borders": [
-        "BRA",
-        "ECU",
-        "PAN",
-        "PER",
-        "VEN"
-    ],
-    "nativeName": "Colombia",
-    "callingCodes": [
-        "57"
-    ],
-    "topLevelDomain": [
-        ".co"
-    ],
-    "alpha2Code": "CO",
-    "alpha3Code": "COL",
-    "currencies": [
-        "COP"
-    ],
-    "languages": [
-        "es"
-    ]
-} -->

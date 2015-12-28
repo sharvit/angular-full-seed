@@ -2,6 +2,6 @@
     <h2>World Countries List</h2>
 
     <a class="country-list-item pull-left flip" ng-href="/countries/{{country.alpha2Code}}" ng-repeat="country in vm.countries">
-        <img country-image="{{country.alpha2Code}}" />
+        <img country-image="{{country.alpha2Code}}" title="{{country.name}}" />
     </a>
 </div>

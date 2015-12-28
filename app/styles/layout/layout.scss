@@ -14,3 +14,7 @@ body { padding-top: 70px; }
 //      Tip: By default, the navbar is 50px high.
 body { padding-bottom: 70px; }
 // Make sure to include this after the core Bootstrap CSS.
+
+.navbar-fixed-bottom {
+    font-family: Roboto;
+}

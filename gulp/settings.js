@@ -21,6 +21,7 @@
         SCSS_PATH                 :     path.resolve(ROOT_PATH, 'app/styles'),
         APP_SCSS_PATH             :     path.resolve(ROOT_PATH, 'app/styles/app.scss'),
         FONTS_PATH                :     path.resolve(ROOT_PATH, 'app/fonts'),
+        BOOTSTRAP_FONTS_PATH      :     path.resolve(ROOT_PATH, 'bower_components/bootstrap-sass/assets/fonts/bootstrap'),
         IMAGES_PATH               :     path.resolve(ROOT_PATH, 'app/images'),
         INDEX_PATH                :     path.resolve(ROOT_PATH, 'app/index.html'),
         CONFIG_PATH               :     path.resolve(ROOT_PATH, 'config'),
@@ -40,9 +41,12 @@
         TEMPLATES                 :     path.resolve(SETTINGS['SRC_PATH'],          '**/*.html'),
         IMAGES                    :     path.resolve(SETTINGS['IMAGES_PATH'],       '**/*.*'),
         FAV_ICON                  :     path.resolve(SETTINGS['APP_PATH'],          '*.*ico'),
-        FONTS                     :     path.resolve(SETTINGS['FONTS_PATH'],        '*.*'),
         STYLES                    :     path.resolve(SETTINGS['SCSS_PATH'],         '**/*.scss'),
         LOCALES                   :     path.resolve(SETTINGS['LOCALES_PATH'],      '**/*.json'),
+        FONTS                     :     [
+            path.resolve(SETTINGS['FONTS_PATH'],                    '*.*'),
+            path.resolve(SETTINGS['BOOTSTRAP_FONTS_PATH'],          '*.*')
+        ],
 
         // Use that way:
         //      Settings['PATTERNS']['LOCALE_REPLACE'].replace(/{{locale}}/g, 'en')
