@@ -10,25 +10,33 @@
     * Settings
     */
     var SETTINGS = {
+
         APP_NAME                  :     'app',
+
         TEMP_TARGET_DIR           :     './build/.tmp',
         DEBUG_TARGET_DIR          :     './build/debug',
         RELEASE_TARGET_DIR        :     './build/release',
+
         DEFAULT_PORT              :     8888,
+
         APP_PATH                  :     path.resolve(ROOT_PATH, 'app'),
         SRC_PATH                  :     path.resolve(ROOT_PATH, 'app/src'),
-        APP_JS_PATH               :     path.resolve(ROOT_PATH, 'app/src/app.js'),
         SCSS_PATH                 :     path.resolve(ROOT_PATH, 'app/styles'),
-        APP_SCSS_PATH             :     path.resolve(ROOT_PATH, 'app/styles/app.scss'),
         FONTS_PATH                :     path.resolve(ROOT_PATH, 'app/fonts'),
-        BOOTSTRAP_FONTS_PATH      :     path.resolve(ROOT_PATH, 'bower_components/bootstrap-sass/assets/fonts/bootstrap'),
+        ICONS_PATH                :     path.resolve(ROOT_PATH, 'app/icons'),
         IMAGES_PATH               :     path.resolve(ROOT_PATH, 'app/images'),
+
+        APP_JS_PATH               :     path.resolve(ROOT_PATH, 'app/src/app.js'),
+        APP_SCSS_PATH             :     path.resolve(ROOT_PATH, 'app/styles/app.scss'),
         INDEX_PATH                :     path.resolve(ROOT_PATH, 'app/index.html'),
+
         CONFIG_PATH               :     path.resolve(ROOT_PATH, 'config'),
         LOCALES_PATH              :     path.resolve(ROOT_PATH, 'config/locales'),
+
         VENDOR_PATH               :     path.resolve(ROOT_PATH, 'vendor.json'),
         PACKAGE_PATH              :     path.resolve(ROOT_PATH, 'package.json'),
         BOWER_PATH                :     path.resolve(ROOT_PATH, 'bower.json'),
+
         KARMA_CONFIG_FILE         :     path.resolve(ROOT_PATH, 'unit-tests.karma.conf.js'),
         PROTRACTOR_CONFIG_FILE    :     path.resolve(ROOT_PATH, 'e2e-tests', 'protractor.conf.js')
     };
@@ -43,10 +51,8 @@
         FAV_ICON                  :     path.resolve(SETTINGS['APP_PATH'],          '*.*ico'),
         STYLES                    :     path.resolve(SETTINGS['SCSS_PATH'],         '**/*.scss'),
         LOCALES                   :     path.resolve(SETTINGS['LOCALES_PATH'],      '**/*.json'),
-        FONTS                     :     [
-            path.resolve(SETTINGS['FONTS_PATH'],                    '*.*'),
-            path.resolve(SETTINGS['BOOTSTRAP_FONTS_PATH'],          '*.*')
-        ],
+        FONTS                     :     path.resolve(SETTINGS['FONTS_PATH'],        '*.*'),
+        ICONS                     :     path.resolve(SETTINGS['ICONS_PATH'],        '**/*.*'),
 
         // Use that way:
         //      Settings['PATTERNS']['LOCALE_REPLACE'].replace(/{{locale}}/g, 'en')

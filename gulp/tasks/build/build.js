@@ -18,6 +18,7 @@
         'build:locales',
         'build:favicon',
         'build:fonts',
+        'build:icons',
         'build:templates',
         'build:styles',
         'build:images',

@@ -20,7 +20,12 @@
                 <li ui-sref-active="active"><a ui-sref="app.countries">{{ 'country.navbarTitle' | translate }}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right flip">
-                <li uib-dropdown>
+                <li>
+                    <language-picker languages="vm.avilableLocales" on-change="vm.changeLanguage(language.code)" icon="flag-icon flag-icon-{{vm.currentLocale}}" flags="true" help="https://yumday.oneskyapp.com/collaboration/project?id=53193">
+                        {{ 'utils.language' | translate }}: {{ 'utils.nativeLanguageName' | translate }}
+                    </language-picker>
+                </li>
+                <!-- <li uib-dropdown>
                     <a uib-dropdown-toggle role="button">
                         {{ 'utils.language' | translate }}: {{ 'utils.nativeLanguageName' | translate }} <span class="caret"></span>
                     </a>
@@ -33,7 +38,7 @@
 
                         <li><a>{{ 'layout.donateMoreLanguages' | translate }}</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </div>
 

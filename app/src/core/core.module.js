@@ -13,6 +13,8 @@
 			'ngCookies',
 			'pascalprecht.translate',
 
+			'language-picker',
+
 			'app.core.config'
 		])
 		

@@ -16,7 +16,7 @@
   gulp.task('build:vendor', function() {
     var dest = path.join(Settings['TARGET_DIR'], 'scripts/vendor');
 
-    return gulp.src(Settings['VENDOR_FILES'])
+    return gulp.src(Settings['VENDOR_FILES'].scripts)
       .pipe(plugins.concat('vendor.js'))
       .pipe(plugins.if(Settings['RELEASE'], plugins.uglify()))
       .pipe(plugins.if(Settings['RELEASE'], plugins.rev()))

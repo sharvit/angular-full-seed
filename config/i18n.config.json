@@ -1,7 +1,7 @@
 {
     "defaultLocale": "en",
 
-    "avilableLocales": ["en", "fr", "he"],
+    "avilableLocales": ["en", "fr", "he-IL"],
 
     "avilableLocalesNames": {
         "en": "English",

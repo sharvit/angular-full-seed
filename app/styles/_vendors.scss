@@ -4,7 +4,7 @@
 
 // bootstrap-sass
 // The path for our bootstrap font files
-$icon-font-path: "/fonts/" !default;
+$icon-font-path: $fonts-path !default;
 @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 // Original Bootstrap's CSS depends on empty href attributes to style cursors for several components (pagination, tabs etc.).
 // But in AngularJS adding empty href attributes to link tags will cause unwanted route changes.
@@ -19,8 +19,19 @@ html[dir=rtl] {
     @import "bower_components/bootstrap-rtl/dist/css/bootstrap-rtl";
 }
 
+// font-awesome
+$fa-font-path: $fonts-path !default;
+@import "bower_components/font-awesome/scss/font-awesome";
+
 // animate.css
 @import "bower_components/animate.css/animate";
 
+// flag-icon-css
+$flag-icon-css-path: '#{$icons-path}/flags' !default;
+@import "bower_components/flag-icon-css/sass/flag-icon";
+
 // angular-loading-bar
 @import "bower_components/angular-loading-bar/build/loading-bar";
+
+// angular-language-picker
+@import "bower_components/angular-language-picker/dist/angular-language-picker.min"
