@@ -59,6 +59,7 @@ framework and a bunch of development, testing and production tools for instant w
 * Auto min-safe all Angular DI through [ng-annotate], no need to use weird bracket notation.
 * Blazing fast.
 
+
 ## Getting Started With a New Project
 
 To get you started with a new angular project you can fork the [angular-full-seed] and then clone your own repository.
