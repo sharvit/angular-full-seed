@@ -16,7 +16,7 @@
     "animate.css": "~3.5.0",
     "ngAnimate-animate.css": "~0.1.1",
     "angular-loading-bar": "~0.8.0",
-    "angular-language-picker": "azachar/angular-language-picker#~0.3.3",
+    "angular-language-picker": "https://github.com/sharvit/angular-language-picker.git#master",
     "font-awesome": "~4.5.0",
     "flag-icon-css": "~1.0.0"
   }

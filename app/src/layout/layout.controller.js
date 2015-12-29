@@ -16,7 +16,6 @@
         vm.toggleNavbar = toggleNavbar;
         vm.changeLanguage = changeLanguage;
         vm.avilableLocales = I18N_CONFIG.avilableLocales;
-        vm.avilableLocalesNames = I18N_CONFIG.avilableLocalesNames;
 
         activate();
 
@@ -27,8 +26,6 @@
         }
 
         function changeLanguage (localeKey) {
-            console.log('LayoutController.changeLanguage', localeKey);
-
             // tells angular-translate to use the new language
             return $translate.use(localeKey)
                 .then(setCurrentLocale)
@@ -36,24 +33,11 @@
         }
 
         function toggleNavbar () {
-            console.log('LayoutController.toggleNavbar', !vm.isNavbarCollapsed);
             vm.isNavbarCollapsed = !vm.isNavbarCollapsed;
         }
 
         function setCurrentLocale (currentLocale) {
-            console.log('LayoutController.setCurrentLocale', currentLocale);
-
             vm.currentLocale = currentLocale;
-
-            return $translate('languages.' + vm.currentLocale)
-                .then(setCurrentLocaleNativeName)
-            ;
-        }
-
-        function setCurrentLocaleNativeName (currentLocaleNativeName) {
-            console.log('LayoutController.setCurrentLocaleNativeName', currentLocaleNativeName);
-
-            vm.currentLocaleNativeName = currentLocaleNativeName;
         }
     }
 

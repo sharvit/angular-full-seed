@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top app-top-navbar" role="navigation">
     <div class="container-fluid">
 
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -21,24 +21,19 @@
             </ul>
             <ul class="nav navbar-nav navbar-right flip">
                 <li>
-                    <language-picker languages="vm.avilableLocales" on-change="vm.changeLanguage(language.code)" icon="flag-icon flag-icon-{{vm.currentLocale}}" flags="true" help="https://yumday.oneskyapp.com/collaboration/project?id=53193">
-                        {{ 'utils.language' | translate }}: {{ 'utils.nativeLanguageName' | translate }}
+                    <language-picker
+                        class="locale-picker-container" 
+                        template="templates/components/language-picker/language-picker-dialog.html"
+                        languages="vm.avilableLocales" 
+                        on-change="vm.changeLanguage(language.code)" 
+                        flags="true" 
+                        help="https://yumday.oneskyapp.com/collaboration/project?id=53193"
+                    >
+                        <strong>{{ 'utils.language' | translate }}:</strong>
+                        <span class="nav-bar-locale">{{ 'utils.fullLocaleName' | translate }}</span>
+                        <span class="flag-icon flag-icon-{{ 'utils.localeCountry' | translate }}"></span>
                     </language-picker>
                 </li>
-                <!-- <li uib-dropdown>
-                    <a uib-dropdown-toggle role="button">
-                        {{ 'utils.language' | translate }}: {{ 'utils.nativeLanguageName' | translate }} <span class="caret"></span>
-                    </a>
-                    <ul uib-dropdown-menu>
-                        <li ng-repeat="(locale, localeName) in vm.avilableLocalesNames">
-                            <a ng-click="vm.changeLanguage(locale)">{{ localeName }}</a>
-                        </li>
-
-                        <li role="separator" class="divider"></li>
-
-                        <li><a>{{ 'layout.donateMoreLanguages' | translate }}</a></li>
-                    </ul>
-                </li> -->
             </ul>
         </div>
 

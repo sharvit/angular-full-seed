@@ -1,0 +1,10 @@
+{
+    "language": {
+        "choose": "Choose a language",
+        "avilableDescription": "We are available in {{languages.length}} languages",
+        "notAvilableHelp": {
+            "description": "Don't you see your language?",
+            "link": "Help us translate it!"
+        }
+    }
+}

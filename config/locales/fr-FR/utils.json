@@ -1,6 +1,9 @@
 {
     "utils": {
+        "locale": "fr-FR",
+        "fullLocaleName": "Fran\u00e7ais (FR)",
         "languageCode": "fr",
+        "localeCountry": "fr",
         "nativeLanguageName": "Fran\u00e7ais",
         "enLanguageName": "French",
         "dir": "ltr"

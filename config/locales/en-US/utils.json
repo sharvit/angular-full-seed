@@ -1,0 +1,16 @@
+{
+    "utils": {
+        "locale": "en-US",
+        "fullLocaleName": "English (US)",
+        "languageCode": "en",
+        "localeCountry": "us",
+        "nativeLanguageName": "English",
+        "enLanguageName": "English",
+        "dir": "ltr",
+        "hello": "Hello",
+        "language": "Language",
+        "location": "Location",
+        "close": "Close",
+        "more": "more"
+    }
+}
