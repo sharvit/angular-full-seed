@@ -1,5 +1,6 @@
 {
     "dashboard": {
+        "title": "dashboard",
         "navbarTitle": "Dashboard"
     }
 }

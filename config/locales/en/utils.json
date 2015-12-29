@@ -1,10 +1,10 @@
 {
     "utils": {
+        "hello": "Hello",
         "languageCode": "en",
         "nativeLanguageName": "English",
         "enLanguageName": "English",
         "dir": "ltr",
-        "hello": "Hello",
         "language": "Language",
         "location": "Location"
     }

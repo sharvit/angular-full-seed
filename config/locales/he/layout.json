@@ -1,5 +1,7 @@
 {
     "layout": {
-        "footer": "Angular Full Seed"
+        "footer": "Angular Full Seed",
+        "brand": "Angular Full Seed",
+        "donateMoreLanguages": "\u05ea\u05e8\u05d5\u05dd \u05e9\u05e4\u05d5\u05ea \u05e0\u05d5\u05e1\u05e4\u05d5\u05ea"
     }
 }
