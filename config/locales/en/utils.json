@@ -4,6 +4,8 @@
         "nativeLanguageName": "English",
         "enLanguageName": "English",
         "dir": "ltr",
-        "hello": "hello"
+        "hello": "Hello",
+        "language": "Language",
+        "location": "Location"
     }
 }

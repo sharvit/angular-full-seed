@@ -3,7 +3,7 @@
 
     <form ng-submit="vm.login()">
         <div class="form-group" ng-class="{ 'has-error': vm.invalidPassword }">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="exampleInputPassword1">{{ 'login.password' | translate }}</label>
             <input ng-model="vm.password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             <span class="help-block">
                 <p class="invalid-password-error" ng-show="vm.invalidPassword">

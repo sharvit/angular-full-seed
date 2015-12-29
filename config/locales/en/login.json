@@ -1,6 +1,8 @@
 {
     "login": {
+        "navbarTitle": "Login",
         "description": "Type your password ({{desiredPassword}}) and click Login",
+        "password": "Password",
         "button": "Login",
         "wrongPassword": "Wrong Password!"
     }

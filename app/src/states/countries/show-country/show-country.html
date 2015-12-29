@@ -5,96 +5,96 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-2 col-sm-3 col-xs-6">
-                    <strong>English Name:</strong>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <strong>{{ 'country.name' | translate }}:</strong>
                 </div>
-                <div class="col-md-10 col-sm-9 col-sm-6">
+                <div class="col-md-9 col-sm-8 col-sm-6">
                     {{vm.country.name}}
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 col-sm-3 col-xs-6">
-                    <strong>Native Name:</strong>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <strong>{{ 'country.nativeName' | translate }}:</strong>
                 </div>
-                <div class="col-md-10 col-sm-9 col-sm-6">
+                <div class="col-md-9 col-sm-8 col-sm-6">
                     {{vm.country.nativeName}}
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 col-sm-3 col-xs-6">
-                    <strong>Capital:</strong>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <strong>{{ 'country.capital' | translate }}:</strong>
                 </div>
-                <div class="col-md-10 col-sm-9 col-sm-6">
+                <div class="col-md-9 col-sm-8 col-sm-6">
                     {{vm.country.capital}}
                 </div>
             </div>
             <br />
             <div class="row">
-                <div class="col-md-2 col-sm-3 col-xs-6">
-                    <strong>Region:</strong>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <strong>{{ 'country.region' | translate }}:</strong>
                 </div>
-                <div class="col-md-10 col-sm-9 col-sm-6">
+                <div class="col-md-9 col-sm-8 col-sm-6">
                     <a ng-href="/countries/region/{{vm.country.region}}">{{vm.country.region}}</a>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 col-sm-3 col-xs-6">
-                    <strong>Sub Region:</strong>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <strong>{{ 'country.subregion' | translate }}:</strong>
                 </div>
-                <div class="col-md-10 col-sm-9 col-sm-6">
+                <div class="col-md-9 col-sm-8 col-sm-6">
                     <a ng-href="/countries/sub-region/{{vm.country.subregion}}">{{vm.country.subregion}}</a>
                 </div>
             </div>
             <br />
             <div class="row">
-                <div class="col-md-2 col-sm-3 col-xs-6">
-                    <strong>Population:</strong>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <strong>{{ 'country.population' | translate }}:</strong>
                 </div>
-                <div class="col-md-10 col-sm-9 col-sm-6">
+                <div class="col-md-9 col-sm-8 col-sm-6">
                     {{vm.country.population}}
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 col-sm-3 col-xs-6">
-                    <strong>Location:</strong>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <strong>{{ 'utils.location' | translate }}:</strong>
                 </div>
-                <div class="col-md-10 col-sm-9 col-sm-6">
+                <div class="col-md-9 col-sm-8 col-sm-6">
                     [{{vm.country.latlng[0]}}, {{vm.country.latlng[1]}}]
                 </div>
             </div>
             <br />
             <p>
-                <strong>Timezones</strong>
+                <strong>{{ 'country.timezones' | translate }}</strong>
                 <ul>
                     <li ng-repeat="timezone in vm.country.timezones">{{timezone}}</li>
                 </ul>
             </p>
             <p>
-                <strong>Spellings</strong>
+                <strong>{{ 'country.altSpellings' | translate }}</strong>
                 <ul>
                     <li ng-repeat="spell in vm.country.altSpellings">{{spell}}</li>
                 </ul>
             </p>
             <p>
-                <strong>Currencies</strong>
+                <strong>{{ 'country.currencies' | translate }}</strong>
                 <ul>
                     <li ng-repeat="currency in vm.country.currencies"><a ng-href="/countries/currency/{{currency}}">{{currency}}</a></li>
                 </ul>
             </p>
             <p>
-                <strong>Languages</strong>
+                <strong>{{ 'country.languages' | translate }}</strong>
                 <ul>
                     <li ng-repeat="language in vm.country.languages"><a ng-href="/countries/lang/{{language}}">{{language}}</a></li>
                 </ul>
             </p>
             <p>
-                <strong>Translations</strong>
+                <strong>{{ 'country.translations' | translate }}</strong>
                 <ul>
                     <li ng-repeat="(locale, translation) in vm.country.translations">{{locale}}: {{translation}}</li>
                 </ul>
             </p>
             <p>
-                <strong>Borders</strong>
+                <strong>{{ 'country.borders' | translate }}</strong>
                 <ul>
                     <li ng-repeat="border in vm.country.borders"><a ng-href="/countries/{{border}}">{{border}}</a></li>
                 </ul>

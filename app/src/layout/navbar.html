@@ -4,26 +4,25 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-click="vm.toggleNavbar()">
-                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Angular Full Seed</a>
+            <a class="navbar-brand" href="/">{{ 'layout.brand' | translate }}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed">
             <ul class="nav navbar-nav">
                 <!-- class="active" -->
-                <li ui-sref-active="active"><a ui-sref="app.login">Login</a></li>
-                <li ui-sref-active="active"><a ui-sref="app.dashboard">Dashboard</a></li>
-                <li ui-sref-active="active"><a ui-sref="app.countries">World Countries</a></li>
+                <li ui-sref-active="active"><a ui-sref="app.login">{{ 'login.navbarTitle' | translate }}</a></li>
+                <li ui-sref-active="active"><a ui-sref="app.dashboard">{{ 'dashboard.navbarTitle' | translate }}</a></li>
+                <li ui-sref-active="active"><a ui-sref="app.countries">{{ 'country.navbarTitle' | translate }}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right flip">
                 <li uib-dropdown>
                     <a uib-dropdown-toggle role="button">
-                        Language: {{ 'utils.nativeLanguageName' | translate }} <span class="caret"></span>
+                        {{ 'utils.language' | translate }}: {{ 'utils.nativeLanguageName' | translate }} <span class="caret"></span>
                     </a>
                     <ul uib-dropdown-menu>
                         <li ng-repeat="(locale, localeName) in vm.avilableLocalesNames">
@@ -32,7 +31,7 @@
 
                         <li role="separator" class="divider"></li>
 
-                        <li><a>More Languages</a></li>
+                        <li><a>{{ 'layout.donateMoreLanguages' | translate }}</a></li>
                     </ul>
                 </li>
             </ul>

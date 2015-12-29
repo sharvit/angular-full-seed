@@ -1,6 +1,7 @@
 {
     "dashboard": {
         "state1": {
+            "navbarTitle": "state 1",
             "paragraph1": "This is the a paragraph for state number one."
         }
     }
