@@ -13,7 +13,7 @@
       'clean:tempfiles',
       'clean:target',
       [
-        Settings['DEBUG'] ? 'lint' : 'private:noop',
+        Settings.debug ? 'lint' : 'private:noop',
         'build:config',
         'build:locales',
         'build:favicon',

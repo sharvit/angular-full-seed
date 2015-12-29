@@ -14,12 +14,12 @@
    * concatenate and minify vendor sources
    */
   gulp.task('build:vendor', function() {
-    var dest = path.join(Settings['TARGET_DIR'], 'scripts/vendor');
+    var dest = path.resolve(Settings.targetDir, 'scripts/vendor');
 
-    return gulp.src(Settings['VENDOR_FILES'].scripts)
+    return gulp.src(Settings.vendorFiles.scripts)
       .pipe(plugins.concat('vendor.js'))
-      .pipe(plugins.if(Settings['RELEASE'], plugins.uglify()))
-      .pipe(plugins.if(Settings['RELEASE'], plugins.rev()))
+      .pipe(plugins.if(Settings.release, plugins.uglify()))
+      .pipe(plugins.if(Settings.release, plugins.rev()))
 
       .pipe(gulp.dest(dest))
 

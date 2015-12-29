@@ -14,16 +14,16 @@
    * precompile .scss files
    */
   gulp.task('build:styles', function() {
-    var options = Settings['RELEASE'] ? { style: 'compressed' } : { style: 'expanded' };
+    var options = Settings.release ? { style: 'compressed' } : { style: 'expanded' };
 
-    return gulp.src(Settings['APP_SCSS_PATH'])
+    return gulp.src(Settings.config.files.scss)
       .pipe(plugins.sass(options))
       .pipe(plugins.autoprefixer())
       .pipe(plugins.concat('app.css'))
-      .pipe(plugins.if(Settings['RELEASE'], plugins.stripCssComments()))
-      .pipe(plugins.if(Settings['RELEASE'], plugins.minifyCss()))
-      .pipe(plugins.if(Settings['RELEASE'], plugins.rev()))
-      .pipe(gulp.dest(path.join(Settings['TARGET_DIR'], 'styles')))
+      .pipe(plugins.if(Settings.release, plugins.stripCssComments()))
+      .pipe(plugins.if(Settings.release, plugins.minifyCss()))
+      .pipe(plugins.if(Settings.release, plugins.rev()))
+      .pipe(gulp.dest(path.resolve(Settings.targetDir, 'styles')))
       .on('error', errorHandler);
   }).help = {
     '': 'precompile .scss files',

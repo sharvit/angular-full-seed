@@ -14,7 +14,7 @@
    */
   gulp.task('watch:target', function() {
     plugins.livereload.listen();
-    gulp.watch(Settings['TARGET_DIR'] + '/**')
+    gulp.watch(Settings.targetDir + '/**')
       .on('change', plugins.livereload.changed)
       .on('error', errorHandler);
   }).help = {

@@ -17,8 +17,8 @@
   gulp.task('build:scripts:bundle', function () {
     // set up the browserify instance on a task basis
     var b = browserify({
-      entries: Settings['APP_JS_PATH'],
-      debug: Settings['DEBUG']
+      entries: Settings.config.files.js,
+      debug: Settings.debug
     });
 
     return b.bundle()
@@ -29,8 +29,8 @@
           // Add transformation tasks to the pipeline here.
           .pipe(plugins.uglify())
           .on('error', plugins.util.log)
-      .pipe(plugins.if(Settings['DEBUG'], plugins.sourcemaps.write('./')))
-      .pipe(gulp.dest(Settings['TEMP_TARGET_DIR']));
+      .pipe(plugins.if(Settings.debug, plugins.sourcemaps.write('./')))
+      .pipe(gulp.dest(Settings.config.targetDir.tempTargetDir));
   }).help = {
     '': 'bundle all the src files into scripts/bundle.js',
     '[ --release ] [ -r ]': 'release mode'

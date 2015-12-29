@@ -21,7 +21,7 @@
   }).help = {
     '': 'build, watch, run development server and open the browser',
     '[ --release ] [ -r ]': 'release mode',
-    '[ --port=PORT ] [ -p=PORT ]': 'set the web server port. default to ' + Settings['DEFAULT_PORT'],
+    '[ --port=PORT ] [ -p=PORT ]': 'set the web server port. default to ' + Settings.config.defaultPort,
     'Run': [
       '',
       'build',

@@ -14,9 +14,9 @@
    */
   gulp.task('build:favicon', function() {
     return gulp
-      .src(Settings['PATTERNS']['FAV_ICON'])
+      .src(Settings.config.patterns.favIcon)
 
-      .pipe(gulp.dest(Settings['TARGET_DIR']))
+      .pipe(gulp.dest(Settings.targetDir))
 
       .on('error', errorHandler);
   }).help = {

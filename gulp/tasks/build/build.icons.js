@@ -16,16 +16,16 @@
     gulp.task('build:icons', function() {
 
         var appFontsStream = gulp
-            .src(Settings['PATTERNS']['ICONS'])
+            .src(Settings.config.patterns.icons)
         ;
 
         var vendorFontsStream = gulp
-            .src(Settings['VENDOR_FILES'].icons)
+            .src(Settings.vendorFiles.icons)
         ;
 
         return streamqueue({ objectMode: true }, appFontsStream, vendorFontsStream)
 
-            .pipe(gulp.dest(path.join(Settings['TARGET_DIR'], 'icons')))
+            .pipe(gulp.dest(path.join(Settings.targetDir, 'icons')))
 
             .on('error', errorHandler)
         ;

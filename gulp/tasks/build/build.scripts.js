@@ -16,18 +16,18 @@
    * if release: concat, minsafe, uglify and versionize
    */
   gulp.task('build:scripts', ['build:scripts:bundle'], function() {
-    var dest = path.join(Settings['TARGET_DIR'], 'scripts/app');
+    var dest = path.join(Settings.targetDir, 'scripts/app');
 
     var scriptStream = gulp
-      .src( ['bundle.js', 'bundle.js.map', 'ngConstants.js', 'templates.js' ], { cwd: Settings.TEMP_TARGET_DIR })
+      .src( ['bundle.js', 'bundle.js.map', 'ngConstants.js', 'templates.js' ], { cwd: Settings.config.targetDir.tempTargetDir })
 
       .pipe(plugins.changed(dest));
 
     return streamqueue({ objectMode: true }, scriptStream)
-      .pipe(plugins.if(Settings['RELEASE'], plugins.stripDebug()))
-      .pipe(plugins.if(Settings['RELEASE'], plugins.concat('app.js')))
-      .pipe(plugins.if(Settings['RELEASE'], plugins.uglify()))
-      .pipe(plugins.if(Settings['RELEASE'], plugins.rev()))
+      .pipe(plugins.if(Settings.release, plugins.stripDebug()))
+      .pipe(plugins.if(Settings.release, plugins.concat('app.js')))
+      .pipe(plugins.if(Settings.release, plugins.uglify()))
+      .pipe(plugins.if(Settings.release, plugins.rev()))
 
       .pipe(gulp.dest(dest))
 

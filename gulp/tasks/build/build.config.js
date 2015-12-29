@@ -17,10 +17,10 @@
 
         return ngConstant({
                 name: 'app.core.config',
-                constants: Settings['CONFIGURATION'],
+                constants: Settings.appConfig,
                 stream: true
             })
-            .pipe(gulp.dest(Settings['TEMP_TARGET_DIR']))
+            .pipe(gulp.dest(Settings.config.targetDir.tempTargetDir))
             .on('error', errorHandler)
         ;
     }).help = {

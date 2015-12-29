@@ -13,13 +13,13 @@
    * build html templates to angularTemplatecache
    */
   gulp.task('build:templates', function() {
-    return gulp.src(Settings['PATTERNS']['TEMPLATES'])
+    return gulp.src(Settings.config.patterns.templates)
       .pipe(plugins.angularTemplatecache('templates.js', {
         root: 'templates/',
-        module: Settings['APP_NAME'],
-        htmlmin: Settings['RELEASE']
+        module: Settings.config.appName,
+        htmlmin: Settings.release
       }))
-      .pipe(gulp.dest(Settings['TEMP_TARGET_DIR']))
+      .pipe(gulp.dest(Settings.config.targetDir.tempTargetDir))
       .on('error', errorHandler);
 
   }).help = {

@@ -21,28 +21,28 @@
     'Run': '[ clean:debug clean:release ]'
   };
   gulp.task('clean:debug', ['clean:tempfiles'], function(done) {
-    del(Settings.RELEASE_TARGET_DIR).then(function () {
+    del(Settings.config.targetDir.releaseTargetDir).then(function () {
       done();
     });
   }).help = {
     '': 'clean debug target directory.'
   };
   gulp.task('clean:release', ['clean:tempfiles'], function(done) {
-    del(Settings.DEBUG_TARGET_DIR).then(function () {
+    del(Settings.config.targetDir.debugTargetDir).then(function () {
       done();
     });
   }).help = {
     '': 'clean release target directory.'
   };
   gulp.task('clean:tempfiles', function(done) {
-    del(Settings.TEMP_TARGET_DIR).then(function () {
+    del(Settings.config.targetDir.tempTargetDir).then(function () {
       done();
     });
   }).help = {
     '': 'clean the temporary directory.'
   };
   gulp.task('clean:target', function(done) {
-    del(Settings.TARGET_DIR).then(function () {
+    del(Settings.targetDir).then(function () {
       done();
     });
   }).help = {

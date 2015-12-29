@@ -16,16 +16,16 @@
     gulp.task('build:fonts', function() {
 
         var appFontsStream = gulp
-            .src(Settings['PATTERNS']['FONTS'])
+            .src(Settings.config.patterns.fonts)
         ;
 
         var vendorFontsStream = gulp
-            .src(Settings['VENDOR_FILES'].fonts)
+            .src(Settings.vendorFiles.fonts)
         ;
 
         return streamqueue({ objectMode: true }, appFontsStream, vendorFontsStream)
 
-            .pipe(gulp.dest(path.join(Settings['TARGET_DIR'], 'fonts')))
+            .pipe(gulp.dest(path.join(Settings.targetDir, 'fonts')))
 
             .on('error', errorHandler)
         ;

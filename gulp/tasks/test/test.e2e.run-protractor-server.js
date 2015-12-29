@@ -22,18 +22,18 @@
   gulp.task('test:e2e:run-protractor-server', function (done) {
 
     // Start dev server
-    var devServerStrean = gulp.src(Settings['TARGET_DIR'])
+    var devServerStrean = gulp.src(Settings.targetDir)
       .pipe(gulpWebserver({
         path: '/',
         fallback: 'index.html',
-        port: Settings['PORT']
+        port: Settings.port
       }))
     ;
 
     gulp.src(['./e2e-tests/*.spec.js'])
       .pipe(angularProtractor({
-        'configFile': Settings['PROTRACTOR_CONFIG_FILE'],
-        'args': ['--baseUrl', 'http://localhost:' + Settings['PORT']],
+        'configFile': Settings.config.test.configFiles.protractorConfigFile,
+        'args': ['--baseUrl', 'http://localhost:' + Settings.port],
         'autoStartStopServer': true,
         'debug': true
       }))

@@ -1,0 +1,59 @@
+{
+    "appName"                  :     "app",
+
+    "defaultPort"              :     8888,
+
+    "targetDir": {
+        "tempTargetDir"        :     "build/.tmp",
+        "debugTargetDir"       :     "build/debug",
+        "releaseTargetDir"     :     "build/release"
+    },
+
+    "folders": {
+        "app"                  :     "app",
+        "sources"              :     "app/src",
+        "styles"               :     "app/styles",
+        "fonts"                :     "app/fonts",
+        "icons"                :     "app/icons",
+        "images"               :     "app/images",
+
+        "config"               :     "config",
+        "locales"              :     "config/locales",
+        "environments"         :     "config/environments"
+    },
+
+    "files": {
+        "js"                   :     "app/src/app.js",
+        "scss"                 :     "app/styles/app.scss",
+        "index"                :     "app/index.html"
+    },
+
+    "patterns": {
+        "js"                   :     "app/src/**/*.js",
+        "templates"            :     "app/src/**/*.html",
+        "images"               :     "app/images/**/*.*",
+        "favIcon"              :     "app/*.*ico",
+        "styles"               :     "app/styles/**/*.scss",
+        "fonts"                :     "app/fonts/*.*",
+        "icons"                :     "app/icons/**/*.*",
+
+        "config"               :     "config/*.json",
+        "environmentsConfig"   :     "config/environments/*.json",
+        
+        "locales"              :     "config/locales/**/*.json",
+        "localeReplace"        :     "config/locales/{{locale}}/*.json"
+    },
+
+    "configFiles": {
+        "vendor"               :     "vendor.json",
+        "package"              :     "package.json",
+        "bower"                :     "bower.json"
+    },
+
+    "test": {
+        "configFiles": {
+            "karmaConfigFile"          :     "unit-tests.karma.conf.js",
+            "protractorConfigFile"     :     "e2e-tests/protractor.conf.js"
+        }
+    }
+}

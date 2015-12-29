@@ -26,15 +26,15 @@
       });
     };
 
-    return gulp.src(Settings['INDEX_PATH'])
+    return gulp.src(Settings.config.files.index)
       // inject css
-      .pipe(_inject(gulp.src(cssNaming, { cwd: Settings['TARGET_DIR'] }), 'app-styles'))
+      .pipe(_inject(gulp.src(cssNaming, { cwd: Settings.targetDir }), 'app-styles'))
       // inject app.js and vendor.js (release) or all js files indivually (debug)
       .pipe(
-        _inject(gulp.src(['scripts/vendor/*.js', 'scripts/app/*.js'], { cwd: Settings['TARGET_DIR'] }), 'app-scripts')
+        _inject(gulp.src(['scripts/vendor/*.js', 'scripts/app/*.js'], { cwd: Settings.targetDir }), 'app-scripts')
       )
 
-      .pipe(gulp.dest(Settings['TARGET_DIR']))
+      .pipe(gulp.dest(Settings.targetDir))
       .on('error', errorHandler);
   }).help = {
     '': 'inject .js and .css files into index.html',

@@ -21,9 +21,9 @@
    */
   gulp.task('test:unit:run-karma-server', function (done) {
     new karmaServer({
-      configFile: Settings['KARMA_CONFIG_FILE'],
+      configFile: Settings.config.test.configFiles.karmaConfigFile,
       singleRun: true,
-      basePath: Settings['TARGET_DIR'],
+      basePath: Settings.targetDir,
       reporters: 'dots'
     }, done).start();
   }).help = {

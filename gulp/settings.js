@@ -2,71 +2,13 @@
 
     'use strict';
 
-    var path = require('path');
+    var gulp            =   require('gulp');
+    var path            =   require('path');
+    var objectExtend    =   require('object-extend');
 
-    var ROOT_PATH = path.resolve(__dirname, '../');
+    var ROOT_PATH       =   path.resolve(__dirname, '../');
 
-    /**
-    * Settings
-    */
-    var SETTINGS = {
-
-        APP_NAME                  :     'app',
-
-        TEMP_TARGET_DIR           :     './build/.tmp',
-        DEBUG_TARGET_DIR          :     './build/debug',
-        RELEASE_TARGET_DIR        :     './build/release',
-
-        DEFAULT_PORT              :     8888,
-
-        APP_PATH                  :     path.resolve(ROOT_PATH, 'app'),
-        SRC_PATH                  :     path.resolve(ROOT_PATH, 'app/src'),
-        SCSS_PATH                 :     path.resolve(ROOT_PATH, 'app/styles'),
-        FONTS_PATH                :     path.resolve(ROOT_PATH, 'app/fonts'),
-        ICONS_PATH                :     path.resolve(ROOT_PATH, 'app/icons'),
-        IMAGES_PATH               :     path.resolve(ROOT_PATH, 'app/images'),
-
-        APP_JS_PATH               :     path.resolve(ROOT_PATH, 'app/src/app.js'),
-        APP_SCSS_PATH             :     path.resolve(ROOT_PATH, 'app/styles/app.scss'),
-        INDEX_PATH                :     path.resolve(ROOT_PATH, 'app/index.html'),
-
-        CONFIG_PATH               :     path.resolve(ROOT_PATH, 'config'),
-        LOCALES_PATH              :     path.resolve(ROOT_PATH, 'config/locales'),
-
-        VENDOR_PATH               :     path.resolve(ROOT_PATH, 'vendor.json'),
-        PACKAGE_PATH              :     path.resolve(ROOT_PATH, 'package.json'),
-        BOWER_PATH                :     path.resolve(ROOT_PATH, 'bower.json'),
-
-        KARMA_CONFIG_FILE         :     path.resolve(ROOT_PATH, 'unit-tests.karma.conf.js'),
-        PROTRACTOR_CONFIG_FILE    :     path.resolve(ROOT_PATH, 'e2e-tests', 'protractor.conf.js')
-    };
-
-    /**
-    * Patterns
-    */
-    SETTINGS['PATTERNS'] = {
-        JS                        :     path.resolve(SETTINGS['SRC_PATH'],          '**/*.js'),
-        TEMPLATES                 :     path.resolve(SETTINGS['SRC_PATH'],          '**/*.html'),
-        IMAGES                    :     path.resolve(SETTINGS['IMAGES_PATH'],       '**/*.*'),
-        FAV_ICON                  :     path.resolve(SETTINGS['APP_PATH'],          '*.*ico'),
-        STYLES                    :     path.resolve(SETTINGS['SCSS_PATH'],         '**/*.scss'),
-        LOCALES                   :     path.resolve(SETTINGS['LOCALES_PATH'],      '**/*.json'),
-        FONTS                     :     path.resolve(SETTINGS['FONTS_PATH'],        '*.*'),
-        ICONS                     :     path.resolve(SETTINGS['ICONS_PATH'],        '**/*.*'),
-
-        // Use that way:
-        //      Settings['PATTERNS']['LOCALE_REPLACE'].replace(/{{locale}}/g, 'en')
-        LOCALE_REPLACE            :     path.resolve(SETTINGS['LOCALES_PATH'],      '{{locale}}/*.json')
-    };
-
-    // add the root path into the settings
-    SETTINGS['ROOT_PATH']       =   ROOT_PATH;
-    // load the vendor files pathes from vendor.json
-    SETTINGS['VENDOR_FILES']    =   require(SETTINGS['VENDOR_PATH']);
-    // load package.json file
-    SETTINGS['PACKAGE_JSON']    =   require(SETTINGS['PACKAGE_PATH']);
-    // load bower.json file
-    SETTINGS['BOWER_JSON']      =   require(SETTINGS['PACKAGE_PATH']);
+    var CONFIG_PATH     =   './config.json';
 
     // Load .env file if exists
     // Require all vars from .env.example to be exist in env.proccess
@@ -75,39 +17,177 @@
     // For production we dont want .env file, we want the server env system
     require('dotenv-safe').load();
 
-    // Load the enviorment to the settings
-    SETTINGS['ENV'] =  process.env['NODE_ENV'];
 
-    // load configuration files
-    SETTINGS['CONFIGURATION'] = require('./configLoader')(SETTINGS['CONFIG_PATH'], SETTINGS['ENV']);
+    function Settings (configFile) {
+        var self = this;
 
-    // Inject the version from the package.json to the configuration
-    SETTINGS['CONFIGURATION'].version = SETTINGS['PACKAGE_JSON'].version;
+        self.config         =   require(configFile);
+        self.env            =   process.env['NODE_ENV'];
+        self.rootPath       =   ROOT_PATH;
+        self.configPath     =   CONFIG_PATH;
 
-    /**
-    * Parse arguments
-    */
-    var args = require('yargs')
-        .alias('r', 'release')
-        .alias('p', 'port')
-        .default('release', false)
-        .default('port', SETTINGS['DEFAULT_PORT'])
-        .argv
-    ;
+        self.fixConfigPathesToRoot();
+        self.loadGulpConfigFiles();
+        self.loadAppConfig();
+        self.loadArguments();
+    }
 
-    var release  = !!args.release;
-    var port     = args.port;
+    Settings.prototype = {
 
-    // Decide about the target dir
-    SETTINGS['TARGET_DIR']            =   require('path').resolve(release ? SETTINGS['RELEASE_TARGET_DIR'] : SETTINGS['DEBUG_TARGET_DIR']);
+        loadAppConfig           :   loadAppConfig,
 
-    // Add some more information
-    SETTINGS['PORT']                  =   port;
-    SETTINGS['RELEASE']               =   release;
-    SETTINGS['DEBUG']                 =   !release;
-    SETTINGS['isProductionMode']      =   function () { return SETTINGS['ENV'] === 'production'; };
-    SETTINGS['isDevelopmentMode']     =   function () { return SETTINGS['ENV'] !== 'production'; };
+        loadGulpConfigFiles     :   loadGulpConfigFiles,
+        loadVendorFiles         :   loadVendorFiles,
+        loadPackage             :   loadPackage,
+        loadBower               :   loadBower,
 
-    // export the settings object
-    module.exports = SETTINGS;
+        fixConfigPathesToRoot   :   fixConfigPathesToRoot,
+
+        loadEnvironmentConfig   :   loadEnvironmentConfig,
+
+        loadArguments           :   loadArguments,
+        resolveTargetDir        :   resolveTargetDir,
+
+        isProductionMode        :   isProductionMode,
+        isDevelopmentMode       :   isDevelopmentMode
+    };
+
+    function fixConfigPathesToRoot () {
+        var self = this;
+
+        self.config.test.configFiles.karmaConfigFile         = path.resolve(ROOT_PATH, self.config.test.configFiles.karmaConfigFile);
+        self.config.test.configFiles.protractorConfigFile    = path.resolve(ROOT_PATH, self.config.test.configFiles.protractorConfigFile);
+    }
+
+    function loadArguments () {
+        var self = this;
+
+        self.args = require('yargs')
+            .alias('r', 'release')
+            .alias('p', 'port')
+            .default('release', false)
+            .default('port', self.config.defaultPort)
+            .argv
+        ;
+
+        self.port       =   self.args.port;
+        self.release    =   !!self.args.release;
+        self.debug      =   !self.release;
+
+        self.resolveTargetDir();
+    }
+
+    function loadAppConfig () {
+        var self = this;
+
+        // Require all config files.
+        var config = require('require-dir')(
+            path.resolve(ROOT_PATH, self.config.folders.config),
+            { recurse: false }
+        );
+
+        // Load the relevant environment config
+        var envConfig = self.loadEnvironmentConfig();
+
+        // Extend the config with the envConfig
+        // so envConfigs will remove fields at the original config
+        config = objectExtend(config, envConfig);
+
+        // Return the final config formated
+        self.appConfig = formatAppConfig(config);
+
+        // Inject the version from the package.json to the configuration
+        self.appConfig.version = self.package.version;
+    }
+
+    function loadGulpConfigFiles () {
+        var self = this;
+
+        self.loadVendorFiles();
+        self.loadPackage();
+        self.loadBower();
+    }
+
+    function loadVendorFiles () {
+        var self = this;
+
+        self.vendorFiles = require(
+            path.resolve(ROOT_PATH, self.config.configFiles.vendor)
+        );
+    }
+
+    function loadPackage () {
+        var self = this;
+
+        self.package = require(
+            path.resolve(ROOT_PATH, self.config.configFiles.package)
+        );
+    }
+
+    function loadBower () {
+        var self = this;
+
+        self.bower = require(
+            path.resolve(ROOT_PATH, self.config.configFiles.bower)
+        );
+    }
+
+    function resolveTargetDir () {
+        var self = this;
+
+        self.targetDir = path.resolve(
+            ROOT_PATH,
+            self.release ? self.config.targetDir.releaseTargetDir : self.config.targetDir.debugTargetDir
+        );
+    }
+
+    function loadEnvironmentConfig () {
+        var self = this;
+
+        return require(
+            path.resolve(
+                self.config.folders.environments,
+                self.env + '.json'
+            )
+        );
+    }
+
+    function isProductionMode () {
+        var self = this;
+
+        return self.env === 'production';
+    }
+
+    function isDevelopmentMode () {
+        var self = this;
+
+        return self.env !== 'production';
+    }
+
+        // change the object keys to upper case underscoe
+    // { 'app.config': {...} } to { 'APP_CONFIG': {...} }
+    function formatAppConfig (obj) {
+        var formatedObj = {};
+
+        for (var key in obj) {
+            var newKey = key.replace('.', '_').toUpperCase();
+
+            formatedObj[newKey] = obj[key];
+        }
+
+        return formatedObj;
+    }
+
+    var _settings = new Settings(CONFIG_PATH);
+
+    gulp.task('settings:reload-app-config', function() {
+        return _settings.loadAppConfig();
+    });
+
+    gulp.task('settings:reload-vendor-files', function() {
+        return _settings.loadVendorFiles();
+    });
+
+    // export settings object
+    module.exports = _settings;
 })();

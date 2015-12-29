@@ -17,7 +17,7 @@
     gulp.task('build:locales', function () {
 
         return buildLocalesQueue()
-            .pipe(gulp.dest(path.join(Settings['TARGET_DIR'], 'locales')))
+            .pipe(gulp.dest(path.resolve(Settings.targetDir, 'locales')))
             .on('error', errorHandler)
         ;
     }).help = {
@@ -31,7 +31,7 @@
         var localesQueue = streamqueue({ objectMode: true });
 
         // Load the avilable locales from the config
-        var avilableLocales = Settings['CONFIGURATION']['I18N_CONFIG'].avilableLocales;
+        var avilableLocales = Settings.appConfig['I18N_CONFIG'].avilableLocales;
 
         // For each avilable locales
         for (var i = 0; i < avilableLocales.length; i++) {
@@ -46,7 +46,7 @@
 
     // Combine all the locale files to one locale file
     function buildLocale (locale) {
-        var localePattern = Settings['PATTERNS']['LOCALE_REPLACE'].replace(/{{locale}}/g, locale);
+        var localePattern = Settings.config.patterns.localeReplace.replace(/{{locale}}/g, locale);
 
         return gulp.src(localePattern)
             .pipe(plugins.extend(locale + '.json'))

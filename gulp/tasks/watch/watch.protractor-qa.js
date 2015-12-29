@@ -22,7 +22,7 @@
         protractorQA.init({
             testSrc: './e2e-tests/*.spec.js',
             viewSrc: [
-                Settings['INDEX_PATH'],
+                Settings.config.files.index,
                 'app/src/**/*.html'
             ]
         });
