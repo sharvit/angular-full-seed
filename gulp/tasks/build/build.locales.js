@@ -34,10 +34,10 @@
         var avilableLocales = Settings.appConfig['I18N_CONFIG'].avilableLocales;
 
         // For each avilable locales
-        for (var i = 0; i < avilableLocales.length; i++) {
+        for (var locale in avilableLocales) {
             // Build the local and add to the stream queue
             localesQueue.queue(
-                buildLocale(avilableLocales[i])
+                buildLocale(locale)
             );
         }
 

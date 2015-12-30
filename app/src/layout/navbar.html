@@ -21,18 +21,12 @@
             </ul>
             <ul class="nav navbar-nav navbar-right flip">
                 <li>
-                    <language-picker
-                        class="locale-picker-container"
-                        template="templates/components/language-picker/language-picker-dialog.html"
-                        languages="vm.avilableLocales"
-                        on-change="vm.changeLanguage(language.code)"
-                        flags="true"
-                        help="https://yumday.oneskyapp.com/collaboration/project?id=53193"
-                    >
+                    <button type="button" class="btn btn-default navbar-btn locale-picker-container" ng-click="vm.changeLocale()">
+                        <i class="fa fa-globe"></i>
                         <strong>{{ 'utils.language' | translate }}:</strong>
                         <span class="nav-bar-locale">{{ 'utils.fullLocaleName' | translate }}</span>
                         <span class="flag-icon flag-icon-{{ 'utils.localeCountry' | translate }}"></span>
-                    </language-picker>
+                    </button>
                 </li>
             </ul>
         </div>

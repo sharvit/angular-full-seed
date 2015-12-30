@@ -8,27 +8,29 @@
     ;
 
     /* @ngInject */
-    function LayoutController ($rootScope, $translate, $timeout, I18N_CONFIG) {
+    function LayoutController ($localeSelectorDialog, $translate, I18N_CONFIG) {
         var vm = this;
-        vm.currentLocale = null;
-        vm.currentLocaleNativeName = null;
+
         vm.isNavbarCollapsed = true;
         vm.toggleNavbar = toggleNavbar;
-        vm.changeLanguage = changeLanguage;
-        vm.avilableLocales = I18N_CONFIG.avilableLocales;
+        vm.changeLocale = changeLocale;
 
         activate();
 
         ////////////////
 
         function activate () {
-            return setCurrentLocale($translate.use());
+            
         }
 
-        function changeLanguage (localeKey) {
-            // tells angular-translate to use the new language
-            return $translate.use(localeKey)
-                .then(setCurrentLocale)
+        function changeLocale () {
+            return $localeSelectorDialog
+                .open({
+                    locales: I18N_CONFIG.avilableLocales,
+                    contributeUrl: 'https://yumday.oneskyapp.com/collaboration/project?id=53193'
+                })
+                .result
+                .then(updateAppLocale)
             ;
         }
 
@@ -36,8 +38,9 @@
             vm.isNavbarCollapsed = !vm.isNavbarCollapsed;
         }
 
-        function setCurrentLocale (currentLocale) {
-            vm.currentLocale = currentLocale;
+        function updateAppLocale (locale) {
+            // tells angular-translate to use the new language
+            return $translate.use(locale);
         }
     }
 

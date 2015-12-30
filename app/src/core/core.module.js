@@ -13,7 +13,8 @@
 			'ngCookies',
 			'pascalprecht.translate',
 
-			'language-picker',
+			// 'language-picker',
+			'ui.bootstrap.locale-dialog',
 
 			'app.core.config'
 		])
