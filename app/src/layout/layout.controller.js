@@ -27,6 +27,8 @@
             return $localeSelectorDialog
                 .open({
                     locales: I18N_CONFIG.avilableLocales,
+                    showFlags: true,
+                    showSearch: true,
                     contributeUrl: 'https://yumday.oneskyapp.com/collaboration/project?id=53193'
                 })
                 .result

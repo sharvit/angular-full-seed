@@ -18,6 +18,6 @@
         "bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
         "bower_components/ngAnimate-animate.css/animate.js",
         "bower_components/angular-loading-bar/build/loading-bar.js",
-        "bower_components/angular-bootstrap-locale-dialog/dist/angular-bootstrap-locale-dialog.min.js"
+        "bower_components/angular-bootstrap-locale-dialog/angular-bootstrap-locale-dialog.min.js"
     ]
 }
