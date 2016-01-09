@@ -18,6 +18,6 @@
     "angular-loading-bar": "~0.8.0",
     "font-awesome": "~4.5.0",
     "flag-icon-css": "~1.0.0",
-    "angular-bootstrap-locale-dialog": "~1.0.0"
+    "angular-bootstrap-locale-dialog": "~1.1.0"
   }
 }
