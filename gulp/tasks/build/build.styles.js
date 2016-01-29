@@ -21,7 +21,7 @@
       .pipe(plugins.autoprefixer())
       .pipe(plugins.concat('app.css'))
       .pipe(plugins.if(Settings.release, plugins.stripCssComments()))
-      .pipe(plugins.if(Settings.release, plugins.minifyCss()))
+      .pipe(plugins.if(Settings.release, plugins.cssnano()))
       .pipe(plugins.if(Settings.release, plugins.rev()))
       .pipe(gulp.dest(path.resolve(Settings.targetDir, 'styles')))
       .on('error', errorHandler);
