@@ -21,5 +21,8 @@
     "font-awesome": "~4.5.0",
     "flag-icon-css": "~1.0.0",
     "angular-bootstrap-locale-dialog": "~1.2.0"
+  },
+  "resolutions": {
+    "angular": "~1.5.0"
   }
 }
