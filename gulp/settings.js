@@ -56,7 +56,7 @@
         var self = this;
 
         self.config.test.configFiles.karmaConfigFile         = path.resolve(ROOT_PATH, self.config.test.configFiles.karmaConfigFile);
-        self.config.test.configFiles.protractorConfigFile    = path.resolve(ROOT_PATH, self.config.test.configFiles.protractorConfigFile);
+        // self.config.test.configFiles.protractorConfigFile    = path.resolve(ROOT_PATH, self.config.test.configFiles.protractorConfigFile);
     }
 
     function loadArguments () {

@@ -49,7 +49,7 @@
     "yargs": "^3.31.0"
   },
   "devDependencies": {
-    "gulp-angular-protractor": "0.0.6",
+    "gulp-angular-protractor": "0.1.1",
     "gulp-cssnano": "^2.1.0",
     "gulp-jshint": "^2.0.0",
     "gulp-livereload": "^3.7.0",
@@ -66,7 +66,7 @@
   },
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
-    "postinstall": "bower cache clean && bower install --force && bower prune && gulp build --release",
+    "postinstall": "rm -rf bower_components && bower cache clean && bower install --force && bower prune && gulp build --release",
     "start": "node server.js",
     "test": "gulp test --release"
   }
