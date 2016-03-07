@@ -1,6 +1,24 @@
 {
     "defaultLocale": "en-US",
 
+    "localesMap": {
+        "en_US": "en-US",
+        "en_CA": "en-CA",
+        "en_GB": "en-GB",
+        "en_IN": "en-IN",
+        "en_IE": "en-IE",
+        "fr_FR": "fr-FR",
+        "fr_BE": "fr-BE",
+        "fr_CA": "fr-CA",
+        "fr_SW": "fr-SW",
+        "fr_SW": "fr-SW",
+        "he_IL": "he-IL",
+
+        "en*": "en-US",
+        "fr*": "fr-FR",
+        "he*": "he-IL"
+    },
+
     "avilableLocales": {
         "en-US": {
             "name": "English (US)",

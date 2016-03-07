@@ -9,7 +9,7 @@
 
 
     /* @ngInject */
-    function Country ($http) {
+    function Country ($http, COUNTRIES_API_URL) {
         var service = {
             all: all,
             allByRegion: allByRegion,
@@ -25,42 +25,42 @@
 
         function all () {
             return $http
-                .get('https://restcountries.eu/rest/v1/all')
+                .get(COUNTRIES_API_URL + '/all')
                 .then(countryResponseSucceed)
             ;
         }
 
         function allByCurrency (currency) {
             return $http
-                .get('https://restcountries.eu/rest/v1/currency/' + currency)
+                .get(COUNTRIES_API_URL + '/currency/' + currency)
                 .then(countryResponseSucceed)
             ;
         }
 
         function allByRegion (region) {
             return $http
-                .get('https://restcountries.eu/rest/v1/region/' + region)
+                .get(COUNTRIES_API_URL + '/region/' + region)
                 .then(countryResponseSucceed)
             ;
         }
 
         function allBySubRegion (subRegion) {
             return $http
-                .get('https://restcountries.eu/rest/v1/subregion/' + subRegion)
+                .get(COUNTRIES_API_URL + 'subregion/' + subRegion)
                 .then(countryResponseSucceed)
             ;
         }
 
         function allByLang (lang) {
             return $http
-                .get('https://restcountries.eu/rest/v1/lang/' + lang)
+                .get(COUNTRIES_API_URL + '/lang/' + lang)
                 .then(countryResponseSucceed)
             ;
         }
 
         function getByAlpha (alpha) {
             return $http
-                .get('https://restcountries.eu/rest/v1/alpha/' + alpha)
+                .get(COUNTRIES_API_URL + '/alpha/' + alpha)
                 .then(countryResponseSucceed)
             ;
         }
@@ -69,8 +69,4 @@
             return response.data;
         }
     }
-
-
-
-// RANDOM WIKI: https://he.wikipedia.org/w/api.php?action=query&generator=random&grnnamespace=0&prop=extracts&format=json
 })();

@@ -7,17 +7,18 @@
         .config(TranslationsConfig)
     ;
 
-    function TranslationsConfig ($translateProvider) {
+    function TranslationsConfig ($translateProvider, I18N_CONFIG) {
+        var availableLanguageKeys = Object.keys(I18N_CONFIG.avilableLocales);
+
+        var localesMap = I18N_CONFIG.localesMap;
+        localesMap['*'] = I18N_CONFIG.defaultLocale;
+
         $translateProvider
             .useStaticFilesLoader({
-            prefix: 'locales/',
-            suffix: '.json'
+                prefix: 'locales/',
+                suffix: '.json'
             })
-            .registerAvailableLanguageKeys(['en', 'he', 'fr'], {
-            'en_*': 'en',
-            'he_*': 'he',
-            'fr_*': 'fr'
-            })
+            .registerAvailableLanguageKeys(availableLanguageKeys, localesMap)
             .useLocalStorage()
             .useSanitizeValueStrategy('escape')
             .determinePreferredLanguage()
