@@ -66,7 +66,7 @@
   },
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
-    "postinstall": "bower install && gulp build --release",
+    "postinstall": "bower --force install && gulp build --release",
     "start": "node server.js",
     "test": "gulp test --release"
   }
