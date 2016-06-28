@@ -1,0 +1,44 @@
+{
+	"masterPicture": null,
+	"dest": null,
+	"iconsPath": "/favicons",
+	"design": {
+		"ios": {
+			"pictureAspect": "backgroundAndMargin",
+			"backgroundColor": "#ffffff",
+			"margin": "14%"
+		},
+		"desktopBrowser": {},
+		"windows": {
+			"pictureAspect": "noChange",
+			"backgroundColor": "#da532c",
+			"onConflict": "override"
+		},
+		"androidChrome": {
+			"pictureAspect": "shadow",
+			"themeColor": "#ffffff",
+			"manifest": {
+				"name": "Angular Full Seed",
+				"display": "standalone",
+				"orientation": "notSet",
+				"onConflict": "override",
+				"declared": true
+			}
+		},
+		"safariPinnedTab": {
+			"pictureAspect": "blackAndWhite",
+			"threshold": 58.59375,
+			"themeColor": "#5bbad5"
+		}
+	},
+	"settings": {
+		"compression": 4,
+		"scalingAlgorithm": "Mitchell",
+		"errorOnImageTooSmall": false
+	},
+	"versioning": {
+		"paramName": "v",
+		"paramValue": "XBB7NkupxN"
+	},
+	"markupFile": null
+}
