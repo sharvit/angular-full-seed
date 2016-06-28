@@ -55,6 +55,7 @@
     "yargs": "^4.2.0"
   },
   "devDependencies": {
+    "codecov.io": "^0.1.6",
     "fs-path": "0.0.22",
     "gulp-angular-protractor": "0.0.6",
     "gulp-foreach": "^0.1.0",
@@ -62,11 +63,13 @@
     "gulp-livereload": "^3.7.0",
     "gulp-protractor-qa": "^0.2.0",
     "gulp-webserver": "^0.9.1",
+    "jasmine": "^2.4.1",
     "jasmine-core": "^2.3.4",
     "jshint": "^2.8.0",
     "jshint-stylish": "^2.1.0",
     "karma": "^1.1.0",
     "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.0.0",
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "node.extend": "^1.1.5",
@@ -78,6 +81,7 @@
     "gulp": "./node_modules/.bin/gulp",
     "postinstall": "rm -rf bower_components && bower cache clean && bower install --force && bower prune && gulp build --release",
     "start": "node server.js",
-    "test": "gulp test --release"
+    "test": "gulp test --release",
+    "codecov": "./node_modules/.bin/codecov"
   }
 }

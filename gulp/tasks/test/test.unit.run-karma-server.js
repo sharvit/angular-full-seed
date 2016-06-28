@@ -22,9 +22,7 @@
   gulp.task('test:unit:run-karma-server', function (done) {
     new karmaServer({
       configFile: Settings.config.test.configFiles.karmaConfigFile,
-      singleRun: true,
-      basePath: Settings.targetDir,
-      reporters: 'dots'
+      singleRun: true
     }, done).start();
   }).help = {
     '': 'run karma server and start run unit testing'
