@@ -40,6 +40,7 @@
         loadVendorFiles         :   loadVendorFiles,
         loadPackage             :   loadPackage,
         loadBower               :   loadBower,
+        loadFaviconGenerate     :   loadFaviconGenerate,
 
         fixConfigPathesToRoot   :   fixConfigPathesToRoot,
 
@@ -56,7 +57,7 @@
         var self = this;
 
         self.config.test.configFiles.karmaConfigFile         = path.resolve(ROOT_PATH, self.config.test.configFiles.karmaConfigFile);
-        // self.config.test.configFiles.protractorConfigFile    = path.resolve(ROOT_PATH, self.config.test.configFiles.protractorConfigFile);
+        self.config.test.configFiles.protractorConfigFile    = path.resolve(ROOT_PATH, self.config.test.configFiles.protractorConfigFile);
     }
 
     function loadArguments () {
@@ -97,6 +98,9 @@
         self.appConfig = formatAppConfig(config);
 
         // Inject the version from the package.json to the configuration
+        self.appConfig.env = self.env;
+
+        // Inject the version from the package.json to the configuration
         self.appConfig.version = self.package.version;
     }
 
@@ -106,6 +110,7 @@
         self.loadVendorFiles();
         self.loadPackage();
         self.loadBower();
+        self.loadFaviconGenerate();
     }
 
     function loadVendorFiles () {
@@ -130,6 +135,18 @@
         self.bower = require(
             path.resolve(ROOT_PATH, self.config.configFiles.bower)
         );
+    }
+
+    function loadFaviconGenerate () {
+        var self = this;
+
+        self.faviconGenerateConfig = require(
+            path.resolve(ROOT_PATH, self.config.configFiles.favicons.generate)
+        );
+
+        self.faviconGenerateConfig.masterPicture    = self.config.resources.favicon;
+        self.faviconGenerateConfig.dest             = self.config.folders.favicons;
+        self.faviconGenerateConfig.markupFile       = self.config.configFiles.favicons.build;
     }
 
     function resolveTargetDir () {
@@ -164,13 +181,13 @@
         return self.env !== 'production';
     }
 
-        // change the object keys to upper case underscoe
+    // change the object keys to upper case underscoe
     // { 'app.config': {...} } to { 'APP_CONFIG': {...} }
     function formatAppConfig (obj) {
         var formatedObj = {};
 
         for (var key in obj) {
-            var newKey = key.replace('.', '_').toUpperCase();
+            var newKey = key.replace(/\./g, '_').toUpperCase();
 
             formatedObj[newKey] = obj[key];
         }

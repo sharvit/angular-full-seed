@@ -7,18 +7,19 @@
 
   // dependencies 
   var gulp          = require('gulp');
-  
-  
+  var path          = require('path');
+
   /**
-   * build favicon, copy from root app to root dest
-   */
+  * build favicon, copy from root app to root dest
+  */
   gulp.task('build:favicon', function() {
     return gulp
-      .src(Settings.config.patterns.favIcon)
+      .src(Settings.config.patterns.favicons)
 
-      .pipe(gulp.dest(Settings.targetDir))
+      .pipe(gulp.dest(path.resolve(Settings.targetDir, 'favicons')))
 
-      .on('error', errorHandler);
+      .on('error', errorHandler)
+    ;
   }).help = {
     '': 'build favicon, copy from root app to root dest',
     '[ --release ] [ -r ]': 'release mode'

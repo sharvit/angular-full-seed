@@ -16,6 +16,7 @@
         "fonts"                :     "app/fonts",
         "icons"                :     "app/icons",
         "images"               :     "app/images",
+        "favicons"             :     "app/favicons",
 
         "config"               :     "config",
         "locales"              :     "config/locales",
@@ -32,10 +33,11 @@
         "js"                   :     "app/src/**/*.js",
         "templates"            :     "app/src/**/*.html",
         "images"               :     "app/images/**/*.*",
-        "favIcon"              :     "app/*.*ico",
+        "favicons"             :     "app/favicons/*.*",
         "styles"               :     "app/styles/**/*.scss",
         "fonts"                :     "app/fonts/*.*",
         "icons"                :     "app/icons/**/*.*",
+        "iconFonts"            :     "app/icon-fonts/*.svg",
 
         "config"               :     "config/*.json",
         "environmentsConfig"   :     "config/environments/*.json",
@@ -47,7 +49,16 @@
     "configFiles": {
         "vendor"               :     "vendor.json",
         "package"              :     "package.json",
-        "bower"                :     "bower.json"
+        "bower"                :     "bower.json",
+
+        "favicons": {
+            "generate"         :     "config/favicons/generate.config.json",
+            "build"            :     "config/favicons/build.config.json"
+        }
+    },
+
+    "resources": {
+        "favicon"              :     "resources/favicon.svg"
     },
 
     "test": {

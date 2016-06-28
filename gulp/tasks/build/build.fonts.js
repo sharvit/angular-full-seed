@@ -19,11 +19,15 @@
             .src(Settings.config.patterns.fonts)
         ;
 
+        var appTempFontsStream = gulp
+            .src('build/.tmp/fonts/*.*')
+        ;
+
         var vendorFontsStream = gulp
             .src(Settings.vendorFiles.fonts)
         ;
 
-        return streamqueue({ objectMode: true }, appFontsStream, vendorFontsStream)
+        return streamqueue({ objectMode: true }, appFontsStream, appTempFontsStream, vendorFontsStream)
 
             .pipe(gulp.dest(path.join(Settings.targetDir, 'fonts')))
 

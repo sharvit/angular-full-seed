@@ -23,11 +23,10 @@
 
     return b.bundle()
       .pipe(source('bundle.js'))
-      .pipe(plugins.ngAnnotate({'single_quotes': true}))
       .pipe(buffer())
       .pipe(plugins.sourcemaps.init({loadMaps: true}))
           // Add transformation tasks to the pipeline here.
-          .pipe(plugins.uglify())
+          .pipe(plugins.ngAnnotate({'single_quotes': true}))
           .on('error', plugins.util.log)
       .pipe(plugins.if(Settings.debug, plugins.sourcemaps.write('./')))
       .pipe(gulp.dest(Settings.config.targetDir.tempTargetDir));

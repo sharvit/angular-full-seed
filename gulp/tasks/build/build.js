@@ -12,7 +12,9 @@
     runSequence(
       'clean:tempfiles',
       'clean:target',
+      'build:icon-fonts',
       [
+        'favicon:check-for-updates',
         Settings.debug ? 'lint' : 'private:noop',
         'build:config',
         'build:locales',
@@ -26,7 +28,7 @@
       ],
       'build:scripts',
       'build:index',
-      'clean:tempfiles',
+      Settings.release ? 'clean:tempfiles' : 'private:noop',
       done
     );
   }).help = {

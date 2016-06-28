@@ -8,6 +8,7 @@
 	}
 
 	var express   = require('express'),
+		cors      = require('cors'),
 		path      = require('path'),
 		compress  = require('compression'),
 
@@ -29,8 +30,20 @@
 		server = express()
 	;
 
+	// Enable All CORS Requests
+    server.use(cors());
+
 	// use gzip compress 
 	server.use(compress());
+
+	// // don't index unless production
+ //    server.use(function(req, res, next) {
+ //        if (req.hostname.indexOf('my-domain.com') < 0) {
+ //            res.setHeader('X-Robots-Tag:', 'noindex, nofollow');
+ //        }
+
+ //        return next();
+ //    });
 
 	// Cache the static urls
 	server.use(function(req, res, next) {
@@ -48,7 +61,8 @@
 	// user express to serve the static release files
 	server.use(express.static(RELEASE_PATH));
 
-	// html5mode
+	// support html5mode for angular
+    // serve the index file
 	server.get('/*', function(req, res, next) {
 
 		// Do not serve the index for static urls
