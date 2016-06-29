@@ -1,6 +1,7 @@
 # [angular-full-seed] — the full skeleton for AngularJS apps
 
 [![Build Status](https://travis-ci.org/sharvit/angular-full-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-full-seed)
+[![codecov](https://codecov.io/gh/sharvit/angular-full-seed/branch/master/graph/badge.svg)](https://codecov.io/gh/sharvit/angular-full-seed)
 [![Dependency Status](https://david-dm.org/sharvit/angular-full-seed.svg)](https://david-dm.org/sharvit/angular-full-seed)
 [![devDependency Status](https://david-dm.org/sharvit/angular-full-seed/dev-status.svg)](https://david-dm.org/sharvit/angular-full-seed#info=devDependencies)
 
