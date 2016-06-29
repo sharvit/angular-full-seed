@@ -83,7 +83,6 @@
     "gulp": "./node_modules/.bin/gulp",
     "postinstall": "rm -rf bower_components && bower cache clean && bower install --force && bower prune && gulp build --release",
     "start": "node server.js",
-    "test": "gulp test",
-    "codecov": "cat build/reporters/coverage/lcov.info | ./node_modules/.bin/codecov"
+    "test": "gulp test"
   }
 }
