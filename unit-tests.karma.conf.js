@@ -43,7 +43,8 @@ module.exports = function (config) {
 
       reports: {
         lcovonly: 'build/reporters/coverage/lcov.info',
-        html: 'build/reporters/coverage/html/report'
+        html: 'build/reporters/coverage/html/report',
+        json: 'build/reporters/coverage/coverage.json'
       }
     },
 
