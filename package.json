@@ -85,6 +85,6 @@
     "postinstall": "rm -rf bower_components && bower cache clean && bower install --force && bower prune && gulp build --release",
     "start": "node server.js",
     "test": "gulp test",
-    "coveralls": "./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   }
 }

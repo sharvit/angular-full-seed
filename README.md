@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/sharvit/angular-full-seed.svg?branch=master)](https://travis-ci.org/sharvit/angular-full-seed)
 [![codecov](https://codecov.io/gh/sharvit/angular-full-seed/branch/master/graph/badge.svg)](https://codecov.io/gh/sharvit/angular-full-seed)
+[![Coverage Status](https://coveralls.io/repos/github/sharvit/angular-full-seed/badge.svg?branch=master)](https://coveralls.io/github/sharvit/angular-full-seed?branch=master)
 [![Dependency Status](https://david-dm.org/sharvit/angular-full-seed.svg)](https://david-dm.org/sharvit/angular-full-seed)
 [![devDependency Status](https://david-dm.org/sharvit/angular-full-seed/dev-status.svg)](https://david-dm.org/sharvit/angular-full-seed#info=devDependencies)
 
