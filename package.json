@@ -82,9 +82,10 @@
   },
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
-    "postinstall": "rm -rf bower_components && bower cache clean && bower install --force && bower prune && gulp build --release",
+    "postinstall": "rm -rf bower_components && bower cache clean && bower install --force && bower prune",
+    "prestart": "gulp build --release",
     "start": "node server.js",
     "test": "gulp test",
-    "coveralls": "cat build/reporters/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "cat ./build/reporters/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   }
 }
