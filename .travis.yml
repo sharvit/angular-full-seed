@@ -18,7 +18,7 @@ before_script:
 script:
 - npm test
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+- npm run codecov
 deploy:
   provider: heroku
   app:
