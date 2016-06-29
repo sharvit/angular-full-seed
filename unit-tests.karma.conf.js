@@ -34,17 +34,17 @@ module.exports = function (config) {
     coverageReporter: {
       type : 'json',
       subdir : '.',
-      dir : 'build/reporters/coverage/',
+      dir : 'coverage/',
       file : 'coverage.json'
     },
 
     remapIstanbulReporter: {
-      src: 'build/reporters/coverage/coverage.json',
+      src: 'coverage/coverage.json',
 
       reports: {
-        lcovonly: 'build/reporters/coverage/lcov.info',
-        html: 'build/reporters/coverage/html/report',
-        json: 'build/reporters/coverage/coverage.json'
+        lcovonly: 'coverage/lcov.info',
+        html: 'coverage/html/report',
+        json: 'coverage/coverage.json'
       }
     },
 
