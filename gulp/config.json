@@ -6,7 +6,8 @@
     "targetDir": {
         "tempTargetDir"        :     "build/.tmp",
         "debugTargetDir"       :     "build/debug",
-        "releaseTargetDir"     :     "build/release"
+        "releaseTargetDir"     :     "build/release",
+        "reportTragerDir"      :     "build/reporters"
     },
 
     "folders": {

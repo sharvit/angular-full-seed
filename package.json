@@ -72,16 +72,18 @@
     "karma-coverage": "^1.0.0",
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.0.2",
+    "karma-remap-istanbul": "^0.1.0",
     "node.extend": "^1.1.5",
     "protractor": "^3.0.0",
     "q": "^1.4.1",
+    "remap-istanbul": "^0.6.4",
     "stream-from-promise": "^1.0.0"
   },
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
     "postinstall": "rm -rf bower_components && bower cache clean && bower install --force && bower prune && gulp build --release",
     "start": "node server.js",
-    "test": "gulp test --release",
+    "test": "gulp test",
     "codecov": "./node_modules/.bin/codecov"
   }
 }

@@ -41,6 +41,13 @@
   }).help = {
     '': 'clean the temporary directory.'
   };
+  gulp.task('clean:reports', function(done) {
+    del(Settings.config.targetDir.reportTragerDir).then(function () {
+      done();
+    });
+  }).help = {
+    '': 'clean reports directory'
+  };
   gulp.task('clean:target', function(done) {
     del(Settings.targetDir).then(function () {
       done();

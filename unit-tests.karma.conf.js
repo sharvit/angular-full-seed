@@ -5,15 +5,15 @@ module.exports = function (config) {
 
   var cfg = {
 
-    basePath : './build/debug',
+    basePath : './',
 
     files : [
-      'scripts/vendor/*.js',
-      'scripts/app/*.js',
+      'build/debug/scripts/vendor/*.js',
+      'build/debug/scripts/app/*.js',
 
-      '../../bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angular-mocks/angular-mocks.js',
 
-      '../../app/src/**/*.spec.js'
+      'app/src/**/*.spec.js'
     ],
 
     autoWatch : true,
@@ -22,40 +22,30 @@ module.exports = function (config) {
 
     browsers : ['Chrome'],
 
-    reporters: ['dots', 'coverage'],
+    reporters: ['dots', 'coverage', 'karma-remap-istanbul'],
 
     preprocessors: {
       // source files, that you wanna generate coverage for
       // do not include tests or libraries
       // (these files will be instrumented by Istanbul)
-      'scripts/app/*.js': ['coverage']
+      'build/debug/scripts/app/bundle.js': ['coverage']
     },
 
-    // Configure code coverage reporter
     coverageReporter: {
-      dir : '../reporters/coverage/',
-      reporters: [
-        // reporters not supporting the `file` property
-        { type: 'html', subdir: 'report-html' },
-        { type: 'lcov', subdir: 'report-lcov' },
-        // reporters supporting the `file` property, use `subdir` to directly
-        // output them in the `dir` directory
-        { type: 'cobertura', subdir: '.', file: 'cobertura.txt' },
-        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' },
-        { type: 'teamcity', subdir: '.', file: 'teamcity.txt' },
-        { type: 'text', subdir: '.', file: 'text.txt' },
-        { type: 'text-summary', subdir: '.', file: 'text-summary.txt' },
-      ]
+      type : 'json',
+      subdir : '.',
+      dir : 'build/reporters/coverage/',
+      file : 'coverage.json'
     },
 
+    remapIstanbulReporter: {
+      src: 'build/reporters/coverage/coverage.json',
 
-
-    plugins : [
-      'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-jasmine',
-      'karma-coverage'
-    ],
+      reports: {
+        lcovonly: 'build/reporters/coverage/lcov.info',
+        html: 'build/reporters/coverage/html/report'
+      }
+    },
 
     customLaunchers: {
       'Chrome_travis_ci': {
@@ -67,11 +57,8 @@ module.exports = function (config) {
   };
 
   if (process.env.TRAVIS) {
-    cfg.basePath = './build/release';
     cfg.browsers = ['Chrome_travis_ci', 'Firefox'];
   }
-
-  console.log(cfg);
 
   config.set(cfg);
 

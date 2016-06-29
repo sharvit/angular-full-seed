@@ -11,6 +11,7 @@
    */
   gulp.task('test:unit', function(done) {
     runSequence(
+      'clean:reports',
       'build',
       'test:unit:run-karma-server',
       done

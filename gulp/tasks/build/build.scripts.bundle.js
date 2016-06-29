@@ -28,7 +28,7 @@
           // Add transformation tasks to the pipeline here.
           .pipe(plugins.ngAnnotate({'single_quotes': true}))
           .on('error', plugins.util.log)
-      .pipe(plugins.if(Settings.debug, plugins.sourcemaps.write('./')))
+      .pipe(plugins.if(Settings.debug, plugins.sourcemaps.write('./', {sourceRoot: ''})))
       .pipe(gulp.dest(Settings.config.targetDir.tempTargetDir));
   }).help = {
     '': 'bundle all the src files into scripts/bundle.js',

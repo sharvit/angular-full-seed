@@ -3,6 +3,7 @@
     'use strict';
 
     describe('app.components.version module', function() {
+
         beforeEach(module('app.components.version'));
 
         describe('app-version directive', function() {
