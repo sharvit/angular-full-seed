@@ -52,6 +52,14 @@ module.exports = function (config) {
       timeoutNoMoreFiles: 1000
     },
 
+    plugins: [
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-jasmine',
+      'karma-coverage',
+      'karma-remap-istanbul'
+    ],
+
     customLaunchers: {
       'Chrome_travis_ci': {
         base: 'Chrome',
