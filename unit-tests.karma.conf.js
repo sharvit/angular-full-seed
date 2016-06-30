@@ -23,7 +23,7 @@ module.exports = function (config) {
 
     browsers : ['Chrome'],
 
-    reporters: ['progress', 'coverage', 'karma-remap-istanbul'],
+    reporters: ['progress', 'coverage'],
 
     preprocessors: {
       // source files, that you wanna generate coverage for
@@ -36,28 +36,28 @@ module.exports = function (config) {
       type : 'json',
       subdir : '.',
       dir : 'build/reporters/coverage/',
-      file : 'coverage.json'
+      file : 'coverage-bundle.json'
     },
 
-    remapIstanbulReporter: {
-      src: 'build/reporters/coverage/coverage.json',
+    // remapIstanbulReporter: {
+    //   src: 'build/reporters/coverage/coverage.json',
 
-      reports: {
-        lcovonly: 'build/reporters/coverage/lcov.info',
-        html: 'build/reporters/coverage/html/report',
-        json: 'build/reporters/coverage/coverage.json'
-      },
+    //   reports: {
+    //     lcovonly: 'build/reporters/coverage/lcov.info',
+    //     html: 'build/reporters/coverage/html/report',
+    //     json: 'build/reporters/coverage/coverage.json'
+    //   },
 
-      timeoutNotCreated: 1000,
-      timeoutNoMoreFiles: 1000
-    },
+    //   timeoutNotCreated: 1000,
+    //   timeoutNoMoreFiles: 1000
+    // },
 
     plugins: [
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-jasmine',
-      'karma-coverage',
-      'karma-remap-istanbul'
+      'karma-coverage'
+      // 'karma-remap-istanbul'
     ],
 
     customLaunchers: {

@@ -73,7 +73,6 @@
     "karma-coverage": "^1.0.0",
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.0.2",
-    "karma-remap-istanbul": "^0.1.0",
     "node.extend": "^1.1.5",
     "protractor": "^3.0.0",
     "q": "^1.4.1",
@@ -81,11 +80,18 @@
     "stream-from-promise": "^1.0.0"
   },
   "scripts": {
-    "gulp": "./node_modules/.bin/gulp",
     "postinstall": "rm -rf bower_components && bower cache clean && bower install --force && bower prune",
     "prestart": "gulp build --release",
     "start": "node server.js",
     "test": "gulp test",
-    "coveralls": "cat ./build/reporters/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "posttest": "npm run build-reports",
+
+    "build-reports":        "npm run remap-coverage && npm run coverage-html && npm run coverage-lcovonly",
+    "remap-coverage":       "cat build/reporters/coverage/coverage-bundle.json | ./node_modules/.bin/remap-istanbul -e node_modules > build/reporters/coverage/coverage.json",
+    "coverage-html":        "cat build/reporters/coverage/coverage-bundle.json | ./node_modules/.bin/remap-istanbul -e node_modules -t html -o build/reporters/coverage/html",
+    "coverage-lcovonly":    "cat build/reporters/coverage/coverage-bundle.json | ./node_modules/.bin/remap-istanbul -e node_modules -t lcovonly > build/reporters/coverage/lcov.info",
+
+    "gulp": "./node_modules/.bin/gulp",
+    "coveralls": "cat build/reporters/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   }
 }
