@@ -46,7 +46,10 @@ module.exports = function (config) {
         lcovonly: 'build/reporters/coverage/lcov.info',
         html: 'build/reporters/coverage/html/report',
         json: 'build/reporters/coverage/coverage.json'
-      }
+      },
+
+      timeoutNotCreated: 1000,
+      timeoutNoMoreFiles: 1000
     },
 
     customLaunchers: {
