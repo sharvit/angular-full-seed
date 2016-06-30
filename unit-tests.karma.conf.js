@@ -13,6 +13,7 @@ module.exports = function (config) {
 
       'bower_components/angular-mocks/angular-mocks.js',
 
+      // the test spec files
       'app/src/**/*.spec.js'
     ],
 
@@ -22,7 +23,7 @@ module.exports = function (config) {
 
     browsers : ['Chrome'],
 
-    reporters: ['dots', 'coverage', 'karma-remap-istanbul'],
+    reporters: ['progress', 'coverage', 'karma-remap-istanbul'],
 
     preprocessors: {
       // source files, that you wanna generate coverage for
@@ -58,7 +59,7 @@ module.exports = function (config) {
   };
 
   if (process.env.TRAVIS) {
-    cfg.browsers = ['Chrome_travis_ci', 'Firefox'];
+    cfg.browsers = ['Chrome_travis_ci'];
   }
 
   config.set(cfg);
