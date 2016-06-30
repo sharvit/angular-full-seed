@@ -79,8 +79,7 @@
     "stream-from-promise": "^1.0.0"
   },
   "scripts": {
-    "postinstall": "rm -rf bower_components && bower cache clean && bower install --force && bower prune",
-    "prestart": "gulp build --release",
+    "postinstall": "rm -rf bower_components && bower cache clean && bower install --force && bower prune && gulp build --release",
     "start": "node server.js",
     "test": "gulp test",
     "posttest": "npm run build-reports",
