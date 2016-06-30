@@ -39,25 +39,11 @@ module.exports = function (config) {
       file : 'coverage-bundle.json'
     },
 
-    // remapIstanbulReporter: {
-    //   src: 'build/reporters/coverage/coverage.json',
-
-    //   reports: {
-    //     lcovonly: 'build/reporters/coverage/lcov.info',
-    //     html: 'build/reporters/coverage/html/report',
-    //     json: 'build/reporters/coverage/coverage.json'
-    //   },
-
-    //   timeoutNotCreated: 1000,
-    //   timeoutNoMoreFiles: 1000
-    // },
-
     plugins: [
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-jasmine',
       'karma-coverage'
-      // 'karma-remap-istanbul'
     ],
 
     customLaunchers: {

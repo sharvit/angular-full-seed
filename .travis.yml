@@ -18,11 +18,7 @@ before_script:
 script:
 - npm test
 after_success:
-- ls -all
-- ls -all build
-- ls -all build/reporters
-- ls -all build/reporters/coverage
-- npm run coveralls
+- echo "publishing code coverage to codecov.io"
 - bash <(curl -s https://codecov.io/bash)
 deploy:
   provider: heroku

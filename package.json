@@ -56,7 +56,6 @@
   },
   "devDependencies": {
     "codecov.io": "^0.1.6",
-    "coveralls": "^2.11.9",
     "fs-path": "0.0.22",
     "gulp-angular-protractor": "0.0.6",
     "gulp-foreach": "^0.1.0",
@@ -85,13 +84,10 @@
     "start": "node server.js",
     "test": "gulp test",
     "posttest": "npm run build-reports",
-
-    "build-reports":        "npm run remap-coverage && npm run coverage-html && npm run coverage-lcovonly",
-    "remap-coverage":       "cat build/reporters/coverage/coverage-bundle.json | ./node_modules/.bin/remap-istanbul -e node_modules > build/reporters/coverage/coverage.json",
-    "coverage-html":        "cat build/reporters/coverage/coverage-bundle.json | ./node_modules/.bin/remap-istanbul -e node_modules -t html -o build/reporters/coverage/html",
-    "coverage-lcovonly":    "cat build/reporters/coverage/coverage-bundle.json | ./node_modules/.bin/remap-istanbul -e node_modules -t lcovonly > build/reporters/coverage/lcov.info",
-
-    "gulp": "./node_modules/.bin/gulp",
-    "coveralls": "cat build/reporters/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "build-reports": "npm run remap-coverage && npm run coverage-html && npm run coverage-lcovonly",
+    "remap-coverage": "cat build/reporters/coverage/coverage-bundle.json | ./node_modules/.bin/remap-istanbul -e node_modules > build/reporters/coverage/coverage.json",
+    "coverage-html": "cat build/reporters/coverage/coverage-bundle.json | ./node_modules/.bin/remap-istanbul -e node_modules -t html -o build/reporters/coverage/html",
+    "coverage-lcovonly": "cat build/reporters/coverage/coverage-bundle.json | ./node_modules/.bin/remap-istanbul -e node_modules -t lcovonly > build/reporters/coverage/lcov.info",
+    "gulp": "./node_modules/.bin/gulp"
   }
 }
