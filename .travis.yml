@@ -18,6 +18,9 @@ before_script:
 script:
 - npm test & ls -all
 after_success:
+- ls -all
+- ls -all build
+- ls -all build/reporters
 - ls -all build/reporters/coverage
 - npm run coveralls
 - bash <(curl -s https://codecov.io/bash)
