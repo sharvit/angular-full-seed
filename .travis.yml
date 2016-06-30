@@ -16,7 +16,7 @@ before_script:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 script:
-- npm test & ls -all build
+- npm test & ls -all
 after_success:
 - ls -all build/reporters/coverage
 - npm run coveralls
